@@ -1,0 +1,30 @@
+#            _ _ _                             __ _
+#    ___  __| (_) |_ ___  _ __ ___ ___  _ __  / _(_) __ _
+#   / _ \/ _` | | __/ _ \| '__/ __/ _ \| '_ \| |_| |/ _` |
+#  |  __/ (_| | | || (_) | | | (_| (_) | | | |  _| | (_| |
+# (_)___|\__,_|_|\__\___/|_|  \___\___/|_| |_|_| |_|\__, |
+#                                                   |___/
+# Editorconfig configures all (most) editors. See https://editorconfig.org/
+
+root = true
+
+[*]
+# Unix-style newlines with a newline ending every file
+end_of_line = lf
+insert_final_newline = true
+
+# Use utf-8 for everything
+charset = utf-8
+
+# Use spaces and 2 space indentation, and trim trailing spaces
+indent_style = space
+indent_size = 2
+trim_trailing_whitespace = true
+
+# 4 space indention for java
+[*.java]
+indent_size = 4
+
+# Makefiles are weird, and require tabs
+[Makefile]
+indent_style = tab

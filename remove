@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+this_dir=$(dirname $(readlink -f $0))
+source "${this_dir}/helpers.sh"
+
+say "Removing files/folders used by the dotfiles..."
+
+if ask 'You sure you want to `rm -rf ~/.{vim,tmux,homesick}*`?'; then
+  set -x
+  rm -rf ~/.{vim,tmux,homesick}*
+  set +x
+
+  say "Done."
+  say "\nWant to reinstall?"
+  say "\t${reset}git clone https://github.com/jethrodaniel/dotfiles /tmp/dotfiles && /tmp/dotfiles/install && rm -rf /tmp/dotfiles"
+else
+  say 'Doing nothing.'
+fi
+

@@ -1,0 +1,10 @@
+# rubocop styles
+
+Style/HashSyntax:
+  EnforcedStyle: hash_rockets
+  UseHashRocketsWithSymbolValues: true
+  PreferHashRocketsForNonAlnumEndingSymbols: true
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
