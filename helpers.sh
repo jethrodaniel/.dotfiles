@@ -9,7 +9,7 @@ bold=`tput bold`
 
 bold_green="${bold}${green}"
 
-# echo a string
+# echo a string in green
 #
 # @param $1 the string to print
 say() {

@@ -41,20 +41,18 @@ else
 fi
 
 #------------------------------------------------------------
-# Rbenv
+# Rbenv plugins
 #------------------------------------------------------------
-~/.rbenv/bin/rbenv init
-
 git clone https://github.com/rbenv/ruby-build.git \
           ~/.rbenv/plugins/ruby-build
-
-#------------------------------------------------------------
-# Get public GPG keys from Github
-#------------------------------------------------------------
-~/.homesick/repos/dotfiles/gpg.rb
 
 set +x
 
 say "Done. Be sure to run"
-say "\t${reset}run 'ctrl+f+I' inside tmux"
+echo -e "\trun 'ctrl+f+I' inside tmux"
+echo 'then'
+echo -e "\tsource ~/.bashrc"
+echo -e "\trbenv install 2.5.3"
+echo -e "\trbenv global 2.5.3"
+echo -e "\t~/bin/gpg.rb"
 say "to get started."
