@@ -40,28 +40,13 @@ else
   yes | homeshick clone jethrodaniel/dotfiles
 fi
 
-set +x
-if ask 'Is this a work setup?'; then
-  echo 'remember to set `user.{email,signingkey}` in ~/gitconfig_work'
-  set -x
-else
-  set -x
-fi
+#------------------------------------------------------------
+# Rbenv
+#------------------------------------------------------------
+~/.rbenv/bin/rbenv init
 
-#------------------------------------------------------------
-# Rbenv plugins and Ruby
-#------------------------------------------------------------
 git clone https://github.com/rbenv/ruby-build.git \
           ~/.rbenv/plugins/ruby-build
-
-set +x
-if ask 'Install Ruby 2.5.3?'; then
-  set -x
-  rbenv install 2.5.3
-  rbenv global 2.5.3
-else
-  set -x
-fi
 
 #------------------------------------------------------------
 # Get public GPG keys from Github
@@ -71,7 +56,5 @@ fi
 set +x
 
 say "Done. Be sure to run"
-say "\t${reset}source ~/.bashrc"
-say "and"
 say "\t${reset}run 'ctrl+f+I' inside tmux"
 say "to get started."
