@@ -1,9 +1,9 @@
-[submodule "home/.tmux/plugins/tpm"]
-	path = home/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
 [submodule "home/.rbenv"]
 	path = home/.rbenv
 	url = https://github.com/rbenv/rbenv.git
 [submodule "home/.vim"]
 	path = home/.vim
 	url = https://github.com/jethrodaniel/.vim.git
+[submodule "home/.tmux"]
+	path = home/.tmux
+	url = https://github.com/jethrodaniel/.tmux.git

@@ -28,7 +28,7 @@ Then
 ```
 homeshick cd dotfiles
 git submodule foreach git checkout master && git pull
-homeshick link dotfiles
+yes | homeshick link dotfiles
 cd -
 ```
 
@@ -38,14 +38,5 @@ Vim settings are managed as a [submodule](https://github.com/jethrodaniel/.vim),
 
 #### Tmux
 
-Tmux, by default, is ugly. But a little work, and suddenly it's beautiful.
-
-Tmux plugin manager is also pretty amazing, as it allows additional functionality to be added to tmux, similar to vim plugins.
-
-Tmux plugins used:
-* [sensible](https://github.com/tmux-plugins/tmux-sensible)
-* [online-status](https://github.com/tmux-plugins/tmux-online-status)
-* [battery](https://github.com/tmux-plugins/tmux-battery)
-* [resurrect](https://github.com/tmux-plugins/tmux-resurrect)
-* [open](https://github.com/tmux-plugins/tmux-open)
+Tmux settings are managed as a [submodule](https://github.com/jethrodaniel/.tmux), and can be installed on their own, if desired.
 
