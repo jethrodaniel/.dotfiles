@@ -46,6 +46,19 @@ fi
 git clone https://github.com/rbenv/ruby-build.git \
           ~/.rbenv/plugins/ruby-build
 
+#------------------------------------------------------------
+# hub
+#------------------------------------------------------------
+set +x
+if ask 'Install hub?'; then
+  set -x
+  temp_dir=$(mktemp -d)
+  tar xvzf "$temp_dir/hub-linux-amd64-2.6.1.tgz"
+  cp "$temp_dir/hub-linux-amd64-2.6.1/bin/hub" ~/bin
+else
+  set -x
+fi
+
 set +x
 
 say "Done. Be sure to run"
