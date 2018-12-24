@@ -21,9 +21,6 @@ sudo apt-get install -y vim \
                         trash-cli \
                         x11-xkb-utils
 
-sudo apt-get -y upgrade \
-  && sudo apt-get -y autoremove
-
 #------------------------------------------------------------
 # Homeshick
 #------------------------------------------------------------
