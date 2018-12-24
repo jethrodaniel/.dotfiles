@@ -25,6 +25,15 @@ Then
 
 Ideally, all of this could be version controlled, but at the moment, `./install` is needed.
 
+### Updating
+
+```
+homeshick cd dotfiles
+git submodule foreach git checkout master && git pull
+homeshick link dotfiles
+cd -
+```
+
 #### Vim
 
 Vim settings are managed as a [submodule](https://github.com/jethrodaniel/.vim), and can be installed on their own, if desired.
