@@ -65,8 +65,8 @@ source .profile
 set +x
 
 say "Done. Be sure to run"
-echo -e "\trun \`ctrl+f+I\` inside tmux"
-echo 'then'
+echo -e "\t\`ctrl+f+I\` inside tmux, then reopen tmux twice"
+echo 'and'
 echo -e "\trbenv install 2.5.3"
 echo -e "\trbenv global 2.5.3"
 echo -e "\t~/bin/gpg.rb"

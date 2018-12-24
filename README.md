@@ -13,7 +13,7 @@ git clone https://github.com/jethrodaniel/dotfiles /tmp/dotfiles \
 Then
 
 1. Replace your normal terminal shortcut (<kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>t</kbd> on Ubuntu) with `gnome-terminal --full-screen -e tmux`
-2. Be sure to initalize [tpm](https://github.com/tmux-plugins/tpm) by typing <kbd>ctrl</kbd>+<kbd>f</kbd>+<kbd>I</kbd> inside a tmux session, then restarting tmux.
+2. Be sure to initalize [tpm](https://github.com/tmux-plugins/tpm) by typing <kbd>ctrl</kbd>+<kbd>f</kbd>+<kbd>I</kbd> inside a tmux session (be patient), then restarting tmux twice.
 
 ### What it do
 
@@ -22,8 +22,6 @@ Then
 * [rbenv](https://github.com/rbenv/rbenv) - rbenv, rbenv-build, and prompts to install ruby 2.5.3
 * [git](https://github.com/git/git) - settings
 * bash/unix - make caps-lock into ctrl, general bash settings
-
-Ideally, all of this could be version controlled, but at the moment, `./install` is needed.
 
 ### Updating
 
