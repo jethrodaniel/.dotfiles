@@ -60,6 +60,8 @@ else
   set -x
 fi
 
+ln -s ~/.tmux/conf ~/.tmux.conf
+
 source .profile
 
 set +x
