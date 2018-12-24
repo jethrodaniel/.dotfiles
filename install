@@ -53,18 +53,23 @@ set +x
 if ask 'Install hub?'; then
   set -x
   temp_dir=$(mktemp -d)
-  tar xvzf "$temp_dir/hub-linux-amd64-2.6.1.tgz"
-  cp "$temp_dir/hub-linux-amd64-2.6.1/bin/hub" ~/bin
+  cd $temp_dir
+  wget https://github.com/github/hub/releases/download/v2.6.1/hub-linux-amd64-2.6.1.tgz
+  tar xvzf hub-linux-amd64-2.6.1.tgz
+  mv "$temp_dir/hub-linux-amd64-2.6.1/bin/hub" ~/bin
+  cd -
+  rm -rf $temp_dir
 else
   set -x
 fi
 
+source .profile
+
 set +x
 
 say "Done. Be sure to run"
-echo -e "\trun 'ctrl+f+I' inside tmux"
+echo -e "\trun \`ctrl+f+I\` inside tmux"
 echo 'then'
-echo -e "\tsource ~/.bashrc"
 echo -e "\trbenv install 2.5.3"
 echo -e "\trbenv global 2.5.3"
 echo -e "\t~/bin/gpg.rb"

@@ -27,7 +27,7 @@ Ideally, all of this could be version controlled, but at the moment, `./install`
 
 #### Vim
 
-Vim settings are managed as a [submodule](https://github.com/jethrodaniel/.vim).
+Vim settings are managed as a [submodule](https://github.com/jethrodaniel/.vim), and can be installed on their own, if desired.
 
 #### Tmux
 
