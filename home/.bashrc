@@ -119,14 +119,19 @@ HISTFILESIZE=1000000   # Store at most 1,000,000 lines on disk
 # Aliases
 #------------------------------------------------------------
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 #------------------------------------------------------------
 # Path changes, mostly
 #------------------------------------------------------------
 if [ -f ~/.bash_env ]; then
-    . ~/.bash_env
+  . ~/.bash_env
+fi
+
+# Tmux tab completion
+if [ -f ~/.tmux/bash_completion_tmux.sh ]; then
+  . ~/.tmux/bash_completion_tmux.sh
 fi
 
 #------------------------------------------------------------
