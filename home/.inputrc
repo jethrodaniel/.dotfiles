@@ -1,0 +1,61 @@
+# GNU Readline settings
+#
+# For more info, see `man readline`.
+# To see the current keymaps, `bind -P`
+
+# Use vi mode
+set editing-mode vi
+
+# Show the common prefix for suggestions
+set colored-completion-prefix on
+
+# When inserting a closing parenthesis, briefly jump to the
+# previous parenthesis
+set blink-matching-paren on
+
+# Display possible completions using different colors to indicate file type
+set colored-stats on
+
+# Use ellipsis in suggestions if the prefix is 10 chars or more
+set completion-prefix-display-length 10
+
+# Only show the first 50 suggestions before prompting
+set completion-query-items 50
+
+# Prevent pasting from being interpreted as a command
+set enable-bracketed-paste on
+
+# Prefix history entries with an * if modified
+set mark-modified-lines on
+
+# Append a slash to completed directories (even if just a symlink)
+set mark-directories on
+set mark-symlinked-directories on
+
+# Show common prefix of suggestions
+set menu-complete-display-prefix on
+
+# set show-all-if-ambiguous on
+# set show-all-if-unmodified on
+
+# Show which mode we're in on the prompt
+set show-mode-in-prompt on
+
+# Customize the mode display strings
+set vi-cmd-mode-string (c)
+set vi-ins-mode-string (i)
+
+# Append a file type character to suggested filenames
+set visible-stats on
+
+# Configure vi keymaps
+$if mode=vi
+  set keymap vi-command
+    "gg": beginning-of-history
+    "G": end-of-history
+
+  set keymap vi-insert
+    "\C-l": clear-screen
+    "jj": vi-movement-mode
+$endif
+
