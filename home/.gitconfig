@@ -54,3 +54,7 @@
 
 [diff]
   tool = vimdiff
+
+# Always use ssh for github
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
