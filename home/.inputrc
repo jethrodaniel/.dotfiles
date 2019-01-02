@@ -53,9 +53,11 @@ $if mode=vi
   set keymap vi-command
     "gg": beginning-of-history
     "G": end-of-history
+    "r": vi-insertion-mode
 
   set keymap vi-insert
     "\C-l": clear-screen
     "jj": vi-movement-mode
+    "ff": vi-movement-mode
 $endif
 
