@@ -50,14 +50,20 @@ set visible-stats on
 
 # Configure vi keymaps
 $if mode=vi
+  # Shift-tab for basic completion
+  "\e[Z": complete
+
+  # Tab for completion with a menu
+  TAB: menu-complete
+
   set keymap vi-command
+    "gUw": upcase-word
+    "guw": downcase-word
     "gg": beginning-of-history
     "G": end-of-history
-    "r": vi-insertion-mode
 
   set keymap vi-insert
     "\C-l": clear-screen
     "jj": vi-movement-mode
-    "ff": vi-movement-mode
 $endif
 
