@@ -16,9 +16,6 @@ set blink-matching-paren on
 # Display possible completions using different colors to indicate file type
 set colored-stats on
 
-# Use ellipsis in suggestions if the prefix is 10 chars or more
-set completion-prefix-display-length 10
-
 # Only show the first 50 suggestions before prompting
 set completion-query-items 50
 
