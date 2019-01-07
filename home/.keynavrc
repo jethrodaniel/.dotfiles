@@ -6,6 +6,9 @@
 #             |___/
 #
 
+clear
+daemonize
+
 ctrl+semicolon start
 Escape end
 ctrl+bracketleft end

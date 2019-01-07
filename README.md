@@ -12,8 +12,7 @@ git clone https://github.com/jethrodaniel/dotfiles /tmp/dotfiles \
 
 Then
 
-1. Replace your normal terminal shortcut (<kbd>ctrl</kbd>+<kbd>shift</kbd>+<kbd>t</kbd> on Ubuntu) with `gnome-terminal --full-screen`
-2. Be sure to initalize [tpm](https://github.com/tmux-plugins/tpm) by typing <kbd>ctrl</kbd>+<kbd>f</kbd>+<kbd>I</kbd> inside a tmux session (be patient), then restarting tmux twice.
+* Be sure to initalize [tpm](https://github.com/tmux-plugins/tpm) by typing <kbd>ctrl</kbd>+<kbd>f</kbd>+<kbd>I</kbd> inside a tmux session (be patient), then restarting tmux.
 
 ### What it do
 
@@ -22,11 +21,13 @@ Then
 * [rbenv](https://github.com/rbenv/rbenv) - rbenv, rbenv-build, and prompts to install ruby 2.5.3
 * [git](https://github.com/git/git) - settings
 * bash/unix - make caps-lock into ctrl, general bash settings, vi readline, etc
+* [i3] - Use [i3](https://i3wm.org/), a tiling window manager
 
 ### Updating
 
 ```
 homeshick cd dotfiles
+homeshick pull dotfiles
 git submodule foreach git checkout master && git pull
 yes | homeshick link dotfiles
 cd -
@@ -40,3 +41,12 @@ Vim settings are managed as a [submodule](https://github.com/jethrodaniel/.vim),
 
 Tmux settings are managed as a [submodule](https://github.com/jethrodaniel/.tmux), and can be installed on their own, if desired.
 
+#### i3
+
+* vim-style navigation
+* easy volume controls
+  * <kbd>super</kbd><kbd>j</kbd> - up
+  * <kbd>super</kbd><kbd>k</kbd> - down
+  * <kbd>super</kbd><kbd>j</kbd> - mute
+* <kbd>super</kbd><kbd>,</kbd> - lock screen
+* <kbd>super</kbd><kbd>.</kbd> - suspend

@@ -13,13 +13,14 @@ set -x
 sudo apt-get update
 
 sudo apt-get install -y vim \
-                        vim-gnome \
                         git \
                         tree \
                         tmux \
                         xclip \
                         trash-cli \
-                        x11-xkb-utils
+                        x11-xkb-utils \
+                        i3 \
+                        pavucontrol
 
 #------------------------------------------------------------
 # Homeshick

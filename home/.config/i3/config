@@ -1,0 +1,188 @@
+# i3 config file (v4)
+#
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
+#
+# This config file uses keycodes (bindsym) and was written for the QWERTY
+# layout.
+#
+# To get a config file with the same key positions, but for your current
+# layout, use the i3-config-wizard
+#
+
+# Set $mod to <alt>    (<Alt_L> and <Alt_R>)
+set $mod Mod1
+
+# Set $mod2 to <Super> (<Super_L> and <Super_R>)
+set $super Mod4
+
+set $font    pango:DejaVu Sans Mono 16
+set $term    i3-sensible-terminal
+set $browser firefox
+
+# Use these keys for focus, movement, and resize directions
+set $up    k
+set $down  j
+set $left  h
+set $right l
+
+# Set font
+font $font
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Start a terminal
+bindsym $mod+Return exec $term
+
+# Kill focused window
+bindsym $mod+Shift+q kill
+bindsym $mod+F4      kill
+
+# Start dmenu (a program launcher)
+bindsym $mod+Shift+d exec dmenu_run
+
+# Start dmenu-desktop (a program launcher)
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# Change focus
+bindsym $mod+$left  focus left
+bindsym $mod+$down  focus down
+bindsym $mod+$up    focus up
+bindsym $mod+$right focus right
+
+# Alternatively, you can use the cursor keys:
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+# Move focused window
+bindsym $mod+Shift+$left  move left
+bindsym $mod+Shift+$down  move down
+bindsym $mod+Shift+$up    move up
+bindsym $mod+Shift+$right move right
+
+# Alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+# Split in horizontal orientation
+bindsym $mod+semicolon split h
+
+# Split in vertical orientation
+bindsym $mod+v split v
+
+# Enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# Change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# Focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+Shift+a focus child
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# Switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Reload the configuration file
+bindsym $mod+Shift+c reload
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# Exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Resize window (you can also use the mouse for that)
+mode "resize" {
+  # These bindings trigger as soon as you enter the resize mode
+
+  bindsym $right      resize shrink width  10 px or 10 ppt
+  bindsym $up         resize grow   height 10 px or 10 ppt
+  bindsym $down       resize shrink height 10 px or 10 ppt
+  bindsym $left       resize grow   width  10 px or 10 ppt
+
+  bindsym Right       resize shrink width  10 px or 10 ppt
+  bindsym Up          resize grow   height 10 px or 10 ppt
+  bindsym Down        resize shrink height 10 px or 10 ppt
+  bindsym Left        resize grow   width  10 px or 10 ppt
+
+  # Back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+  status_command i3status
+}
+
+# Moving to the current workspace will switch to the workspace used last
+workspace_auto_back_and_forth yes
+
+# volume keys
+# bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
+# bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
+# bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
+
+# Pulse Audio controls
+bindsym $super+j exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym $super+k exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym $super+l exec --no-startup-id pactl set-sink-mute   0 toggle
+
+# Open a browser
+bindsym $super+w exec $browser
+
+# Lock screen
+bindsym $super+comma exec "i3lock -i ~/.config/i3/wallpaper.png -e -f"
+
+# Suspend
+bindsym $mod+period exec "systemctl suspend;i3lock -i ~/.config/i3/wallpaper.png -e -f"
+
+# Set a wallpaper
+exec --no-startup-id "feh --bg-scale ~/.config/i3/wallpaper.png"
+
+# Click with a grid
+exec --no-startup-id "keynav"
