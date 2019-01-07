@@ -21,7 +21,7 @@ Then
 * [rbenv](https://github.com/rbenv/rbenv) - rbenv, rbenv-build, and prompts to install ruby 2.5.3
 * [git](https://github.com/git/git) - settings
 * bash/unix - make caps-lock into ctrl, general bash settings, vi readline, etc
-* [i3] - Use [i3](https://i3wm.org/), a tiling window manager
+* [i3](https://i3wm.org/) - basic settings, wallpaper, keymaps, etc
 
 ### Updating
 
