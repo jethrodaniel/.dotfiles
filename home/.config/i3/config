@@ -113,6 +113,15 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+# To add an additonal monitor:
+# 1. Get the monitor names with `xrandr`
+# 2. Attach the monitor, like `xrandr --output DP-2 --auto --right-of eDP-1`
+
+# Move focused workspace to monitor
+# From <https://www.reddit.com/r/i3wm/comments/3zebq9/anyone_running_i3_on_multimonitor_desktop_is_it/>
+bindsym $mod+Shift+bracketleft move workspace to output left
+bindsym $mod+Shift+bracketright move workspace to output right
+
 # Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
