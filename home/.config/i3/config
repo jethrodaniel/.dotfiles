@@ -185,10 +185,10 @@ bindsym $super+l exec --no-startup-id pactl set-sink-mute   0 toggle
 bindsym $super+w exec $browser
 
 # Lock screen
-bindsym $super+comma exec "i3lock -i ~/.config/i3/wallpaper.png -e -f"
+bindsym $super+comma exec "~/.homesick/repos/dotfiles/home/.config/i3/i3lock-multimonitor/lock -i ~/.homesick/repos/dotfiles/home/.config/i3/wallpaper.png"
 
 # Suspend
-bindsym $mod+period exec "systemctl suspend;i3lock -i ~/.config/i3/wallpaper.png -e -f"
+bindsym $super+period exec "systemctl suspend;~/.homesick/repos/dotfiles/home/.config/i3/i3lock-multimonitor/lock -i ~/.homesick/repos/dotfiles/home/.config/i3/wallpaper.png"
 
 # Set a wallpaper
 exec --no-startup-id "feh --bg-scale ~/.config/i3/wallpaper.png"
@@ -197,4 +197,4 @@ exec --no-startup-id "feh --bg-scale ~/.config/i3/wallpaper.png"
 exec --no-startup-id "keynav"
 
 # Setup ssh
-exec --no-startup-id 'eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_rsa'
+exec --no-startup-id "eval \"$(ssh-agent -s)\"; ssh-add ~/.ssh/id_rsa"

@@ -7,3 +7,6 @@
 [submodule "home/.tmux"]
 	path = home/.tmux
 	url = https://github.com/jethrodaniel/.tmux.git
+[submodule "home/.config/i3/i3lock-multimonitor"]
+	path = home/.config/i3/i3lock-multimonitor
+	url = https://github.com/shikherverma/i3lock-multimonitor.git
