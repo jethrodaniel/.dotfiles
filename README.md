@@ -43,10 +43,7 @@ Tmux settings are managed as a [submodule](https://github.com/jethrodaniel/.tmux
 
 #### i3
 
-* vim-style navigation
-* easy volume controls
-  * <kbd>super</kbd><kbd>j</kbd> - up
-  * <kbd>super</kbd><kbd>k</kbd> - down
-  * <kbd>super</kbd><kbd>j</kbd> - mute
-* <kbd>super</kbd><kbd>,</kbd> - lock screen
-* <kbd>super</kbd><kbd>.</kbd> - suspend
+Mostly the defaults.
+
+* <kbd>alt</kbd><kbd>,</kbd> - lock screen
+* <kbd>alat</kbd><kbd>.</kbd> - suspend

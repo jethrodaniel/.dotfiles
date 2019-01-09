@@ -138,7 +138,7 @@ fi
 # Shortcuts
 #------------------------------------------------------------
 # Make caps-lock into another ctrl
-setxkbmap -option caps:ctrl_modifier
+# setxkbmap -option caps:ctrl_modifier
 
 #------------------------------------------------------------
 # Functions

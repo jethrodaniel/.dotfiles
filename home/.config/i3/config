@@ -1,5 +1,5 @@
 # i3 config file (v4)
-#
+
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 #
 # This config file uses keycodes (bindsym) and was written for the QWERTY
@@ -9,23 +9,23 @@
 # layout, use the i3-config-wizard
 #
 
-# Set $mod to <alt>    (<Alt_L> and <Alt_R>)
+# Set $mod to <Alt>
 set $mod Mod1
 
-# Set $mod2 to <Super> (<Super_L> and <Super_R>)
-set $super Mod4
+# Set $mod2 to <Super>
+set $mod2 Mod4
 
 set $font    pango:DejaVu Sans Mono 16
 set $term    i3-sensible-terminal
 set $browser firefox
 
 # Use these keys for focus, movement, and resize directions
+set $left  j
 set $up    k
-set $down  j
-set $left  h
-set $right l
+set $down  l
+set $right semicolon
 
-# Set font
+# Set the font
 font $font
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -69,15 +69,13 @@ bindsym $mod+Shift+Up    move up
 bindsym $mod+Shift+Right move right
 
 # Split in horizontal orientation
-bindsym $mod+semicolon split h
+bindsym $mod+h split h
 
 # Split in vertical orientation
 bindsym $mod+v split v
 
 # Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-
-# Change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
@@ -177,18 +175,18 @@ workspace_auto_back_and_forth yes
 # bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
 
 # Pulse Audio controls
-bindsym $super+j exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym $super+k exec --no-startup-id pactl set-sink-volume 0 -5%
-bindsym $super+l exec --no-startup-id pactl set-sink-mute   0 toggle
+bindsym $mod2+j exec --no-startup-id pactl set-sink-volume 0 -5%
+bindsym $mod2+k exec --no-startup-id pactl set-sink-volume 0 +5%
+bindsym $mod2+l exec --no-startup-id pactl set-sink-mute   0 toggle
 
 # Open a browser
-bindsym $super+w exec $browser
+bindsym $mod2+w exec $browser
 
 # Lock screen
-bindsym $super+comma exec "~/.homesick/repos/dotfiles/home/.config/i3/i3lock-multimonitor/lock -i ~/.homesick/repos/dotfiles/home/.config/i3/wallpaper.png"
+bindsym $mod2+comma exec "~/.homesick/repos/dotfiles/home/.config/i3/i3lock-multimonitor/lock -i ~/.homesick/repos/dotfiles/home/.config/i3/wallpaper.png"
 
 # Suspend
-bindsym $super+period exec "systemctl suspend;~/.homesick/repos/dotfiles/home/.config/i3/i3lock-multimonitor/lock -i ~/.homesick/repos/dotfiles/home/.config/i3/wallpaper.png"
+bindsym $mod2+period exec "systemctl suspend;~/.homesick/repos/dotfiles/home/.config/i3/i3lock-multimonitor/lock -i ~/.homesick/repos/dotfiles/home/.config/i3/wallpaper.png"
 
 # Set a wallpaper
 exec --no-startup-id "feh --bg-scale ~/.config/i3/wallpaper.png"
