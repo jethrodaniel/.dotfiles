@@ -24,13 +24,15 @@
   last = log --shortstat -1 HEAD
 
   # Paint a happy little picture, like `git log --oneline --decorate`, but with GPG status
-  #  This is the local picture.
+  #  This is the local picture, hence the `l`.
   picl = log --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(auto)%d% %Creset %s %C(cyan dim)%GS'" --graph
-  pl   = log --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(auto)%d% %Creset %s %C(cyan dim)%GS'" --graph
 
   # See the whole picture
   pic = log --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(auto)%d% %Creset %s %C(cyan dim)%GS'" --graph --all
-  p   = log --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(auto)%d% %Creset %s %C(cyan dim)%GS'" --graph --all
+
+  # Type less to see less
+  pl = log -10 --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(auto)%d% %Creset %s %C(cyan dim)%GS'" --graph
+  p  = log -10 --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(auto)%d% %Creset %s %C(cyan dim)%GS'" --graph --all
 
   # Show all the git aliases
   alias = config --get-regexp ^alias\\.
