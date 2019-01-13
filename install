@@ -10,6 +10,10 @@ set -x
 #------------------------------------------------------------
 # Prerequisite software
 #------------------------------------------------------------
+
+# See <https://github.com/phw/peek#ubuntu>
+sudo add-apt-repository -y ppa:peek-developers/stable
+
 sudo apt-get update
 
 sudo apt-get install -y vim \
@@ -20,7 +24,9 @@ sudo apt-get install -y vim \
                         trash-cli \
                         x11-xkb-utils \
                         i3 \
-                        pavucontrol
+                        pavucontrol \
+                        peek
+
 
 #------------------------------------------------------------
 # Homeshick
