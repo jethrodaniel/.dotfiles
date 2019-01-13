@@ -21,7 +21,7 @@ order += "tztime local"
 
 wireless _first_ {
   # format_up = "wifi: (%quality at %essid) %ip"
-  format_up = "wifi: ✓"
+  format_up = "wifi: ✓ %quality"
   format_down = "wifi: 🗙"
 }
 
@@ -47,7 +47,7 @@ disk "/" {
 
 volume master {
   format = "♪: %volume"
-  format_muted = "♪: 🔇"
+  format_muted = "♪: 🗙"
   device = "pulse"
   mixer = "Master"
   mixer_idx = 0
@@ -55,4 +55,5 @@ volume master {
 
 cpu_temperature 0 {
 	format = "temp: %degrees°C"
+  max_threshold = 65
 }
