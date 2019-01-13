@@ -20,7 +20,7 @@ Then
 * [tmux](https://github.com/tmux/tmux) - tpm, some plugins, theme, settings, bash-completion
 * [rbenv](https://github.com/rbenv/rbenv) - rbenv, rbenv-build, and prompts to install ruby 2.5.3
 * [git](https://github.com/git/git) - settings
-* bash/unix - make caps-lock into ctrl, general bash settings, vi readline, etc
+* bash/unix - ~~make caps-lock into ctrl~~, general bash settings, vi readline, etc
 * [i3](https://i3wm.org/) - basic settings, wallpaper, keymaps, etc
 
 ### Updating
@@ -46,4 +46,4 @@ Tmux settings are managed as a [submodule](https://github.com/jethrodaniel/.tmux
 Mostly the defaults.
 
 * <kbd>alt</kbd><kbd>,</kbd> - lock screen
-* <kbd>alat</kbd><kbd>.</kbd> - suspend
+* <kbd>alt</kbd><kbd>.</kbd> - suspend
