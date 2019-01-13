@@ -183,10 +183,10 @@ bindsym $mod2+l exec --no-startup-id pactl set-sink-mute   0 toggle
 bindsym $mod2+w exec $browser
 
 # Lock screen
-bindsym $mod2+comma exec "~/.homesick/repos/dotfiles/home/.config/i3/i3lock-multimonitor/lock -i ~/.homesick/repos/dotfiles/home/.config/i3/wallpaper.png"
+bindsym $mod2+comma exec "~/.config/i3/i3lock-multimonitor/lock -i ~/.config/i3/wallpaper.png"
 
 # Suspend
-bindsym $mod2+period exec "systemctl suspend;~/.homesick/repos/dotfiles/home/.config/i3/i3lock-multimonitor/lock -i ~/.homesick/repos/dotfiles/home/.config/i3/wallpaper.png"
+bindsym $mod2+period exec "systemctl suspend;~/.config/i3/i3lock-multimonitor/lock -i ~/.config/i3/wallpaper.png"
 
 # Set a wallpaper
 exec --no-startup-id "feh --bg-scale ~/.config/i3/wallpaper.png"
