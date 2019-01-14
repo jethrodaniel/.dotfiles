@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Make caps-lock into another ctrl
+setxkbmap -option caps:ctrl_modifier
