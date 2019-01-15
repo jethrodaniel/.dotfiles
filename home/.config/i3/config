@@ -179,9 +179,11 @@ bindsym $mod2+j exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym $mod2+k exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym $mod2+l exec --no-startup-id pactl set-sink-mute   0 toggle
 
-# Sreen brightness controls
-bindsym $mod2+u exec xbacklight -inc 20
-bindsym $mod2+n exec xbacklight -dec 20
+# Sreen brightness controls (shift to quickly change)
+bindsym $mod2+u exec xbacklight -inc 1
+bindsym $mod2+Shift+u exec xbacklight -inc 10
+bindsym $mod2+n exec xbacklight -dec 1
+bindsym $mod2+Shift+n exec xbacklight -dec 10
 
 # Open a browser
 bindsym $mod2+w exec $browser
