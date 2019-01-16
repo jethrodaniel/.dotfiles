@@ -7,10 +7,6 @@ say "Setting up dotfiles..."
 
 set -x
 
-#------------------------------------------------------------
-# Prerequisite software
-#------------------------------------------------------------
-
 # See <https://github.com/phw/peek#ubuntu>
 sudo add-apt-repository -y ppa:peek-developers/stable
 
@@ -34,9 +30,7 @@ sudo apt-get install -y vim \
 # See <https://gist.github.com/reavon/0bbe99150810baa5623e5f601aa93afc>
 dconf load /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ < gnome-terminal-profile.dconf
 
-#------------------------------------------------------------
 # Homeshick
-#------------------------------------------------------------
 git clone https://github.com/andsens/homeshick.git \
           $HOME/.homesick/repos/homeshick
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
@@ -50,15 +44,13 @@ else
   yes | homeshick clone jethrodaniel/dotfiles
 fi
 
-#------------------------------------------------------------
+# Symlink tmux settings into the home dir
+ln -s ~/.tmux/conf ~/.tmux.conf
+
 # Rbenv plugins
-#------------------------------------------------------------
 git clone https://github.com/rbenv/ruby-build.git \
           ~/.rbenv/plugins/ruby-build
 
-#------------------------------------------------------------
-# hub
-#------------------------------------------------------------
 set +x
 if ask 'Install hub?'; then
   set -x
@@ -66,22 +58,31 @@ if ask 'Install hub?'; then
   cd $temp_dir
   wget https://github.com/github/hub/releases/download/v2.6.1/hub-linux-amd64-2.6.1.tgz
   tar xvzf hub-linux-amd64-2.6.1.tgz
-  mv "$temp_dir/hub-linux-amd64-2.6.1/bin/hub" ~/bin
+  mv "$temp_dir/hub-linux-amd64-2.6.1/bin/hub" ~/bin/
   cd -
   rm -rf $temp_dir
 else
   set -x
 fi
 
-# Symlink tmux settings into the home dir
-ln -s ~/.tmux/conf ~/.tmux.conf
-
-source .profile
+set +x
+if ask 'Install alacritty?'; then
+  set -x
+  temp_dir=$(mktemp -d)
+  cd $temp_dir
+  wget https://github.com/jwilm/alacritty/releases/download/v0.2.5/Alacritty-v0.2.5-x86_64.tar.gz
+  tar xvzf Alacritty-v0.2.5-x86_64.tar.gz
+  mv "$temp_dir/alacritty" ~/bin/
+  cd -
+  rm -rf $temp_dir
+else
+  set -x
+fi
 
 set +x
 
 say "Done. Be sure to run"
-echo -e "\t\`ctrl+f+I\` inside tmux, then reopen tmux twice"
+echo -e "\t\`ctrl+f+I\` inside tmux, then reopen tmux"
 echo 'and'
 echo -e "\trbenv install 2.5.3"
 echo -e "\trbenv global 2.5.3"

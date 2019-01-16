@@ -22,6 +22,7 @@ Then
 * [git](https://github.com/git/git) - settings
 * bash/unix - ~~make caps-lock into ctrl~~, general bash settings, vi readline, etc
 * [i3](https://i3wm.org/) - basic settings, wallpaper, keymaps, etc
+* [alacritty](https://github.com/jwilm/alacritty)
 
 ### Updating
 
@@ -47,3 +48,7 @@ Mostly the defaults.
 
 * <kbd>alt</kbd><kbd>,</kbd> - lock screen
 * <kbd>alt</kbd><kbd>.</kbd> - suspend
+
+#### Alacritty
+
+Mostly the defaults.
