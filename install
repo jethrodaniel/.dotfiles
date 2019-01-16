@@ -27,7 +27,8 @@ sudo apt-get install -y vim \
                         pavucontrol \
                         peek \
                         ttf-ancient-fonts \
-                        feh
+                        feh \
+                        redshift
 
 # Load gnome terminal profile
 # See <https://gist.github.com/reavon/0bbe99150810baa5623e5f601aa93afc>

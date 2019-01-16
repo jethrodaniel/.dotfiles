@@ -16,7 +16,7 @@ set $mod Mod1
 set $mod2 Mod4
 
 set $font    pango:DejaVu Sans Mono 16
-set $term    i3-sensible-terminal
+set $term    i3-sensible-terminal gnome-terminal -e tmux
 set $browser firefox
 
 # Use these keys for focus, movement, and resize directions
@@ -138,11 +138,11 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # Exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# Edit the config
+bindsym $mod2+e exec "edit ~/.config/i3/config; reload"
 
 # Resize window (you can also use the mouse for that)
 mode "resize" {
-  # These bindings trigger as soon as you enter the resize mode
-
   bindsym $right      resize shrink width  10 px or 10 ppt
   bindsym $up         resize grow   height 10 px or 10 ppt
   bindsym $down       resize shrink height 10 px or 10 ppt
@@ -153,7 +153,6 @@ mode "resize" {
   bindsym Down        resize shrink height 10 px or 10 ppt
   bindsym Left        resize grow   width  10 px or 10 ppt
 
-  # Back to normal: Enter or Escape
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
@@ -189,16 +188,21 @@ bindsym $mod2+Shift+n exec xbacklight -dec 10
 bindsym $mod2+w exec $browser
 
 # Lock screen
-bindsym $mod2+comma exec "~/.config/i3/i3lock-multimonitor/lock -i ~/.config/i3/wallpaper.png"
+bindsym $mod2+comma exec ~/.config/i3/i3lock-multimonitor/lock -i ~/.config/i3/wallpaper.png
 
 # Suspend
-bindsym $mod2+period exec "systemctl suspend;~/.config/i3/i3lock-multimonitor/lock -i ~/.config/i3/wallpaper.png"
+bindsym $mod2+period exec systemctl suspend;~/.config/i3/i3lock-multimonitor/lock -i ~/.config/i3/wallpaper.png
+
+#------------------------------------------
+# Startup applications
+#------------------------------------------
 
 # Set a wallpaper
-exec --no-startup-id "feh --bg-scale ~/.config/i3/wallpaper.png"
+exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper.png
 
 # Click with a grid
-exec --no-startup-id "keynav"
+exec --no-startup-id keynav
+exec --no-startup-id redshift
 
 # Setup ssh
-exec --no-startup-id "eval \"$(ssh-agent -s)\"; ssh-add ~/.ssh/id_rsa"
+exec --no-startup-id eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_rsa
