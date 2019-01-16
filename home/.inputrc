@@ -39,8 +39,8 @@ set menu-complete-display-prefix on
 set show-mode-in-prompt on
 
 # Customize the mode display strings
-set vi-cmd-mode-string (c)
-set vi-ins-mode-string (i)
+set vi-cmd-mode-string (ℂ)
+set vi-ins-mode-string (𝕀)
 
 # Append a file type character to suggested filenames
 set visible-stats on
