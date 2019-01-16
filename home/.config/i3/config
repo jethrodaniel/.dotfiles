@@ -169,15 +169,10 @@ bar {
 # Moving to the current workspace will switch to the workspace used last
 workspace_auto_back_and_forth yes
 
-# volume keys
-# bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 1+ unmute"
-# bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 1- unmute"
-# bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
-
 # Pulse Audio controls
 bindsym $mod2+j exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym $mod2+k exec --no-startup-id pactl set-sink-volume 0 +5%
-bindsym $mod2+l exec --no-startup-id pactl set-sink-mute   0 toggle
+bindsym $mod2+semicolon exec --no-startup-id pactl set-sink-mute   0 toggle
 
 # Sreen brightness controls (shift to quickly change)
 bindsym $mod2+u exec xbacklight -inc 1
@@ -185,15 +180,23 @@ bindsym $mod2+Shift+u exec xbacklight -inc 10
 bindsym $mod2+n exec xbacklight -dec 1
 bindsym $mod2+Shift+n exec xbacklight -dec 10
 
+set $lock ~/.config/i3/i3lock-multimonitor/lock -i ~/.config/i3/wallpaper.png
+mode "(l)ock (s)leep (h)ybernate (r)eboot (p)oweroff (e)xit-i3" {
+  bindsym l exec $lock; mode "default"
+  bindsym s exec $lock && systemctl suspend; mode "default"
+  bindsym h exec $lock && systemctl hibernate; mode "default"
+  bindsym p exec systemctl poweroff; mode "default"
+  bindsym r exec systemctl reboot; mode "default"
+  bindsym e exec --no-startup-id i3-msg exit; mode "default"
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+bindsym $mod2+l mode "(l)ock (s)leep (h)ybernate (r)eboot (p)oweroff (e)xit-i3"
+
 # Open a browser
 bindsym $mod2+w exec firefox
 bindsym $mod2+Shift+w exec firefox -P default --private-window
-
-# Lock screen
-bindsym $mod2+comma exec ~/.config/i3/i3lock-multimonitor/lock -i ~/.config/i3/wallpaper.png
-
-# Suspend
-bindsym $mod2+period exec systemctl suspend;~/.config/i3/i3lock-multimonitor/lock -i ~/.config/i3/wallpaper.png
 
 #------------------------------------------
 # Startup applications
