@@ -17,7 +17,6 @@ set $mod2 Mod4
 
 set $font    pango:DejaVu Sans Mono 16
 set $term    i3-sensible-terminal gnome-terminal -e tmux
-set $browser firefox
 
 # Use these keys for focus, movement, and resize directions
 set $left  j
@@ -185,7 +184,8 @@ bindsym $mod2+n exec xbacklight -dec 1
 bindsym $mod2+Shift+n exec xbacklight -dec 10
 
 # Open a browser
-bindsym $mod2+w exec $browser
+bindsym $mod2+w exec firefox
+bindsym $mod2+Shift+w exec firefox -P default --private-window
 
 # Lock screen
 bindsym $mod2+comma exec ~/.config/i3/i3lock-multimonitor/lock -i ~/.config/i3/wallpaper.png
