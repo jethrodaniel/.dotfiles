@@ -122,9 +122,6 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-#------------------------------------------------------------
-# Path changes, mostly
-#------------------------------------------------------------
 if [ -f ~/.bash_env ]; then
   . ~/.bash_env
 fi
@@ -133,6 +130,9 @@ fi
 if [ -f ~/.tmux/bash_completion_tmux.sh ]; then
   . ~/.tmux/bash_completion_tmux.sh
 fi
+
+# Make caps-lock into another ctrl
+setxkbmap -option caps:ctrl_modifier
 
 #------------------------------------------------------------
 # Functions
