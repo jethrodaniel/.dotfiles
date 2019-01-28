@@ -24,30 +24,18 @@ Tab restart
 # Exit keynav
 Escape end
 ctrl+bracketleft end
-semicolon warp,end
 
 # Selecting panes
-h cut-left
-j cut-down
+j cut-left
+l cut-down
 k cut-up
-l cut-right
-y cut-left,cut-up
-u cut-right,cut-up
-b cut-left,cut-down
-n cut-right,cut-down
+semicolon cut-right
 
 # Moving panes
-shift+h move-left
-shift+j move-down
+shift+j move-left
+shift+l move-down
 shift+k move-up
-shift+l move-right
-shift+y move-left,move-up
-shift+u move-right,move-up
-shift+b move-left,move-down
-shift+n move-right,move-down
-
-# Standard click
-space warp,click 1,end
+shift+semicolon move-right
 
 # Mouse support
 1 click 1
@@ -67,4 +55,4 @@ w windowzoom
 c cursorzoom 200 200
 
 # Reset to the last layout
-r history-back
+space history-back
