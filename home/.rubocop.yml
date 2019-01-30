@@ -1,5 +1,8 @@
 # rubocop styles
 
+AllCops:
+  TargetRubyVersion: 2.4
+
 Style/HashSyntax:
   EnforcedStyle: hash_rockets
   UseHashRocketsWithSymbolValues: true
@@ -7,4 +10,7 @@ Style/HashSyntax:
 
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
+
+Layout/IndentHeredoc:
+  EnforcedStyle: squiggly
 
