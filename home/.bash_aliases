@@ -57,3 +57,6 @@ alias clip='xclip -sel clip'
 # To tree dotfiles without the git
 alias gtree="tree -a -I '.git'"
 alias ntree="tree -a -I 'node_modules|.git'"
+
+alias skool="cd skool"
+alias note="mkdir -p notes; vi notes/notes_$(date +%m-%d-%y).md -c 'r !date'"
