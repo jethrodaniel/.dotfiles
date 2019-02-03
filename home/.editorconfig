@@ -21,10 +21,8 @@ indent_style = space
 indent_size = 2
 trim_trailing_whitespace = true
 
-# 4 space indention for java
-[*.java]
+[*.{java,python]
 indent_size = 4
 
-# Makefiles are weird, and require tabs
 [Makefile]
 indent_style = tab
