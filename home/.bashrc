@@ -51,6 +51,16 @@ if [ -d $HOME/.rbenv ]; then
   eval "$(rbenv init -)"
 fi
 
+# pyenv
+if [ -d $HOME/.pyenv ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+
+  if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+  fi
+fi
+
 # Tmux tab completion
 if [ -f ~/.tmux/bash_completion_tmux.sh ]; then
   . ~/.tmux/bash_completion_tmux.sh

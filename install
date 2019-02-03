@@ -51,6 +51,9 @@ ln -s ~/.tmux/conf ~/.tmux.conf
 git clone https://github.com/rbenv/ruby-build.git \
           ~/.rbenv/plugins/ruby-build
 
+# pyenv
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+
 set +x
 if ask 'Install hub?'; then
   set -x
@@ -87,4 +90,5 @@ echo 'and'
 echo -e "\trbenv install 2.5.3"
 echo -e "\trbenv global 2.5.3"
 echo -e "\t~/bin/gpg.rb"
+echo -e "\tpyenv  install 3.7.2"
 say "to get started."
