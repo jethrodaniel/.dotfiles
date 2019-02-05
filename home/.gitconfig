@@ -12,7 +12,7 @@
   email = jethrodaniel@gmail.com
   signingkey = 68C8E48191147625
 
-[includeIf "gitdir:~/work/"]
+[includeIf "gitdir:**/work/**"]
   path = ~/.gitconfig_work
 
 [commit]
