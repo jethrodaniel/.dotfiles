@@ -29,9 +29,6 @@ set mark-symlinked-directories on
 # Show common prefix of suggestions
 set menu-complete-display-prefix on
 
-# set show-all-if-ambiguous on
-# set show-all-if-unmodified on
-
 # Show which mode we're in on the prompt
 set show-mode-in-prompt on
 
@@ -55,6 +52,7 @@ $if mode=vi
     "guw": downcase-word
     "gg": beginning-of-history
     "G": end-of-history
+    ":r": re-read-init-file
 
   set keymap vi-insert
     "\C-l": clear-screen
