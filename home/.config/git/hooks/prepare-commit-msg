@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+
+# This is a simple git prepare-commit-msg hook that extracts an issue
+# identifier from the current branch name and replaces a placeholder in the
+# commit message template with the extracted value
+
+# For details about the arguments of this hook see
+# https://www.kernel.org/pub/software/scm/git/docs/githooks.html#_prepare_commit_msg
+
+# Starting with Git 2.9.0 it is now possible to define a global git hooks
+# directory instead of having separate hooks for each cloned repository. See
+# https://git-scm.com/docs/githooks and the core.hooksPath for more details on
+# that.
+
+# Setup:
+# Place this file in your repositorie's .git/hooks directory and make sure it
+# is executable. Then - if you don't already have one - create a ~/.gitmessage.txt
+# file that contains the placeholder for the issue ID at the appropriate place and
+# configure git to use this file as a template for your commit messages with
+# $ git config --global commit.template ~/.gitmessage.txt
+# As an example, a simple commit message template where the issue ID (if one exists)
+# is simply prepended to the first line of the commit message could look like this:
+#
+# ```
+# $(ISSUE)
+# ```
+#
+# If you want to use this hook in all newly created/cloned repositories,
+# you can simply copy this file to your default git template directory
+# (on linux systems, this is usually /usr/share/git-core/templates).
+# See also "git init" and "git clone" "--template=<template_directory>"
+# switch if you need to work with different templates depending on the
+# situation.
+
+require 'erb'
+
+message_file = ARGV[0]
+
+branch = %x[git rev-parse --abbrev-ref HEAD]&.strip
+
+issue = branch.match(/\d+/)[0]
+
+template = File.read message_file
+
+File.write message_file, ERB.new(template).result

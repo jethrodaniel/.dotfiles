@@ -1,4 +1,4 @@
-
+[#<%= issue %>]
 # If applied, this commit will...
 
 # Prior to this change...  (Why is this change needed?)

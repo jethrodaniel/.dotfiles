@@ -26,6 +26,7 @@
   editor = vim
   autocrlf = input
   excludesfile = ~/.config/git/gitignore_global
+  hooksPath = ~/.config/git/hooks
 
 [diff]
   tool = vimdiff
