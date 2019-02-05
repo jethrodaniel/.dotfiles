@@ -63,6 +63,9 @@
 [diff]
   tool = vimdiff
 
+[commit]
+  template = ~/.gitmessage
+
 # Always use ssh for github
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
