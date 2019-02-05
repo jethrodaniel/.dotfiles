@@ -32,8 +32,8 @@ sudo apt-get install -y vim \
 dconf load /org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/ < gnome-terminal-profile.dconf
 
 # Homeshick
-git clone https://github.com/andsens/homeshick.git \
-          $HOME/.homesick/repos/homeshick
+HOME=/dev/null git clone https://github.com/andsens/homeshick.git \
+                         $HOME/.homesick/repos/homeshick
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
 set +x
@@ -48,12 +48,12 @@ fi
 # Symlink tmux settings into the home dir
 ln -s ~/.tmux/conf ~/.tmux.conf
 
-# Rbenv plugins
-git clone https://github.com/rbenv/ruby-build.git \
+# rbenv plugins
+HOME=/dev/null git clone https://github.com/rbenv/ruby-build.git \
           ~/.rbenv/plugins/ruby-build
 
 # pyenv
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+HOME=/dev/null git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 
 set +x
 if ask 'Install hub?'; then
