@@ -7,7 +7,9 @@ message_file = ARGV[0]
 branch = %x[git rev-parse --abbrev-ref HEAD]&.strip
 
 issue = branch.match(/(\w+)?\d+/)&.captures&.flatten&.first
-
+recent_commits = `git log -5 --oneline --decorate`.split("\n")
+                                                  .map { |s| "# #{s}" }
+                                                  .join "\n"
 commit_template = File.read message_file
 
 commit_message = ERB.new(commit_template).result.gsub '[#]', ''
