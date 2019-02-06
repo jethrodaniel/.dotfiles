@@ -6,7 +6,7 @@ message_file = ARGV[0]
 
 branch = %x[git rev-parse --abbrev-ref HEAD]&.strip
 
-issue = branch.match(/\d+/)&.captures&.flatten
+issue = branch.match(/(\w+)?\d+/)&.captures&.flatten&.first
 
 commit_template = File.read message_file
 
