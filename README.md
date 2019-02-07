@@ -19,10 +19,10 @@ Then
 * [vim](https://github.com/vim/vim) - plugins, a monokai theme, settings
 * [tmux](https://github.com/tmux/tmux) - tpm, some plugins, theme, settings, bash-completion
 * [rbenv](https://github.com/rbenv/rbenv) - rbenv, rbenv-build, and prompts to install ruby 2.5.3
-* [git](https://github.com/git/git) - settings
+* [git](https://github.com/git/git) - commit template, shortcuts, etc
 * bash/unix - make caps-lock into ctrl, general bash settings, vi readline, etc
 * [i3](https://i3wm.org/) - basic settings, wallpaper, keymaps, etc
-* [alacritty](https://github.com/jwilm/alacritty)
+* [alacritty](https://github.com/jwilm/alacritty) - a better terminal emulator
 
 ### Updating
 
@@ -30,7 +30,7 @@ Then
 homeshick cd dotfiles
 homeshick pull dotfiles
 git submodule foreach git checkout master && git pull
-homeshick link dotfiles
+homeshick link dotfiles # Needed to add new files
 ```
 
 #### Vim
