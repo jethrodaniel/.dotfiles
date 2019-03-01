@@ -1,17 +1,19 @@
 #!/usr/bin/env ruby
 
-require 'erb'
+require_relative '../git_helpers'
 
-message_file = ARGV[0]
+if __FILE__ == $0
+  message_file = ARGV[0]
 
-branch = %x[git rev-parse --abbrev-ref HEAD]&.strip
+  branch = GitHelpers.current_branch
+  issue = GitHelpers.issue_number branch
 
-issue = branch.match(/(\w+)?\d+/)&.captures&.flatten&.first
-recent_commits = `git log -5 --oneline --decorate`.split("\n")
-                                                  .map { |s| "# #{s}" }
-                                                  .join "\n"
-commit_template = File.read message_file
+  recent_commits = `git log -5 --oneline --decorate`.split("\n")
+                                                    .map { |s| "# #{s}" }
+                                                    .join "\n"
+  commit_template = File.read message_file
 
-commit_message = ERB.new(commit_template).result.gsub '[#]', ''
+  commit_message = ERB.new(commit_template).result.gsub '[#]', ''
 
-File.write message_file, commit_message
+  File.write message_file, commit_message
+end
