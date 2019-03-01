@@ -8,9 +8,10 @@ if __FILE__ == $0
   branch = GitHelpers.current_branch
   issue = GitHelpers.issue_number branch
 
-  recent_commits = `git log -5 --oneline --decorate`.split("\n")
-                                                    .map { |s| "# #{s}" }
-                                                    .join "\n"
+  recent_commits = GitHelpers.comment_commits(
+    `git log -5 --oneline --decorate`
+  )
+
   commit_template = File.read message_file
 
   commit_message = ERB.new(commit_template).result.gsub '[#]', ''

@@ -9,6 +9,12 @@ module GitHelpers
     def issue_number(branch)
       branch.scan(/\d+/).first
     end
+
+    def comment_commits(recent_commits)
+      recent_commits.split("\n")
+                    .map { |s| "# #{s}" }
+                    .join("\n") + "\n"
+    end
   end
 end
 
