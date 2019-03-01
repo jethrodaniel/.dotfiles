@@ -8,9 +8,7 @@ if __FILE__ == $0
   branch = GitHelpers.current_branch
   issue = GitHelpers.issue_number branch
 
-  recent_commits = GitHelpers.comment_commits(
-    `git log -5 --oneline --decorate`
-  )
+  recent_commits = GitHelpers.comment_commits
 
   commit_template = File.read message_file
 

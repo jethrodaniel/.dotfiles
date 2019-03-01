@@ -28,7 +28,10 @@ RSpec.describe GitHelpers do
   end
 
   describe '#recent_messages' do
-    let(:commented_commits) { GitHelpers.comment_commits recent_commits }
+    let(:commented_commits) do
+      GitHelpers.comment_commits commits: recent_commits
+    end
+
     let(:expected) do
       <<~LIST
         # ea75bc1 (HEAD -> 123-why, origin/master, origin/HEAD, master) update .vim
