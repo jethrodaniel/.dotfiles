@@ -65,3 +65,5 @@
   st = stash
   sl = shortlog
   t = tag
+  pushit = push origin HEAD
+  pp = push origin HEAD
