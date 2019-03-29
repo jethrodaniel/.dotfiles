@@ -40,14 +40,14 @@
 
   # Paint a happy little picture, like `git log --oneline --decorate`, but with GPG status
   #  This is the local picture, hence the `l`.
-  picl = log --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(auto)%d% %Creset %s %C(cyan dim)%GS'" --graph
+  picl = log --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(cyan dim)%ar%Creset%C(auto)%d% %Creset %s %C(cyan dim)'" --graph
 
   # See the whole picture
-  pic = log --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(auto)%d% %Creset %s %C(cyan dim)%GS'" --graph --all
+  pic = log --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(cyan dim)%ar%Creset%C(auto)%d% %Creset %s %C(cyan dim)'" --graph --all
 
-  # Type less to see less
-  pl = log -10 --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(auto)%d% %Creset %s %C(cyan dim)%GS'" --graph
-  p  = log -10 --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(auto)%d% %Creset %s %C(cyan dim)%GS'" --graph --all
+  # Type less to see less. `a` for  `--all`
+  pa = log -10 --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(cyan dim)%ar%Creset%C(auto)%d% %Creset %s %C(cyan dim)'" --graph --all
+  p  = log -10 --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(cyan dim)%ar%Creset%C(auto)%d% %Creset %s %C(cyan dim)'" --graph
 
   # Show all the git aliases
   alias = config --get-regexp ^alias\\.
@@ -61,9 +61,13 @@
   ds = diff --staged
   f = fetch -av # -p should be explicit
   l = log
+  r = rebase
   s = status
+  sd = stash drop
+  sp = stash pop
   st = stash
   sl = shortlog
   t = tag
   pushit = push origin HEAD
   pp = push origin HEAD
+  pt = push --tags origin HEAD
