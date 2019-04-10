@@ -66,6 +66,7 @@
   sd = stash drop
   sp = stash pop
   st = stash
+  sp = stash pop
   sl = shortlog
   t = tag
   pushit = push origin HEAD
