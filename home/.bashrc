@@ -73,3 +73,8 @@ setxkbmap -option caps:ctrl_modifier
 function g() {
   git $@
 }
+
+# Use b for bundle exec
+function b() {
+  bundle exec $@
+}
