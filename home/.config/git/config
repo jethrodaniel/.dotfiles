@@ -31,6 +31,9 @@
 [diff]
   tool = vimdiff
 
+[merge]
+  tool = vimdiff
+
 [url "ssh://git@github.com/"] # Always use ssh for github
 	insteadOf = https://github.com/
 

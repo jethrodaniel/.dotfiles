@@ -78,3 +78,8 @@ function g() {
 function b() {
   bundle exec $@
 }
+
+# Use r for rails
+function r() {
+  bundle exec rails $@
+}
