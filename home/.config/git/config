@@ -34,6 +34,9 @@
 [merge]
   tool = vimdiff
 
+[mergetool]
+  keepBackup = false # Remove *.org files as they are commited
+
 [url "ssh://git@github.com/"] # Always use ssh for github
 	insteadOf = https://github.com/
 
