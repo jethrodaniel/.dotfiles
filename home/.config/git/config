@@ -60,8 +60,8 @@
   b = branch
   c = commit
   co = checkout
-  d = diff
-  ds = diff --staged
+  d = diff --color-words
+  ds = diff --staged --color-words
   f = fetch -av # -p should be explicit
   l = log
   r = rebase
