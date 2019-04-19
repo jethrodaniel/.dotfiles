@@ -33,8 +33,8 @@ set menu-complete-display-prefix on
 set show-mode-in-prompt on
 
 # Customize the mode display strings
-set vi-cmd-mode-string (ℂ)
-set vi-ins-mode-string (𝕀)
+set vi-cmd-mode-string (c)
+set vi-ins-mode-string (i)
 
 # Append a file type character to suggested filenames
 set visible-stats on
@@ -47,6 +47,7 @@ $if mode=vi
   # Tab for completion with a menu
   TAB: menu-complete
 
+  # Make it more vim-like
   set keymap vi-command
     "gUw": upcase-word
     "guw": downcase-word
