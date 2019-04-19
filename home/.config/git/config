@@ -29,13 +29,13 @@
   hooksPath = ~/.config/git/hooks
 
 [diff]
-  tool = vimdiff
+  tool = fugitive
 
 [merge]
-  tool = vimdiff
+  tool = fugitive
 
-[mergetool]
-  keepBackup = false # Remove *.org files as they are commited
+[mergetool "fugitive"]
+  cmd = vim -f -c \"Gdiff\" \"$MERGED\"
 
 [url "ssh://git@github.com/"] # Always use ssh for github
 	insteadOf = https://github.com/
