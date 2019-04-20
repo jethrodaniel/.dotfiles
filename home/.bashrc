@@ -83,3 +83,10 @@ function b() {
 function r() {
   bundle exec rails $@
 }
+
+# Git branch in prompt.
+function parse_git_branch() {
+  git -c color.ui=always branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$(parse_git_branch) "
