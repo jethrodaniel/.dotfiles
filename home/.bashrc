@@ -84,6 +84,11 @@ function r() {
   bundle exec rails $@
 }
 
+# Use c for cargo
+function c() {
+  cargo $@
+}
+
 # Git branch in prompt.
 function parse_git_branch() {
   git -c color.ui=always branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
