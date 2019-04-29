@@ -160,12 +160,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-  status_command i3status
-}
-
 # Moving to the current workspace will switch to the workspace used last
 workspace_auto_back_and_forth yes
 
@@ -211,3 +205,41 @@ exec --no-startup-id redshift
 
 # Setup ssh
 exec --no-startup-id eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_rsa
+
+
+#------------------------------------------
+# Theme
+#------------------------------------------
+
+# https://thomashunter.name/i3-configurator/
+
+# class                 border  bground text    indicator child_border
+client.focused          #333333 #3A3A3A #D6D6D6 #D75F5F   #767B00
+client.focused_inactive #333333 #1C1C1C #D6D6D6 #484E50   #5F676A
+client.unfocused        #333333 #1C1C1C #888888 #292D2E   #222222
+client.urgent           #2F343A #912626 #D6D6D6 #912626   #912626
+client.placeholder      #000000 #1C1C1C #D6D6D6 #000000   #0C0C0C
+
+client.background       #FFFFFF
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+  status_command i3status
+
+  # Only show status bar when super is pressed
+  mode hide
+  hidden_state hide
+
+  colors {
+    background #333333
+    statusline #D6D6D6
+    separator  #3A3A3A
+
+    focused_workspace  #333333 #3A3A3A #D6D6D6
+    active_workspace   #333333 #1C1C1C #D6D6D6
+    inactive_workspace #333333 #1C1C1C #888888
+    urgent_workspace   #2F343A #912626 #D6D6D6
+    binding_mode       #767B00 #912626 #D6D6D6
+  }
+}

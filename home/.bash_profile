@@ -9,3 +9,5 @@
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+[ -n "$TMUX" ] && export TERM=screen-256color
