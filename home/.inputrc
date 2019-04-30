@@ -33,8 +33,11 @@ set menu-complete-display-prefix on
 set show-mode-in-prompt on
 
 # Customize the mode display strings
-set vi-cmd-mode-string (c)
-set vi-ins-mode-string (i)
+# Remember that the bash shell is always going to start in insert mode, so
+# that's what going to be diplayed the most.
+# 🕇 𖤐  🚬 🔥 💉 💊 ☕ 🍺 🍶 🍷 🍹 🥃
+set vi-cmd-mode-string 🚬
+set vi-ins-mode-string 🍸
 
 # Append a file type character to suggested filenames
 set visible-stats on

@@ -89,9 +89,17 @@ function c() {
   cargo $@
 }
 
-# Git branch in prompt.
-function parse_git_branch() {
-  git -c color.ui=never branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+# Show the number of jobs, if positive
+print_jobs() {
+  local stopped=$(jobs -sp | wc -l)
+  local running=$(jobs -rp | wc -l)
+  (( running + stopped )) && echo -n "${running}r/${stopped}s"
 }
 
-export PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$(parse_git_branch) "
+purple="\e[38;5;13m"
+blue="\e[38;5;153m"
+reset="\[\033[00m\]"
+
+# Set prompt. The space at the beginning is to separate the Readline mode
+# indicators from the rest of the prompt.
+export PS1=" ${purple}$(print_jobs) ${blue}\w${purple} λ ${reset}"
