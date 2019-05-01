@@ -38,7 +38,40 @@
   cmd = vim -f -c \"Gdiff\" \"$MERGED\"
 
 [url "ssh://git@github.com/"] # Always use ssh for github
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
+
+# Explicit colors.
+#
+# See <http://shallowsky.com/blog/programming/gitcolors.html>
+# and <https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-config>
+#
+# Colors from the dark theme of [gruvbox](https://github.com/morhetz/gruvbox)
+#
+[color "diff"]
+  plain = normal
+  meta = bold
+  frag = bold "#83a598"
+  old = bold "#fb4934"
+  new = bold "#b8bb26"
+  commit = bold "#fabd2f"
+  whitespace = normal bold "#fb4934"
+[color "branch"]
+  current = bold "#b8bb26"
+  local = normal
+  remote = bold "#fb4934"
+  plain = normal
+[color "status"]
+  header = normal
+  added = bold "#b8bb26"
+  current = bold "#b8bb26"
+  changed = bold "#fb4934"
+  untracked = bold "#fb4934"
+  nobranch = bold "#fb4934"
+[color "interactive"]
+  prompt = normal
+  header = normal
+  help = normal
+  error = normal
 
 [alias]
   # What was the last thing commited?

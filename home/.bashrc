@@ -89,17 +89,17 @@ function c() {
   cargo $@
 }
 
-# Show the number of jobs, if positive
-print_jobs() {
-  local stopped=$(jobs -sp | wc -l)
-  local running=$(jobs -rp | wc -l)
-  (( running + stopped )) && echo -n "${running}r/${stopped}s"
+function current_git_branch() {
+  git -c color.ui=always branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
-
-purple="\e[38;5;13m"
-blue="\e[38;5;153m"
-reset="\[\033[00m\]"
 
 # Set prompt. The space at the beginning is to separate the Readline mode
 # indicators from the rest of the prompt.
-export PS1=" ${purple}$(print_jobs) ${blue}\w${purple} λ ${reset}"
+set_prompt() {
+  local purple="\e[38;5;13m"
+  local blue="\e[38;5;153m"
+  local reset="\[\033[00m\]"
+
+  export PS1=" ${blue}\w ${purple}${reset}$(current_git_branch)${purple} λ ${reset}"
+}
+set_prompt
