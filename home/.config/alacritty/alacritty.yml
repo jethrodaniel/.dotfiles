@@ -10,10 +10,8 @@
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use 'alacritty' if it is
   # available, otherwise 'xterm-256color' is used.
-  #TERM: xterm-256color
   #
-  # Needed to show italics
-  TERM: 'alacritty'
+  # TERM: 'xterm-256color'
 
 window:
   # Window dimensions (changes require restart)
@@ -95,19 +93,19 @@ tabspaces: 2
 font:
   # Normal (roman) font face
   normal:
-    family: monospace
+    family: Ubuntu Mono
     # The `style` can be specified to pick a specific face.
     style: Regular
 
   # Bold font face
   bold:
-    family: monospace
+    family: Ubuntu Mono
     # The `style` can be specified to pick a specific face.
     style: Bold
 
   # Italic font face
   italic:
-    family: monospace
+    family: Ubuntu Mono
     # The `style` can be specified to pick a specific face.
     style: Italic
 
