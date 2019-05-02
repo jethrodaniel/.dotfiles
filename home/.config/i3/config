@@ -31,9 +31,9 @@ for_window [class="^.*"] border pixel 1
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# Start a terminal
-bindsym $mod+Return exec alacritty -e tmux
-bindsym $mod+Shift+Return exec gnome-terminal -e tmux
+# Start a terminal and tmux
+bindsym $mod+Shift+Return exec alacritty -e tmux
+bindsym $mod+Return exec gnome-terminal -e tmux
 
 # Kill focused window
 bindsym $mod+Shift+q kill

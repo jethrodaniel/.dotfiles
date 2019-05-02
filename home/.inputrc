@@ -9,10 +9,6 @@ set editing-mode vi
 # Show the common prefix for suggestions
 set colored-completion-prefix on
 
-# When inserting a closing parenthesis, briefly jump to the
-# previous parenthesis
-set blink-matching-paren on
-
 # Display possible completions using different colors to indicate file type
 set colored-stats on
 
@@ -35,7 +31,7 @@ set show-mode-in-prompt on
 # Customize the mode display strings
 # Remember that the bash shell is always going to start in insert mode, so
 # that's what going to be diplayed the most.
-# 🕇 𖤐  🚬 🔥 💉 💊 ☕ 🍺 🍶 🍷 🍹 🥃
+# 🕇 𖤐   🚬 🔥  💉 💊  ☕ 🍺 🍶 🍷 🍹 🥃
 set vi-cmd-mode-string 🚬
 set vi-ins-mode-string 🍸
 

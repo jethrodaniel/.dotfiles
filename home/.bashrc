@@ -24,6 +24,9 @@ shopt -s histappend
 HISTSIZE=1000000       # Store at most 1,000,000 lines in memory
 HISTFILESIZE=1000000   # Store at most 1,000,000 lines on disk
 
+# Set TERM
+[ -n "$TMUX" ] && export TERM=screen-256color
+
 # Load aliases
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
@@ -90,16 +93,16 @@ function c() {
 }
 
 function current_git_branch() {
-  git -c color.ui=always branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+  git -c color.ui=always branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/' | tr -d '[:space:]'
 }
 
 # Set prompt. The space at the beginning is to separate the Readline mode
 # indicators from the rest of the prompt.
 set_prompt() {
-  local purple="\e[38;5;13m"
-  local blue="\e[38;5;153m"
+  local purple="\[\e[38;5;13m\]"
+  local blue="\[\e[38;5;153m\]"
   local reset="\[\033[00m\]"
 
-  export PS1=" ${blue}\w ${purple}${reset}$(current_git_branch)${purple} λ ${reset}"
+  export PS1=" ${blue}\w ${purple}${reset}\$(current_git_branch)${purple} λ ${reset}"
 }
 set_prompt
