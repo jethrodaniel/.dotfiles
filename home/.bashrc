@@ -92,17 +92,27 @@ function c() {
   cargo $@
 }
 
-function current_git_branch() {
-  git -c color.ui=always branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/' | tr -d '[:space:]'
-}
-
 # Set prompt. The space at the beginning is to separate the Readline mode
 # indicators from the rest of the prompt.
 set_prompt() {
-  local purple="\[\e[38;5;13m\]"
-  local blue="\[\e[38;5;153m\]"
-  local reset="\[\033[00m\]"
+  if [[ -e ~/.homesick/repos/dotfiles/home/.config/git/git-prompt.sh ]]; then
+    source ~/.homesick/repos/dotfiles/home/.config/git/git-prompt.sh
 
-  export PS1=" ${blue}\w ${purple}${reset}\$(current_git_branch)${purple} λ ${reset}"
+    export GIT_PS1_SHOWCOLORHINTS=true     # Use colors
+    export GIT_PS1_SHOWSTASHSTATE=true     # Something's stashed ($)
+    export GIT_PS1_SHOWUNTRACKEDFILES=true # Untracked files present (%)
+    export GIT_PS1_SHOWDIRTYSTATE=true     # Unstaged (*), staged (+) changes
+    export GIT_PS1_SHOWUPSTREAM="auto"     # Behind (<), ahead (>), equal (=) to upstream
+    export GIT_PS1_DESCRIBE_STYLE="branch" # More info when HEAD is detached
+
+    local purple="\[$(tput setaf 13)\]"
+    local blue="\[$(tput setaf 153)\]"
+    local reset="\[$(tput sgr0)\]"
+
+    # export PS1=" ${blue}\w${reset}\$(__git_ps1)${purple} λ ${reset}"
+    export PROMPT_COMMAND="__git_ps1 ' ${blue}\w${reset}' '${purple} λ ${reset}'"
+  else
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  fi
 }
 set_prompt

@@ -45,7 +45,12 @@
 # See <http://shallowsky.com/blog/programming/gitcolors.html>
 # and <https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-config>
 #
-# Colors from the dark theme of [gruvbox](https://github.com/morhetz/gruvbox)
+# Colors from the dark theme of [gruvbox](https://github.com/morhetz/gruvbox).
+#
+# blue   - "#83a598"
+# red    - "#fb4934"
+# green  - "#b8bb26"
+# yellow - "#fabd2f"
 #
 [color "diff"]
   plain = normal
