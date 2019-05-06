@@ -3,100 +3,70 @@
 this_dir=$(dirname $(readlink -f $0))
 source "${this_dir}/helpers.sh"
 
-# Any `git` commands are prefixed with `HOME=/dev/null`, to avoid using the
-# git config in this repo, which wants to use ssh instead of https.
-
 # From <https://docs.brew.sh/Homebrew-on-Linux>
-setup_homebrew() {
-  sudo apt-get install build-essential curl file git
-
-  HOME=/dev/null sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-
-  test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
   test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-  test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
-  echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+setup_homebrew() {
+  sudo apt-get install build-essential curl file git gcc
+
+  git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew
+  mkdir ~/.linuxbrew/bin
+  ln -fs ~/.linuxbrew/Homebrew/bin/brew ~/.linuxbrew/bin
+  eval $(~/.linuxbrew/bin/brew shellenv)
+
+  brew install core
 }
 
-minimal_install() {
+install_dotfiles() {
   sudo apt-get update
-  sudo apt-get upgrade -y
-  sudo apt-get install -y vim git tree
 
-  # Homeshick
-  HOME=/dev/null git clone https://github.com/andsens/homeshick.git \
-                           $HOME/.homesick/repos/homeshick
-  source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+  setup_homebrew
+
+  brew install --display-times \
+    homeshick \
+    tree \
+    vim \
+    hub \
+    xclip \
+    ruby-build
 
   yes | homeshick clone jethrodaniel/dotfiles
-}
 
-full_install() {
-  minimal_install
-
-  setup_linuxbrew
-  # See <https://github.com/phw/peek#ubuntu>
-  sudo add-apt-repository -y ppa:peek-developers/stable
-
-  sudo apt-get update
-
-  sudo apt-get install -y tmux \
-                          xclip \
-                          trash-cli \
-                          x11-xkb-utils \
-                          i3 \
-                          pavucontrol \
-                          peek \
-                          ttf-ancient-fonts \
-                          feh \
-                          redshift \
-                          libssl1.0-dev # Needed to install older rubies on Ubuntu
+  sudo apt-get install -y \
+    x11-xkb-utils \
+    i3 \
+    pavucontrol \
+    ttf-ancient-fonts \
+    feh
 
   # Symlink tmux settings into the home dir
   ln -s ~/.tmux/conf ~/.tmux.conf
 
-  # rbenv plugins
-  HOME=/dev/null git clone https://github.com/rbenv/ruby-build.git \
-            ~/.rbenv/plugins/ruby-build
-
-  # pyenv
-  HOME=/dev/null git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-
-  if ask 'Install hub?'; then
-    temp_dir=$(mktemp -d)
-    cd $temp_dir
-    wget https://github.com/github/hub/releases/latest
-    tar xvzf hub-linux-amd64-2.11.2.tgz
-    mv "$temp_dir/hub-linux-amd64-2.11.2/bin/hub" ~/bin/
-    cd -
-    rm -rf $temp_dir
-  fi
-
-  # Note the tabs, which are needed
   say <<-MSG
 		Done. Be sure to run
 
-			\`ctrl+f+I\` inside tmux, then reopen tmux.
-
-		Additional commands you might want to run
-
-			rbenv install \$\(rbenv install -l | grep -v - | tail -1 | tr -d '[[:space:]]'\)
-			rbenv global \$\(rbenv install -l | grep -v - | tail -1 | tr -d '[[:space:]]'\)
-
-			pyenv	install \$\(pyenv install -l | grep -v - | tail -1 | tr -d '[[:space:]]'\)
-			pyenv	global \$\(pyenv install -l | grep -v - | tail -1 | tr -d '[[:space:]]'\)
+			\`prefix+I\` inside tmux, then reopen tmux.
 	MSG
 }
 
 main() {
-  say "Setting up dotfiles..."
+   say <<-MSG
+		Setting up dotfiles...
 
-  if ask 'Full install (default is minimal)'; then
-    full_install
+		This is probably going to take a while. Time for ☕.
+	MSG
+
+  confirmation=<<-MSG
+		Sure you want to install? It's gonna be like an hour or more.
+
+		And will currently just try to overwrite everything. 💣
+	MSG
+
+  if ask "$confirmation"; then
+    echo 'Installing the dotfiles...'
+    install_dotfiles
   else
-    minimal_install
+    echo 'Exiting...'
   fi
 }
-#main
+main
 
-setup_homebrew

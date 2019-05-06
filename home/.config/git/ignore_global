@@ -1,2 +1,8 @@
 # Whatever's in here is excluded from all repos
+
+# The wonderful :Obsession
 Session.vim
+
+# brew
+home/.linuxbrew/lib
+home/.linuxbrew/var

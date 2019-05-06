@@ -64,6 +64,11 @@ if [ -d $HOME/.pyenv ]; then
   fi
 fi
 
+# brew
+if [ -d $HOME/.homesick/repos/dotfiles/home/.linuxbrew ]; then
+  eval $(~/.linuxbrew/bin/brew shellenv)
+fi
+
 # Tmux tab completion
 if [ -f ~/.tmux/bash_completion_tmux.sh ]; then
   . ~/.tmux/bash_completion_tmux.sh
