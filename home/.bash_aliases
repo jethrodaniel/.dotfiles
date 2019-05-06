@@ -61,3 +61,5 @@ alias ntree="tree -a -I 'node_modules|.git'"
 alias skool="cd skool"
 alias note="mkdir -p notes; vi notes/notes_$(date +%m-%d-%y).md -c 'r !date'"
 alias todo="vi TODO.md"
+
+alias vs="vim -S Session.vim"
