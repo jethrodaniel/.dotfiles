@@ -3,89 +3,100 @@
 this_dir=$(dirname $(readlink -f $0))
 source "${this_dir}/helpers.sh"
 
-say "Setting up dotfiles..."
+# Any `git` commands are prefixed with `HOME=/dev/null`, to avoid using the
+# git config in this repo, which wants to use ssh instead of https.
 
-set -x
+# From <https://docs.brew.sh/Homebrew-on-Linux>
+setup_homebrew() {
+  sudo apt-get install build-essential curl file git
 
-# See <https://github.com/phw/peek#ubuntu>
-sudo add-apt-repository -y ppa:peek-developers/stable
+  HOME=/dev/null sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
-sudo apt-get update
+  test -d ~/.linuxbrew && eval $(~/.linuxbrew/bin/brew shellenv)
+  test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+  test -r ~/.bash_profile && echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.bash_profile
+  echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
+}
 
-sudo apt-get install -y vim \
-                        git \
-                        tree \
-                        tmux \
-                        xclip \
-                        trash-cli \
-                        x11-xkb-utils \
-                        i3 \
-                        pavucontrol \
-                        peek \
-                        ttf-ancient-fonts \
-                        feh \
-                        redshift \
-                        libssl1.0-dev # Needed to install older rubies on Ubuntu
+minimal_install() {
+  sudo apt-get update
+  sudo apt-get upgrade -y
+  sudo apt-get install -y vim git tree
 
-# Homeshick
-HOME=/dev/null git clone https://github.com/andsens/homeshick.git \
-                         $HOME/.homesick/repos/homeshick
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+  # Homeshick
+  HOME=/dev/null git clone https://github.com/andsens/homeshick.git \
+                           $HOME/.homesick/repos/homeshick
+  source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
-set +x
-if ask 'Clone with ssh?'; then
-  set -x
-  yes | homeshick clone git@github.com:jethrodaniel/dotfiles
-else
-  set -x
   yes | homeshick clone jethrodaniel/dotfiles
-fi
+}
 
-# Symlink tmux settings into the home dir
-ln -s ~/.tmux/conf ~/.tmux.conf
+full_install() {
+  minimal_install
 
-# rbenv plugins
-HOME=/dev/null git clone https://github.com/rbenv/ruby-build.git \
-          ~/.rbenv/plugins/ruby-build
+  setup_linuxbrew
+  # See <https://github.com/phw/peek#ubuntu>
+  sudo add-apt-repository -y ppa:peek-developers/stable
 
-# pyenv
-HOME=/dev/null git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+  sudo apt-get update
 
-set +x
-if ask 'Install hub?'; then
-  set -x
-  temp_dir=$(mktemp -d)
-  cd $temp_dir
-  wget https://github.com/github/hub/releases/download/v2.6.1/hub-linux-amd64-2.6.1.tgz
-  tar xvzf hub-linux-amd64-2.6.1.tgz
-  mv "$temp_dir/hub-linux-amd64-2.6.1/bin/hub" ~/bin/
-  cd -
-  rm -rf $temp_dir
-else
-  set -x
-fi
+  sudo apt-get install -y tmux \
+                          xclip \
+                          trash-cli \
+                          x11-xkb-utils \
+                          i3 \
+                          pavucontrol \
+                          peek \
+                          ttf-ancient-fonts \
+                          feh \
+                          redshift \
+                          libssl1.0-dev # Needed to install older rubies on Ubuntu
 
-set +x
-if ask 'Install alacritty?'; then
-  set -x
-  temp_dir=$(mktemp -d)
-  cd $temp_dir
-  wget https://github.com/jwilm/alacritty/releases/download/v0.2.5/Alacritty-v0.2.5-x86_64.tar.gz
-  tar xvzf Alacritty-v0.2.5-x86_64.tar.gz
-  mv "$temp_dir/alacritty" ~/bin/
-  cd -
-  rm -rf $temp_dir
-else
-  set -x
-fi
+  # Symlink tmux settings into the home dir
+  ln -s ~/.tmux/conf ~/.tmux.conf
 
-set +x
+  # rbenv plugins
+  HOME=/dev/null git clone https://github.com/rbenv/ruby-build.git \
+            ~/.rbenv/plugins/ruby-build
 
-say "Done. Be sure to run"
-echo -e "\t\`ctrl+f+I\` inside tmux, then reopen tmux"
-echo 'and'
-echo -e "\trbenv install 2.5.3"
-echo -e "\trbenv global 2.5.3"
-echo -e "\t~/bin/gpg.rb"
-echo -e "\tpyenv  install 3.7.2"
-say "to get started."
+  # pyenv
+  HOME=/dev/null git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+
+  if ask 'Install hub?'; then
+    temp_dir=$(mktemp -d)
+    cd $temp_dir
+    wget https://github.com/github/hub/releases/latest
+    tar xvzf hub-linux-amd64-2.11.2.tgz
+    mv "$temp_dir/hub-linux-amd64-2.11.2/bin/hub" ~/bin/
+    cd -
+    rm -rf $temp_dir
+  fi
+
+  # Note the tabs, which are needed
+  say <<-MSG
+		Done. Be sure to run
+
+			\`ctrl+f+I\` inside tmux, then reopen tmux.
+
+		Additional commands you might want to run
+
+			rbenv install \$\(rbenv install -l | grep -v - | tail -1 | tr -d '[[:space:]]'\)
+			rbenv global \$\(rbenv install -l | grep -v - | tail -1 | tr -d '[[:space:]]'\)
+
+			pyenv	install \$\(pyenv install -l | grep -v - | tail -1 | tr -d '[[:space:]]'\)
+			pyenv	global \$\(pyenv install -l | grep -v - | tail -1 | tr -d '[[:space:]]'\)
+	MSG
+}
+
+main() {
+  say "Setting up dotfiles..."
+
+  if ask 'Full install (default is minimal)'; then
+    full_install
+  else
+    minimal_install
+  fi
+}
+#main
+
+setup_homebrew
