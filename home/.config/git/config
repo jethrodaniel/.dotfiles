@@ -81,6 +81,8 @@
 [alias]
   # What was the last thing commited?
   last = log --shortstat -1 HEAD
+  dlast= diff HEAD^
+  dl= diff HEAD^
 
   # Paint a happy little picture, like `git log --oneline --decorate`, but with GPG status
   #  This is the local picture, hence the `l`.
@@ -96,7 +98,7 @@
   # Show all the git aliases
   alias = config --get-regexp ^alias\\.
 
-  # The obvious shortcuts. These are last, to avoid name clashes.
+  # These are last, to avoid name clashes.
   a = add
   b = branch
   c = commit
