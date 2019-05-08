@@ -25,7 +25,7 @@ HISTSIZE=1000000       # Store at most 1,000,000 lines in memory
 HISTFILESIZE=1000000   # Store at most 1,000,000 lines on disk
 
 # Set TERM
-[ -n "$TMUX" ] && export TERM=screen-256color
+[ -n "$TMUX" ] && export TERM=xterm-256color
 
 # Load aliases
 if [ -f ~/.bash_aliases ]; then
