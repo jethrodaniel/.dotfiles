@@ -25,7 +25,18 @@ HISTSIZE=1000000       # Store at most 1,000,000 lines in memory
 HISTFILESIZE=1000000   # Store at most 1,000,000 lines on disk
 
 # Set TERM
-[ -n "$TMUX" ] && export TERM=xterm-256color
+#
+# Needed to prevent the following error:
+#
+#   tput: No value for $TERM and no -T specified
+#
+# Since `tput` inspects the current `$TERM` in order to outout the right
+# control sequences
+if [ -n "$TMUX" ]; then
+  export TERM=xterm-256color
+else
+  export TERM=xterm
+fi
 
 # Load aliases
 if [ -f ~/.bash_aliases ]; then
@@ -111,6 +122,7 @@ set_prompt() {
 
     PROMPT_COMMAND="__git_ps1 ' ${blue}\w${reset}' '${purple} λ ${reset}'"
   else
+    # Use the Ubuntu default
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
   fi
 }
