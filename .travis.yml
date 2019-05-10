@@ -1,0 +1,6 @@
+language: bash
+script:
+- |
+  git clone https://github.com/jethrodaniel/dotfiles /tmp/dotfiles \
+    && /tmp/dotfiles/install \
+    && rm -rf /tmp/dotfiles
