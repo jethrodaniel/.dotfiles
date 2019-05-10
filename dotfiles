@@ -3,13 +3,10 @@
 this_dir=$(dirname $(readlink -f $0))
 source "${this_dir}/helpers.sh"
 
-# From <https://docs.brew.sh/Homebrew-on-Linux>
-  test -d /home/linuxbrew/.linuxbrew && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+# Adapted from <https://docs.brew.sh/Homebrew-on-Linux>
 setup_homebrew() {
   sudo apt-get install build-essential curl file git gcc
 
-  git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew
-  mkdir ~/.linuxbrew/bin
   ln -fs ~/.linuxbrew/Homebrew/bin/brew ~/.linuxbrew/bin
   eval $(~/.linuxbrew/bin/brew shellenv)
 
@@ -21,7 +18,13 @@ install_dotfiles() {
 
   setup_homebrew
 
-  brew install --display-times \
+  if $verbose == 'true'; then
+    brew_flags='--display-times --debug'
+  else
+    brew_flags='--display-times'
+  fi
+
+  brew install $brew_flags \
     vim \
     homeshick \
     tree \
@@ -51,25 +54,61 @@ install_dotfiles() {
 	MSG
 }
 
-main() {
-   say <<-MSG
+PROGNAME=$0
+
+usage() {
+  cat <<-EOF
+		Usage: $PROGNAME [-v] [-y] [install]
+
+		Commands
+		  install    Installs these dotfiles
+		  <blank>    With no options, shows usage
+
+		Options
+		  -y    Reply \`y\` to any prompts
+		  -v    Be verbose
+
+	EOF
+}
+
+install() {
+  # Parse options
+  while getopts ':vy' o; do
+    case $o in
+      v) verbose=true
+        ;;
+      y) force_yes=true
+        ;;
+      *)
+    esac
+  done
+  shift $((OPTIND-1))
+
+  if [ "$1" != 'install' ]; then
+    usage
+    exit
+  fi
+
+  say <<-MSG
 		Setting up dotfiles...
 
 		This is probably going to take a while. Time for ☕.
 	MSG
 
-  confirmation=<<-MSG
+  confirmation=`cat <<-MSG
+
 		Sure you want to install? It's gonna be like an hour or more.
 
-		And will currently just try to overwrite everything. 💣
-	MSG
+		And will currently just try to overwrite everything.
 
-  if ask "$confirmation"; then
+    💣
+	MSG`
+
+  if [ "$force_yes" = 'true' ] || $(ask "$confirmation"); then
     echo 'Installing the dotfiles...'
     install_dotfiles
   else
     echo 'Exiting...'
   fi
 }
-main
-
+install $@

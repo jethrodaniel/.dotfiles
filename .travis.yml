@@ -4,5 +4,5 @@ language: bash
 script:
 - |
   git clone https://github.com/jethrodaniel/dotfiles /tmp/dotfiles \
-    && /tmp/dotfiles/install \
+    && /tmp/dotfiles/dotfiles -y install \
     && rm -rf /tmp/dotfiles

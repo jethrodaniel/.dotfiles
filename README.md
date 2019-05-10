@@ -6,7 +6,7 @@ Uses [homeshick](https://github.com/andsens/homeshick) and [git submodules](http
 
 ```
 git clone https://github.com/jethrodaniel/dotfiles /tmp/dotfiles \
-  && /tmp/dotfiles/install \
+  && /tmp/dotfiles/dotfiles -y install \
   && rm -rf /tmp/dotfiles
 ```
 
@@ -16,13 +16,30 @@ Then
 
 ### What it do
 
-* [vim](https://github.com/vim/vim) - plugins, a monokai theme, settings
-* [tmux](https://github.com/tmux/tmux) - tpm, some plugins, theme, settings, bash-completion
-* [rbenv](https://github.com/rbenv/rbenv) - rbenv, rbenv-build, and prompts to install ruby 2.5.3
-* [git](https://github.com/git/git) - commit template, shortcuts, etc
-* bash/unix - make caps-lock into ctrl, general bash settings, vi readline, etc
-* [i3](https://i3wm.org/) - basic settings, wallpaper, keymaps, etc
-* [alacritty](https://github.com/jwilm/alacritty) - a better terminal emulator
+💣 The install script is quite destructive. Beware.
+
+A whole bunch. All hail submodules.
+
+First off, [brew](https://brew.sh/) is _literally_ a submodule, and is used to
+install whatever packages we can, to enhance portability.
+
+Packages installed via brew
+
+* [vim](https://github.com/vim/vim)
+* [homeshick](https://github.com/andsens/homeshick)
+* tree
+* [hub](https://github.com/github/hub)
+* xclip
+* [rbenv](https://github.com/rbenv/rbenv#readme)
+* [ruby-build](https://github.com/rbenv/ruby-build)
+* [tmux](https://github.com/tmux/tmux)
+
+
+* [i3](https://i3wm.org/)
+* bash
+* assorted \*nix
+
+Lots of settings, such as
 
 ### Updating
 
