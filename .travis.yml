@@ -1,0 +1,10 @@
+# Travis CLI settings
+
+language: bash
+before_script:
+  - chmod +x dotfiles
+script:
+- |
+  git clone --recurse-submodules https://github.com/jethrodaniel/dotfiles \
+    && ./dotfiles/dotfiles  -y install
+    && rm -rf dotfiles

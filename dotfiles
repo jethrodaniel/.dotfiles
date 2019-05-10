@@ -1,0 +1,118 @@
+#!/usr/bin/env bash
+
+this_dir=$(dirname $(readlink -f $0))
+source "${this_dir}/helpers.sh"
+
+# Adapted from <https://docs.brew.sh/Homebrew-on-Linux>
+setup_homebrew() {
+  sudo apt-get install build-essential curl file git gcc
+
+  ln -fs ~/.linuxbrew/Homebrew/bin/brew ~/.linuxbrew/bin
+  eval $(~/.linuxbrew/bin/brew shellenv)
+
+  brew install core
+}
+
+install_dotfiles() {
+  sudo apt-get update
+
+  setup_homebrew
+
+  if [ $verbose == 'true' ]; then
+    brew_flags='--display-times --debug'
+  else
+    brew_flags='--display-times'
+  fi
+
+  brew install $brew_flags \
+    vim \
+    homeshick \
+    tree \
+    hub \
+    xclip \
+    rbenv \
+    ruby-build \
+    tmux \
+    curl \
+    feh \
+    fish
+
+    brew link --overwrite fish
+
+  # Answer `yes` to all 'Overwrite existing file?' questions
+  yes | homeshick clone jethrodaniel/dotfiles
+
+  sudo apt-get install -y \
+    x11-xkb-utils \
+    i3 \
+    pavucontrol \
+    ttf-ancient-fonts
+
+  # Symlink tmux settings into the home dir
+  ln -fs ~/.tmux/conf ~/.tmux.conf
+
+  say <<-MSG
+		Done. Be sure to run
+
+			\`prefix+I\` inside tmux, then reopen tmux.
+	MSG
+}
+
+PROGNAME=$0
+
+usage() {
+  cat <<-EOF
+		Usage: $PROGNAME [-v] [-y] [install]
+
+		Commands
+		  install    Installs these dotfiles
+		  <blank>    With no options, shows usage
+
+		Options
+		  -y    Reply \`y\` to any prompts
+		  -v    Be verbose
+
+	EOF
+}
+
+install() {
+  # Parse options
+  while getopts ':vy' o; do
+    case $o in
+      v) verbose=true
+        ;;
+      y) force_yes=true
+        ;;
+      *)
+    esac
+  done
+  shift $((OPTIND-1))
+
+  if [ "$1" != 'install' ]; then
+    usage
+    exit
+  fi
+
+  say <<-MSG
+		Setting up dotfiles...
+
+		This is probably going to take a while. Time for ☕.
+	MSG
+
+  confirmation=`cat <<-MSG
+
+		Sure you want to install? It's gonna be like an hour or more.
+
+		And will currently just try to overwrite everything.
+
+    💣
+	MSG`
+
+  if [ "$force_yes" = 'true' ] || $(ask "$confirmation"); then
+    echo 'Installing the dotfiles...'
+    install_dotfiles
+  else
+    echo 'Exiting...'
+  fi
+}
+install $@
