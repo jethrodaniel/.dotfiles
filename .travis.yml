@@ -7,5 +7,5 @@ script:
 - |
   mkdir -p ~/.homesick/repos
   git clone --recurse-submodules https://github.com/jethrodaniel/dotfiles \
-            ~/.homesick/repos/dotfiles \
-    && ~/.homesick/repos/dotfiles -y install
+    && ./dotfiles/dotfiles  -y install
+    && rm -rf dotfiles
