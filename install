@@ -22,21 +22,24 @@ install_dotfiles() {
   setup_homebrew
 
   brew install --display-times \
+    vim \
     homeshick \
     tree \
-    vim \
     hub \
     xclip \
-    ruby-build
+    rbenv \
+    ruby-build \
+    tmux \
+    feh
 
+  # Answer `yes` to all 'Overwrite existing file?' questions
   yes | homeshick clone jethrodaniel/dotfiles
 
   sudo apt-get install -y \
-    x11-xkb-utils \
-    i3 \
-    pavucontrol \
-    ttf-ancient-fonts \
-    feh
+    x11-xkb-utils \      # For setting caps to ctrl
+    i3 \                 # Tiling window manager
+    pavucontrol \        # Sound for i3
+    ttf-ancient-fonts \  # Possibly not needed, forgot why it's here
 
   # Symlink tmux settings into the home dir
   ln -s ~/.tmux/conf ~/.tmux.conf
