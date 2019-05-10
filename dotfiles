@@ -18,7 +18,7 @@ install_dotfiles() {
 
   setup_homebrew
 
-  if $verbose == 'true'; then
+  if [ $verbose == 'true' ]; then
     brew_flags='--display-times --debug'
   else
     brew_flags='--display-times'
@@ -45,7 +45,7 @@ install_dotfiles() {
     ttf-ancient-fonts \  # Possibly not needed, forgot why it's here
 
   # Symlink tmux settings into the home dir
-  ln -s ~/.tmux/conf ~/.tmux.conf
+  ln -fs ~/.tmux/conf ~/.tmux.conf
 
   say <<-MSG
 		Done. Be sure to run
