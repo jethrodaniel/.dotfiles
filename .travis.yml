@@ -1,3 +1,5 @@
+# Travis CLI settings
+
 language: bash
 script:
 - |
