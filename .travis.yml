@@ -3,6 +3,7 @@
 language: bash
 script:
 - |
-  git clone https://github.com/jethrodaniel/dotfiles /tmp/dotfiles \
-    && /tmp/dotfiles/dotfiles -y install \
-    && rm -rf /tmp/dotfiles
+  mkdir -p ~/.homesick/repos
+  git clone https://github.com/jethrodaniel/dotfiles \
+            ~/.homesick/repos/dotfiles \
+    && ~/.homesick/repos/dotfiles -y install
