@@ -23,23 +23,9 @@ A whole bunch. All hail submodules.
 First off, [brew](https://brew.sh/) is _literally_ a submodule, and is used to
 install whatever packages we can, to enhance portability.
 
-Packages installed via brew
+All dependencies
 
-* [vim](https://github.com/vim/vim)
-* [homeshick](https://github.com/andsens/homeshick)
-* tree
-* [hub](https://github.com/github/hub)
-* xclip
-* [rbenv](https://github.com/rbenv/rbenv#readme)
-* [ruby-build](https://github.com/rbenv/ruby-build)
-* [tmux](https://github.com/tmux/tmux)
-
-
-* [i3](https://i3wm.org/)
-* bash
-* assorted \*nix
-
-Lots of settings, such as
+https://github.com/jethrodaniel/dotfiles/blob/73e0dfa1a097d1ceeaa0dc92a72e534013e5b332/dotfiles#L27-L45
 
 ### Updating
 
