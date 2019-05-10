@@ -6,6 +6,6 @@ before_script:
 script:
 - |
   mkdir -p ~/.homesick/repos
-  git clone https://github.com/jethrodaniel/dotfiles \
+  git clone --recurse-submodules https://github.com/jethrodaniel/dotfiles \
             ~/.homesick/repos/dotfiles \
     && ~/.homesick/repos/dotfiles -y install
