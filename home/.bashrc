@@ -43,9 +43,28 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
+# brew
+if [ -d $HOME/.linuxbrew ]; then
+  eval $(~/.linuxbrew/bin/brew shellenv)
+
+  # <https://docs.brew.sh/Shell-Completion>
+  HOMEBREW_PREFIX=$(brew --prefix)
+  if type brew &>/dev/null; then
+    for COMPLETION in "$HOMEBREW_PREFIX"/etc/bash_completion.d/*
+    do
+      [[ -f $COMPLETION ]] && source "$COMPLETION"
+    done
+    if [[ -f ${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh ]];
+    then
+      source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+    fi
+  fi
+fi
+
 # homeshick
 if [ -d $HOME/.homesick ]; then
-  source "$HOME/.homesick/repos/homeshick/homeshick.sh"
+  export HOMESHICK_DIR="$HOME/.linuxbrew/opt/homeshick"
+  source "$HOME/.linuxbrew/opt/homeshick/homeshick.sh"
   source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
 fi
 
@@ -72,24 +91,6 @@ if [ -d $HOME/.pyenv ]; then
 
   if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
-  fi
-fi
-
-# brew
-if [ -d $HOME/.homesick/repos/dotfiles/home/.linuxbrew ]; then
-  eval $(~/.linuxbrew/bin/brew shellenv)
-
-  # <https://docs.brew.sh/Shell-Completion>
-  HOMEBREW_PREFIX=$(brew --prefix)
-  if type brew &>/dev/null; then
-    for COMPLETION in "$HOMEBREW_PREFIX"/etc/bash_completion.d/*
-    do
-      [[ -f $COMPLETION ]] && source "$COMPLETION"
-    done
-    if [[ -f ${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh ]];
-    then
-      source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
-    fi
   fi
 fi
 

@@ -3,11 +3,13 @@
 this_dir=$(dirname $(readlink -f $0))
 source "${this_dir}/helpers.sh"
 
-# Adapted from <https://docs.brew.sh/Homebrew-on-Linux>
+# From <https://docs.brew.sh/Homebrew-on-Linux>
 setup_homebrew() {
   sudo apt-get install build-essential curl file git gcc
 
-  ln -fs ~/.linuxbrew/Homebrew/bin/brew ~/.linuxbrew/bin
+  git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew
+  mkdir -p ~/.linuxbrew/bin
+  ln -sf ../Homebrew/bin/brew ~/.linuxbrew/bin
   eval $(~/.linuxbrew/bin/brew shellenv)
 
   brew install core
@@ -18,7 +20,7 @@ install_dotfiles() {
 
   setup_homebrew
 
-  if [ $verbose == 'true' ]; then
+  if [ "$verbose" == 'true' ]; then
     brew_flags='--display-times --debug'
   else
     brew_flags='--display-times'

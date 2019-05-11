@@ -2,14 +2,3 @@
 
 # The wonderful :Obsession
 Session.vim
-
-# brew
-home/.linuxbrew/lib
-home/.linuxbrew/var
-home/.linuxbrew/etc
-home/.linuxbrew/include
-home/.linuxbrew/opt
-home/.linuxbrew/bin
-home/.linuxbrew/target
-home/.linuxbrew/share
-home/.linuxbrew/Cellar

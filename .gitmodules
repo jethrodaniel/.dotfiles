@@ -7,6 +7,3 @@
 [submodule "home/.config/i3/i3lock-multimonitor"]
 	path = home/.config/i3/i3lock-multimonitor
 	url = https://github.com/shikherverma/i3lock-multimonitor.git
-[submodule "home/.linuxbrew/Homebrew"]
-	path = home/.linuxbrew/Homebrew
-	url = https://github.com/Homebrew/brew
