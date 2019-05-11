@@ -11,4 +11,4 @@
 export PATH="$HOME/.cargo/bin:$PATH"
 
 # Set TERM
-[ -n "$TMUX" ] && export TERM=screen-256color
+[ -n "$TMUX" ] && export TERM=xterm-256color
