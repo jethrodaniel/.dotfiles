@@ -27,17 +27,18 @@ install_dotfiles() {
   fi
 
   brew install $brew_flags \
+    git \
     vim \
     homeshick \
     tree \
     hub \
     xclip \
     rbenv \
-    ruby-build \
     tmux \
     curl \
     feh \
-    fish
+    fish \
+    figlet
 
     brew link --overwrite fish
 
