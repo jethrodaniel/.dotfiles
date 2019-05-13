@@ -18,10 +18,7 @@ Then
 
 💣 The install script is quite destructive. Beware.
 
-A whole bunch. All hail submodules.
-
-First off, [brew](https://brew.sh/) is _literally_ a submodule, and is used to
-install whatever packages we can, to enhance portability.
+🍺 [brew](https://brew.sh/) is used to install whatever packages we can, to enhance portability.
 
 All dependencies
 
