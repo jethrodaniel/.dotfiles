@@ -2,9 +2,6 @@
 
 language: bash
 before_script:
-  - chmod +x dotfiles
+  - chmod +x ./dotfiles/dotfiles
 script:
-- |
-  git clone --recurse-submodules https://github.com/jethrodaniel/dotfiles \
-    && ./dotfiles/dotfiles  -y install
-    && rm -rf dotfiles
+- ./dotfiles/dotfiles -y install
