@@ -1,7 +1,8 @@
 # Travis CLI settings
 
 language: bash
+dist: xenial # Ubuntu 16.04
 before_script:
-  - chmod +x ./dotfiles/dotfiles
+  - chmod +x dotfiles
 script:
-- ./dotfiles/dotfiles -y install
+- ./dotfiles -y install
