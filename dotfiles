@@ -38,7 +38,8 @@ install_dotfiles() {
     curl \
     feh \
     fish \
-    figlet
+    figlet \
+    tig
 
     brew link --overwrite fish
 
