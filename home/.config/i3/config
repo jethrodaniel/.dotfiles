@@ -32,10 +32,10 @@ for_window [class="^.*"] border pixel 1
 floating_modifier $mod
 
 # Start a terminal and tmux
-bindsym $mod+Return exec gnome-terminal --full-screen -e tmux
+bindsym $mod+Return exec gnome-terminal -e tmux
 
 # Add shift to *not* open tmux
-bindsym $mod+Shift+Return exec gnome-terminal --full-screen
+bindsym $mod+Shift+Return exec gnome-terminal
 
 # Kill focused window
 bindsym $mod+Shift+q kill
