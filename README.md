@@ -1,5 +1,7 @@
 # dotfiles
 
+[![Build Status](https://travis-ci.com/jethrodaniel/dotfiles.svg?branch=master)](https://travis-ci.com/jethrodaniel/dotfiles)
+
 Uses [homeshick](https://github.com/andsens/homeshick) and [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) to set up an easily depolyable set of dotfiles.
 
 ### Installation
@@ -19,10 +21,6 @@ Then
 💣 The install script is quite destructive. Beware.
 
 🍺 [brew](https://brew.sh/) is used to install whatever packages we can, to enhance portability.
-
-All dependencies
-
-https://github.com/jethrodaniel/dotfiles/blob/73e0dfa1a097d1ceeaa0dc92a72e534013e5b332/dotfiles#L27-L45
 
 ### Updating
 
