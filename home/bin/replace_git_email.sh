@@ -6,19 +6,25 @@
 # @param $2 - The <GOOD_EMAIL>, to replace with
 # @param $3 - '-f', if -f is to be passed to git-filter-branch
 #
+# Adapted from <https://help.github.com/en/articles/changing-author-info>
+#
 replace_git_email() {
   local bad_email="$1"
   local good_email="$2"
   local force="$3"
 
-  git filter-branch "$force" --commit-filter '
-    if [ "$GIT_AUTHOR_EMAIL" = "$bad_email" ];
-      then
-        GIT_AUTHOR_EMAIL="$good_email";
-        git commit-tree "$@";
-      else
-        git commit-tree "$@";
-    fi' HEAD
+  local filter_script=`cat <<-SHELL
+		if [ "\$GIT_COMMITTER_EMAIL" = "$bad_email" ]
+		then
+				export GIT_COMMITTER_EMAIL="$good_email"
+		fi
+		if [ "\$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+		then
+				export GIT_AUTHOR_EMAIL="$good_email"
+		fi
+	SHELL`
+
+  git filter-branch "$force" --env-filter "$filter_script" --tag-name-filter cat -- --branches --tags
 }
 
 # Ask a yes or no question, prompting until a valid response is recieved
