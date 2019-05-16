@@ -42,13 +42,11 @@ install_dotfiles() {
     figlet \
     tig \
 
-  # `brew install gdb` takes forever during the final `make`, so
-  # echo every once in a while so that this doesn't fail on
-  # travis (since travis will kill if no log output in 10 min)
-  while brew install $brew_flags gdb; do
-    sleep 5m
-    echo "Still running \`brew install $brew_flags gdb\` ..."
-  done
+  # `brew install gdb` takes forever during the final `make`, so don't include
+  # this on travis (since travis will kill if no log output in 10 min)
+  if [ "$TRAVIS" != 'true' ]; then
+    brew install $brew_flags gdb
+  fi
 
   # Forgot why this is needed
   brew link --overwrite fish
