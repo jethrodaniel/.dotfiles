@@ -9,9 +9,8 @@ dist: xenial
 # timing out after the default of 10 minutes.
 #
 # `brew install gdb` is what takes the most time here. 🚬
-install: travis_wait
-
+#
 before_script:
   - chmod +x dotfiles
 script:
-- ./dotfiles -y install
+- travis_wait ./dotfiles -y install
