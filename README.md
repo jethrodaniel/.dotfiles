@@ -22,6 +22,31 @@ Then
 
 🍺 [brew](https://brew.sh/) is used to install whatever packages we can, to enhance portability.
 
+#### Brew packages
+
+- [git](https://git-scm.com/)
+- [vim](https://www.vim.org/)
+- [homeshick](https://github.com/andsens/homeshick)
+- [tree](https://github.com/Homebrew/homebrew-core/blob/master/Formula/tree.rb)
+- [hub](https://github.com/github/hub)
+- [xclip](https://github.com/astrand/xclip)
+- [rbenv](https://github.com/rbenv/rbenv)
+- [pyenv](https://github.com/pyenv/pyenv)
+- [tmux](https://github.com/tmux/tmux)
+- [curl](https://curl.haxx.se/)
+- [feh](https://feh.finalrewind.org/)
+- [fish](https://github.com/fish-shell/fish-shell)
+- [figlet](http://www.figlet.org/)
+- [tig](https://github.com/jonas/tig)
+- [gdb](https://www.gnu.org/software/gdb/)
+
+#### apt packages (Debian-based)
+
+- [x11-xkb-utils](https://packages.debian.org/jessie/x11-xkb-utils)
+- [i3](https://i3wm.org/)
+- [pavucontrol](https://launchpad.net/ubuntu/+source/pavucontrol)
+- [ttf-ancient-fonts](https://launchpad.net/ubuntu/+source/ttf-ancient-fonts)
+
 ### Updating
 
 ```
