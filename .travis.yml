@@ -1,7 +1,16 @@
 # Travis CLI settings
 
 language: bash
-dist: xenial # Ubuntu 16.04
+
+# Ubuntu 16.04
+dist: xenial
+
+# Writes a short line to the build log every minute for 20 minutes, to prevent
+# timing out after the default of 10 minutes.
+#
+# `brew install gdb` is what takes the most time here. 🚬
+install: travis_wait
+
 before_script:
   - chmod +x dotfiles
 script:
