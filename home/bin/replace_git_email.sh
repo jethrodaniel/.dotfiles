@@ -4,15 +4,17 @@
 #
 # @param $1 - The <BAD_EMAIL>, to be replaced
 # @param $2 - The <GOOD_EMAIL>, to replace with
+# @param $3 - '-f', if -f is to be passed to git-filter-branch
 #
 replace_git_email() {
-  BAD_EMAIL="$1"
-  GOOD_EMAIL="$2"
+  local bad_email="$1"
+  local good_email="$2"
+  local force="$3"
 
-  git filter-branch --commit-filter '
-    if [ "$GIT_AUTHOR_EMAIL" = "$BAD_EMAIL" ];
+  git filter-branch "$force" --commit-filter '
+    if [ "$GIT_AUTHOR_EMAIL" = "$bad_email" ];
       then
-        GIT_AUTHOR_EMAIL="$GOOD_EMAIL";
+        GIT_AUTHOR_EMAIL="$good_email";
         git commit-tree "$@";
       else
         git commit-tree "$@";
@@ -43,7 +45,10 @@ PROGRAM_NAME="$0"
 
 usage() {
   cat <<-EOF
-		Usage: $PROGRAM_NAME -b <BAD_EMAIL> -g <GOOD_EMAIL>
+		Usage: $PROGRAM_NAME -b <BAD_EMAIL> -g <GOOD_EMAIL> [-f]
+
+		Flags:
+			-f   Force, i.e, pass -f to git-filter-branch
 
 		Re-writes an entire git branch's history, reauthoring each commit
 		by email <BAD_EMAIL> with <GOOD_EMAIL>.
@@ -53,11 +58,13 @@ usage() {
 
 main() {
   # Parse options
-  while getopts ':b:g:' o; do
+  while getopts ':b:g:f' o; do
     case $o in
       b) bad_email="$OPTARG"
         ;;
       g) good_email="$OPTARG"
+        ;;
+      f) force='-f'
         ;;
       \?) usage ;;
     esac
@@ -72,6 +79,10 @@ main() {
   if [ -z "$good_email" ]; then
     echo '-b <GOOD_EMAIL> is required.'
     missing_required_args=true
+  fi
+
+  if [ -z "$force" ] || [ "$force" != '-f' ]; then
+    force=''
   fi
 
   if [ $missing_required_args ]; then
@@ -89,7 +100,7 @@ main() {
 
   if $(ask "$confirmation"); then
 		echo -e "\nRewriting commit history ..."
-    replace_git_email $bad_email $good_email
+    replace_git_email $bad_email $good_email $force
   else
     echo -e "\nExiting..."
   fi
