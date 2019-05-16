@@ -34,12 +34,14 @@ install_dotfiles() {
     hub \
     xclip \
     rbenv \
+    pyenv \
     tmux \
     curl \
     feh \
     fish \
     figlet \
-    tig
+    tig \
+    gdb \
 
     brew link --overwrite fish
 
