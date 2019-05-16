@@ -41,9 +41,17 @@ install_dotfiles() {
     fish \
     figlet \
     tig \
-    gdb \
 
-    brew link --overwrite fish
+  # `brew install gdb` takes forever during the final `make`, so
+  # echo every once in a while so that this doesn't fail on
+  # travis (since travis will kill if no log output in 10 min)
+  while brew install $brew_flags gdb; do
+    sleep 5m
+    echo "Still running \`brew install $brew_flags gdb\` ..."
+  done
+
+  # Forgot why this is needed
+  brew link --overwrite fish
 
   # Answer `yes` to all 'Overwrite existing file?' questions
   yes | homeshick clone jethrodaniel/dotfiles
