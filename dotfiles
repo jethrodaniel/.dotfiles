@@ -41,7 +41,8 @@ install_dotfiles() {
     fish \
     figlet \
     tig \
-    hunspell
+    hunspell \
+    conan
 
   # Slow `brew install`s
   #

@@ -39,6 +39,7 @@ Then
 - [figlet](http://www.figlet.org/)
 - [tig](https://github.com/jonas/tig)
 - [gdb](https://www.gnu.org/software/gdb/)
+- [conan](https://conan.io/)
 
 #### apt packages (Debian-based)
 
