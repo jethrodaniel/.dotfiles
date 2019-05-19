@@ -17,7 +17,7 @@
 
 [commit]
   gpgsign = true # Sign all commits
-  template = ~/.config/git/commit_template.erb
+  template = ~/.config/git/commit_template
 
 [push]
   default = simple # Ensure an upstream for the branch exists before pushing
@@ -26,7 +26,6 @@
   editor = vim
   autocrlf = input
   excludesfile = ~/.config/git/ignore_global
-  hooksPath = ~/.config/git/hooks
 
 [diff]
   tool = fugitive

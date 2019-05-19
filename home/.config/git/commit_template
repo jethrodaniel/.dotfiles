@@ -1,8 +1,6 @@
-[#<%= issue %>]
+
 # If applied, this commit will...
 
 # Prior to this change...  (Why is this change needed?)
 
 # This change...           (How does it address the issue?)
-
-<%= recent_commits %>

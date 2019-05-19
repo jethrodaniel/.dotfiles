@@ -10,3 +10,6 @@
 [submodule "home/.gdb-dashboard"]
 	path = home/.gdb-dashboard
 	url = https://github.com/cyrus-and/gdb-dashboard
+[submodule ".git-hooks"]
+	path = .git-hooks
+	url = https://github.com/jethrodaniel/.git-hooks

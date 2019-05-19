@@ -47,6 +47,10 @@ Then
 - [pavucontrol](https://launchpad.net/ubuntu/+source/pavucontrol)
 - [ttf-ancient-fonts](https://launchpad.net/ubuntu/+source/ttf-ancient-fonts)
 
+#### Ruby gems
+
+- [overcommmit](https://github.com/sds/overcommit)
+
 ### Updating
 
 ```
@@ -63,3 +67,7 @@ Vim settings are managed as a [submodule](https://github.com/jethrodaniel/.vim),
 #### Tmux
 
 Tmux settings are managed as a [submodule](https://github.com/jethrodaniel/.tmux), and can be installed on their own, if desired.
+
+#### hooks
+
+Git hook settings are managed as a [submodule](https://github.com/jethrodaniel/.git-hooks), and can be installed on their own, if desired.
