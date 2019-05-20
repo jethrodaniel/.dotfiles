@@ -4,3 +4,6 @@
   name = Mark Delk
   # email =
   # signingkey =
+
+[core]
+  excludesfile = ~/.config/git/ignore_work

@@ -25,7 +25,7 @@
 [core]
   editor = vim
   autocrlf = input
-  excludesfile = ~/.config/git/ignore_global
+  # excludesfile = ~/.config/git/ignore   # Default
 
 [diff]
   tool = fugitive
