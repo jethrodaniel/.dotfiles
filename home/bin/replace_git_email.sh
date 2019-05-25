@@ -87,18 +87,21 @@ main() {
     missing_required_args=true
   fi
 
-  if [ -z "$force" ] || [ "$force" != '-f' ]; then
-    force=''
-  fi
-
   if [ $missing_required_args ]; then
     exit
+  fi
+
+  if [ -z "$force" ] || [ "$force" != '-f' ]; then
+    force=''
+    force_msg=''
+  else
+    force_msg='(forced)'
   fi
 
   confirmation=`cat <<-MSG
 		Rewriting commit history, replacing
 
-		'$bad_email' with '$good_email' ...
+		'$bad_email' with '$good_email' $force_msg...
 
 		Proceed? This is destructive. 💣
 
