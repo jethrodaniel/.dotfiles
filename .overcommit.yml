@@ -14,16 +14,25 @@
 # https://github.com/sds/overcommit#configuration
 
 PreCommit:
+  ALL:
+    quiet: false
+
   TrailingWhitespace:
     enabled: true
+    exclude:
 
 PrepareCommitMsg:
-  InsertBranchNumber:
-    description: 'Prepending number from branch name into commit subject'
-    enabled: false
-    on_warn: fail
+  ALL:
+    quiet: false
 
 CommitMsg:
+  ALL:
+    quiet: false
+
+  PreventTmpCommits:
+    description: 'Prevents commits with temp-style subjects'
+    enabled: true
+
   CapitalizedSubject:
     enabled: false
 
