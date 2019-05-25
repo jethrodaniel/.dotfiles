@@ -6,6 +6,12 @@ language: bash
 dist: xenial
 
 before_script:
-  - chmod +x dotfiles
+- |
+  wget https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.deb -O vagrant.deb \
+    && sudo apt-get install -y ./vagrant.deb \
+    && rm vagrant.deb
 script:
-- TRAVIS=true ./dotfiles -y install
+- |
+  ./dotfiles -y install
+  vagrant up
+
