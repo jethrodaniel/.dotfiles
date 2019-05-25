@@ -17,12 +17,10 @@ replace_git_email() {
 		if [ "\$GIT_COMMITTER_EMAIL" = "$bad_email" ]
 		then
 				export GIT_COMMITTER_EMAIL="$good_email"
-        git commit-tree "$@";
 		fi
 		if [ "\$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
 		then
 				export GIT_AUTHOR_EMAIL="$good_email"
-        git commit-tree "$@";
 		fi
 	SHELL`
 
@@ -97,14 +95,14 @@ main() {
     exit
   fi
 
-  confirmation=$(cat <<-MSG
+  confirmation=`cat <<-MSG
 		Rewriting commit history, replacing
 
 		'$bad_email' with '$good_email' ...
 
 		Proceed? This is destructive. 💣
 
-	MSG)
+	MSG`
 
   if $(ask "$confirmation"); then
 		echo -e "\nRewriting commit history ..."
