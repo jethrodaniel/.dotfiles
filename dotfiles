@@ -15,6 +15,21 @@ setup_homebrew() {
   brew install core
 }
 
+install_gems() {
+  # From <https://github.com/jethrodaniel/.git-hooks>
+  gem install overcommit \
+    && overcommit --install \
+    && git clone https://github.com/jethrodaniel/.git-hooks \
+    && cp .git-hooks/.overcommit.yml.example .overcommit.yml \
+    && overcommit --sign \
+    && overcommit --sign prepare-commit-msg \
+    && overcommit --sign commit-msg
+
+  gem install ripper-tags
+  gem install gem-ripper-tags
+  gem ripper_tags
+}
+
 install_dotfiles() {
   sudo apt-get update
 
@@ -65,6 +80,8 @@ install_dotfiles() {
     i3 \
     pavucontrol \
     ttf-ancient-fonts
+
+  install_gems
 
   # Symlink tmux settings into the home dir
   ln -fs ~/.tmux/conf ~/.tmux.conf
