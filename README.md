@@ -51,6 +51,9 @@ Then
 #### Ruby gems
 
 - [overcommmit](https://github.com/sds/overcommit)
+- [ripper-tags](https://github.com/tmm1/ripper-tags)
+- [gem-ripper-tags](https://github.com/lzap/gem-ripper-tags)
+- [gem-browse](https://github.com/tpope/gem-browse)
 
 ### Updating
 

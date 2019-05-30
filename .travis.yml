@@ -2,16 +2,7 @@
 
 language: bash
 
-# Ubuntu 16.04
-dist: xenial
+dist: xenial # Ubuntu 16.04
 
-before_script:
-- |
-  wget https://releases.hashicorp.com/vagrant/2.2.4/vagrant_2.2.4_x86_64.deb -O vagrant.deb \
-    && sudo apt-get install -y ./vagrant.deb \
-    && rm vagrant.deb
-script:
-- |
-  ./dotfiles -y install
-  vagrant up
+script: ./dotfiles -y install
 
