@@ -28,6 +28,8 @@ install_gems() {
   gem install ripper-tags
   gem install gem-ripper-tags
   gem ripper_tags
+
+  gem install gem-browse
 }
 
 install_dotfiles() {
