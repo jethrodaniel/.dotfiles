@@ -33,46 +33,15 @@ install_gems() {
 }
 
 install_dotfiles() {
+  if [ "$verbose" == 'true' ]; then
+    echo "VERBOSE"
+  fi
+
   sudo apt-get update
 
   setup_homebrew
 
-  if [ "$verbose" == 'true' ]; then
-    brew_flags='--display-times --debug'
-  else
-    brew_flags='--display-times'
-  fi
-
-  brew install $brew_flags \
-    git \
-    vim \
-    homeshick \
-    tree \
-    hub \
-    xclip \
-    rbenv \
-    pyenv \
-    tmux \
-    curl \
-    feh \
-    fish \
-    figlet \
-    tig \
-    hunspell \
-    conan \
-    xmlstarlet
-
-  # Slow `brew install`s
-  #
-  # Don't include these on travis, since travis will kill the build if it
-  # receives no log output in 10 min.
-  #
-  if [ "$CI" != true ]; then
-    brew install $brew_flags gdb
-  fi
-
-  # Forgot why this is needed
-  brew link --overwrite fish
+  brew bundle
 
   # Answer `yes` to all 'Overwrite existing file?' questions
   yes | homeshick clone jethrodaniel/dotfiles
@@ -112,7 +81,7 @@ usage() {
 	EOF
 }
 
-install() {
+main() {
   # Parse options
   while getopts ':vy' o; do
     case $o in
@@ -152,4 +121,4 @@ install() {
     echo 'Exiting...'
   fi
 }
-install $@
+main "$@"
