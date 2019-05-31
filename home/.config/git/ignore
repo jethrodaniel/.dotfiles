@@ -4,3 +4,6 @@
 Session.vim
 
 .gdb_history
+
+.git-hooks/
+.overcommit.yml
