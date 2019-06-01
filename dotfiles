@@ -38,23 +38,30 @@ install_dotfiles() {
     echo "VERBOSE"
   fi
 
+  [ "$verbose" == 'true' ] && echo "Updating \`apt\` ..."
   sudo apt-get update
 
+  [ "$verbose" == 'true' ] && echo "Setting up Homebrew ..."
   setup_homebrew
 
+  [ "$verbose" == 'true' ] && echo "Running \`brew bundle\`..."
   brew bundle
 
+  [ "$verbose" == 'true' ] && echo "Installing dotfiles with \`homeshick\` ..."
   # Answer `yes` to all 'Overwrite existing file?' questions
   yes | homeshick clone jethrodaniel/dotfiles
 
+  [ "$verbose" == 'true' ] && echo "Installing misc packages from \`apt\`..."
   sudo apt-get install -y \
     x11-xkb-utils \
     i3 \
     pavucontrol \
     ttf-ancient-fonts
 
+  [ "$verbose" == 'true' ] && echo "Installing some ruby gems ..."
   install_gems
 
+  [ "$verbose" == 'true' ] && echo "Linking tmux config ..."
   # Symlink tmux settings into the home dir
   ln -fs ~/.tmux/conf ~/.tmux.conf
 
