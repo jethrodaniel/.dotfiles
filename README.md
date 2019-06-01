@@ -7,9 +7,7 @@ Uses [homeshick](https://github.com/andsens/homeshick) and [git submodules](http
 ### Installation
 
 ```
-git clone --recurse-submodules https://github.com/jethrodaniel/dotfiles /tmp/dotfiles \
-  && /tmp/dotfiles/dotfiles -y install \
-  && rm -rf /tmp/dotfiles
+curl -s "https://raw.githubusercontent.com/jethrodaniel/dotfiles/master/install.sh" | bash
 ```
 
 Then
@@ -18,7 +16,7 @@ Then
 
 ### What it do
 
-💣 The install script is quite destructive. Beware.
+💣 The install script is quite destructive. Beware. :dragon:
 
 🍺 [brew](https://brew.sh/) is used to install whatever packages we can, to enhance portability.
 
@@ -58,20 +56,14 @@ Then
 ### Updating
 
 ```
-homeshick cd dotfiles
 homeshick pull dotfiles
-git submodule foreach git checkout master && git pull
 homeshick link dotfiles # Needed to add new files
 ```
 
-#### Vim
+#### Subprojects
 
-Vim settings are managed as a [submodule](https://github.com/jethrodaniel/.vim), and can be installed on their own, if desired.
+Some functionality was split into various git submodules
 
-#### Tmux
-
-Tmux settings are managed as a [submodule](https://github.com/jethrodaniel/.tmux), and can be installed on their own, if desired.
-
-#### hooks
-
-Git hook settings are managed as a [submodule](https://github.com/jethrodaniel/.git-hooks), and can be installed on their own, if desired.
+- [vim](https://github.com/jethrodaniel/.vim)
+- [tmux](https://github.com/jethrodaniel/.tmux)
+- [git hooks](https://github.com/jethrodaniel/.git-hooks)
