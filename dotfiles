@@ -125,7 +125,7 @@ main() {
 main "$@" &
 
 main_pid=$!
-install_script_name=$(ps -p 1 -o comm=)
+install_script_name=$(ps -p $main_pid -o comm=)
 
 while ps -p $main_pid &>/dev/null; do
   echo "($main_pid) $install_script_name is still running ..."
