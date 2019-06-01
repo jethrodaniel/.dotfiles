@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-this_dir=$(dirname $(readlink -f $0))
+this_dir="$(dirname "$(readlink -f "$0")")"
+# shellcheck source=helpers.sh
 source "${this_dir}/helpers.sh"
 
 # From <https://docs.brew.sh/Homebrew-on-Linux>
@@ -10,7 +11,7 @@ setup_homebrew() {
   git clone https://github.com/Homebrew/brew ~/.linuxbrew/Homebrew
   mkdir -p ~/.linuxbrew/bin
   ln -sf ../Homebrew/bin/brew ~/.linuxbrew/bin
-  eval $(~/.linuxbrew/bin/brew shellenv)
+  eval "$(~/.linuxbrew/bin/brew shellenv)"
 
   brew install core
 }
@@ -130,8 +131,8 @@ install_script_name=$(ps -p $main_pid -o comm=)
 i=1
 while ps -p $main_pid &>/dev/null; do
   sleep $((60 * 9))
-  echo "($main_pid) $install_script_name is still running ($((9 * $i)) min) ..."
-  i++
+  echo "($main_pid) $install_script_name is still running ($((9 * i)) min) ..."
+  i=$((i + 1))
 done
 echo "$install_script_name has finished!"
 
