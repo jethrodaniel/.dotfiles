@@ -3,18 +3,28 @@
 # Run `brew bundle` to run the brew commands listed below
 
 tap 'homebrew/bundle'
-tap 'homebrew/cask'
 tap 'homebrew/core'
 tap 'linuxbrew/xorg'
 
-# Perl compatible regular expressions library
-brew 'pcre'
+unless ENV['CI'] == 'true'
+  # GNU debugger
+  brew 'gdb'
 
-# Core application library for C
-brew 'glib'
+  # Perl compatible regular expressions library
+  brew 'pcre'
 
-# Vector graphics library with cross-device output support
-brew 'cairo'
+  # Core application library for C
+  brew 'glib'
+
+  # Vector graphics library with cross-device output support
+  brew 'cairo'
+
+  # Open source relational database management system
+  brew 'mysql'
+
+  # Low-level access to audio, keyboard, mouse, joystick and graphics
+  brew 'sdl'
+end
 
 # Cross-platform make
 brew 'cmake'
@@ -34,9 +44,6 @@ brew 'figlet'
 # User-friendly command-line shell for UNIX-like operating systems
 brew 'fish'
 
-# GNU debugger
-brew 'gdb'
-
 # Distributed revision control system
 brew 'git'
 
@@ -49,20 +56,11 @@ brew 'hub'
 # Spell checker and morphological analyzer
 brew 'hunspell'
 
-# String tool
-brew 'intltool'
-
-# Open source relational database management system
-brew 'mysql'
-
 # Python version management
 brew 'pyenv'
 
 # Ruby version manager
 brew 'rbenv'
-
-# Low-level access to audio, keyboard, mouse, joystick and graphics
-brew 'sdl'
 
 # Text interface for Git repositories
 brew 'tig'
@@ -78,9 +76,6 @@ brew 'vim'
 
 # Command-line utility that is designed to run on any system with an X11
 brew 'xclip'
-
-# Fake keyboard/mouse input and window management for X
-brew 'xdotool'
 
 # XML command-line utilities
 brew 'xmlstarlet'
