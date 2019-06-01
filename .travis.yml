@@ -4,5 +4,5 @@ language: bash
 
 dist: xenial # Ubuntu 16.04
 
-script: travis_wait 60 ./dotfiles -y install
+script: ./dotfiles -y install
 

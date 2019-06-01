@@ -83,7 +83,7 @@ main() {
   fi
 
   if [ -z "$good_email" ]; then
-    echo '-b <GOOD_EMAIL> is required.'
+    echo '-g <GOOD_EMAIL> is required.'
     missing_required_args=true
   fi
 

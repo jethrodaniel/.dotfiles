@@ -121,4 +121,15 @@ main() {
     echo 'Exiting...'
   fi
 }
-main "$@"
+
+main "$@" &
+
+main_pid=$!
+install_script_name=$(ps -p 1 -o comm=)
+
+while ps -p $main_pid &>/dev/null; do
+  echo "($main_pid) $install_script_name is still running ..."
+  sleep $((60 * 9)) # 9 minutes
+done
+echo "$install_script_name has finished!"
+
