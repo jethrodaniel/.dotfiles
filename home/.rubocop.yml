@@ -14,3 +14,15 @@ Layout/SpaceInsideHashLiteralBraces:
 Layout/IndentHeredoc:
   EnforcedStyle: squiggly
 
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+
+Metrics/LineLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+
+Style/CommentedKeyword:
+  Enabled: false
