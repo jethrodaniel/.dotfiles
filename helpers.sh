@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 # Color escape codes
-red=`tput setaf 1`
-green=`tput setaf 2`
-cyan=`tput setaf 6`
-reset=`tput sgr0`
-bold=`tput bold`
+# red=$(tput setaf 1)
+green=$(tput setaf 2)
+cyan=$(tput setaf 6)
+reset=$(tput sgr0)
+bold=$(tput bold)
 
 bold_green="${bold}${green}"
 
@@ -23,7 +23,7 @@ say() {
 # @return true if 'yes', false if 'no'
 ask() {
   until [[ $choice =~ ^(yes|no)$ ]]; do
-    read -p "${cyan}$1 (yes/no): ${reset}" choice
+    read -pr "${cyan}$1 (yes/no): ${reset}" choice
   done
 
   if [[ $choice == 'yes' ]]; then
