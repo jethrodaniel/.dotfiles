@@ -1,4 +1,5 @@
 # vi: set ft=ruby :
+# frozen_string_literal: true
 
 # To install vagrant on 64-but Debian systems, use
 #
@@ -8,7 +9,7 @@
 #
 # For other systems, see https://www.vagrantup.com/downloads.html
 
-Vagrant.configure('2') do |config|
+Vagrant.configure '2' do |config|
   config.vm.box = 'bento/ubuntu-18.04'
 
   config.vm.provision 'shell', privileged: true, inline: <<~SHELL
@@ -16,9 +17,7 @@ Vagrant.configure('2') do |config|
   SHELL
 
   config.vm.provision 'shell', privileged: false, inline: <<~SHELL
-    	rm -rf /tmp/dotfiles \
-			&& git clone --recurse-submodules https://github.com/jethrodaniel/dotfiles /tmp/dotfiles \
-			&& /tmp/dotfiles/dotfiles -y install \
-			&& rm -rf /tmp/dotfiles
+    rm -f ~/.bash_logout ~/.bashrc ~/.profile
+		git clone --recurse-submodules https://github.com/jethrodaniel/dotfiles
   SHELL
 end

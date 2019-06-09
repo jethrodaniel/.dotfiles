@@ -38,6 +38,8 @@ install_dotfiles() {
     echo "VERBOSE"
   fi
 
+  git clone --recurse-submodules https://github.com/jethrodaniel/dotfiles "$HOME/dotfiles/"
+
   [ "$verbose" == 'true' ] && echo "Updating \`apt\` ..."
   sudo apt-get update
 
@@ -47,9 +49,15 @@ install_dotfiles() {
   [ "$verbose" == 'true' ] && echo "Running \`brew bundle\`..."
   brew bundle
 
-  [ "$verbose" == 'true' ] && echo "Installing dotfiles with \`homeshick\` ..."
-  # Answer `yes` to all 'Overwrite existing file?' questions
-  yes | homeshick clone jethrodaniel/dotfiles
+  pushd "$HOME"
+  [ "$verbose" == 'true' ] && echo "Installing dotfiles with \`stow\` ..."
+  if stow --target="$HOME" home; then
+    echo 'Installed symlinks ...'
+  else
+    echo '`stow` failed. You probably need to delete existing files.'
+    exit 1
+  fi
+  popd
 
   [ "$verbose" == 'true' ] && echo "Installing misc packages from \`apt\`..."
   sudo apt-get install -y \
@@ -142,4 +150,3 @@ while ps -p $main_pid &>/dev/null; do
   i=$((i + 1))
 done
 echo "$install_script_name has finished!"
-

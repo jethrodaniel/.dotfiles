@@ -1,8 +1,9 @@
 # dotfiles
 
-[![Build Status](https://travis-ci.com/jethrodaniel/dotfiles.svg?branch=master)](https://travis-ci.com/jethrodaniel/dotfiles)
+[![Build Status](https://travis-ci.com/jethrodaniel/dotfiles.svg?branch=master)][travis]
 
-Uses [homeshick](https://github.com/andsens/homeshick) and [git submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules) to set up an easily depolyable set of dotfiles.
+Uses [stow][stow] and [git submodules][submodules] to set up an easily
+depolyable set of dotfiles.
 
 ### Installation
 
@@ -12,13 +13,13 @@ curl -s "https://raw.githubusercontent.com/jethrodaniel/dotfiles/master/install.
 
 Then
 
-* Be sure to initalize [tpm](https://github.com/tmux-plugins/tpm) by typing <kbd>ctrl</kbd>+<kbd>f</kbd>+<kbd>I</kbd> inside a tmux session (be patient), then restarting tmux.
+* Be sure to initalize [tpm][tpm] by typing <kbd>ctrl</kbd>+<kbd>f</kbd>+<kbd>I</kbd> inside a tmux session (be patient), then restarting tmux.
 
 ### What it do
 
 💣 The install script is quite destructive. Beware. :dragon:
 
-🍺 [brew](https://brew.sh/) is used to install whatever packages we can, to enhance portability.
+🍺 [brew][brew] is used to install whatever packages we can, to enhance portability.
 
 #### Brew packages
 
@@ -67,3 +68,9 @@ Some functionality was split into various git submodules
 - [vim](https://github.com/jethrodaniel/.vim)
 - [tmux](https://github.com/jethrodaniel/.tmux)
 - [git hooks](https://github.com/jethrodaniel/.git-hooks)
+
+[stow]: https://www.gnu.org/software/stow/
+[submodules]: https://git-scm.com/book/en/v2/Git-Tools-Submodules
+[travis]: https://travis-ci.com/jethrodaniel/dotfiles
+[tpm]: https://github.com/tmux-plugins/tpm
+[brew](https://www.gnu.org/software/stow/)

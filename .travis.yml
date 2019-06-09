@@ -2,7 +2,9 @@
 
 language: bash
 
-dist: xenial # Ubuntu 16.04
+dist: xenial
 
-script: ./dotfiles -yv install
+script:
+  - rm -f ~/.bash_logout ~/.bashrc ~/.profile
+  - ./dotfiles -yv install
 

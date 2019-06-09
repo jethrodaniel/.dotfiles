@@ -1,7 +1,3 @@
-# Brewfile
-#
-# Run `brew bundle` to run the brew commands listed below
-
 tap 'homebrew/bundle'
 tap 'homebrew/core'
 tap 'linuxbrew/xorg'
@@ -61,6 +57,9 @@ brew 'pyenv'
 
 # Ruby version manager
 brew 'rbenv'
+
+# Organize software neatly under a single directory tree (e.g. /usr/local)
+brew 'stow'
 
 # Text interface for Git repositories
 brew 'tig'
