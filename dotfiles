@@ -49,9 +49,9 @@ install_dotfiles() {
   [ "$verbose" == 'true' ] && echo "Running \`brew bundle\`..."
   brew bundle
 
-  pushd "$HOME"
+  pushd dotfiles
   [ "$verbose" == 'true' ] && echo "Installing dotfiles with \`stow\` ..."
-  if stow --target="$HOME" home; then
+  if stow --target="$HOME" ./home; then
     echo 'Installed symlinks ...'
   else
     echo '`stow` failed. You probably need to delete existing files.'
@@ -138,15 +138,4 @@ main() {
   fi
 }
 
-main "$@" &
-
-main_pid=$!
-install_script_name=$(ps -p $main_pid -o comm=)
-
-i=1
-while ps -p $main_pid &>/dev/null; do
-  sleep $((60 * 9))
-  echo "($main_pid) $install_script_name is still running ($((9 * i)) min) ..."
-  i=$((i + 1))
-done
-echo "$install_script_name has finished!"
+main "$@"
