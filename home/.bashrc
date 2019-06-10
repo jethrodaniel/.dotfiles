@@ -61,13 +61,6 @@ if [ -d $HOME/.linuxbrew ]; then
   fi
 fi
 
-# homeshick
-if [ -d $HOME/.homesick ]; then
-  export HOMESHICK_DIR="$HOME/.linuxbrew/opt/homeshick"
-  source "$HOME/.linuxbrew/opt/homeshick/homeshick.sh"
-  source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
-fi
-
 # SDKMAN!
 if [ -d $HOME/.sdkman ]; then
   export SDKMAN_DIR="$HOME/.sdkman"

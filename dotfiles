@@ -139,4 +139,17 @@ main() {
   fi
 }
 
-main "$@"
+main "$@" &
+
+main_pid=$!
+install_script_name=$(ps -p $main_pid -o comm=)
+
+i=1
+while ps -p $main_pid &>/dev/null; do
+  sleep $((60 * 9))
+  echo "($main_pid) $install_script_name is still running ($((9 * i)) min) ..."
+  i=$((i + 1))
+done
+echo "$install_script_name has finished!"
+
+wait $main_pid
