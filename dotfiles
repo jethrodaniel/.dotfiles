@@ -49,12 +49,13 @@ install_dotfiles() {
   [ "$verbose" == 'true' ] && echo "Running \`brew bundle\`..."
   brew bundle
 
-  pushd dotfiles
+  [[ "${PWD##*/}" == 'dotfiles' ]] && pushd dotfiles
   [ "$verbose" == 'true' ] && echo "Installing dotfiles with \`stow\` ..."
   if stow --target="$HOME" ./home; then
     echo 'Installed symlinks ...'
   else
     echo '`stow` failed. You probably need to delete existing files.'
+    [ "$CI" = 'true' ] && ./stow.rb
     exit 1
   fi
   popd

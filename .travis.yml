@@ -5,6 +5,5 @@ language: bash
 dist: xenial
 
 script:
-  - rm -f ~/.bash_logout ~/.bashrc ~/.profile
   - ./dotfiles -yv install
 

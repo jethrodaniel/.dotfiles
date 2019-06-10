@@ -11,13 +11,31 @@ depolyable set of dotfiles.
 curl -s "https://raw.githubusercontent.com/jethrodaniel/dotfiles/master/install.sh" | bash
 ```
 
-Then
+This should take a bit. Check out [install.sh] for more details.
 
-* Be sure to initalize [tpm][tpm] by typing <kbd>ctrl</kbd>+<kbd>f</kbd>+<kbd>I</kbd> inside a tmux session (be patient), then restarting tmux.
+#### Manual steps
+
+#### tmux
+
+Be sure to initalize [tpm][tpm] by typing <kbd>ctrl</kbd>+<kbd>f</kbd>+<kbd>I</kbd> inside a tmux session (be patient), then restarting tmux.
+
+#### vim
+
+You'll need to install the gui in order to get vim complied with `+clipboard`. Gotta have `"+`.
+
+```
+brew edit vim
+```
+
+#### stow
+
+stow will not overwrite files, but this will
+
+```
+./stow.rb
+```
 
 ### What it do
-
-💣 The install script is quite destructive. Beware. :dragon:
 
 🍺 [brew][brew] is used to install whatever packages we can, to enhance portability.
 
