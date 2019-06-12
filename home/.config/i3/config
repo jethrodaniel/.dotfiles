@@ -163,7 +163,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Moving to the current workspace will switch to the workspace used last
-workspace_auto_back_and_forth yes
+#workspace_auto_back_and_forth yes
 
 # Pulse Audio controls
 bindsym $mod2+j exec --no-startup-id pactl set-sink-volume 0 -5%
