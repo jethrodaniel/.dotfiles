@@ -48,3 +48,8 @@ Style/RescueStandardError:
 # end
 NestedParenthesizedCalls:
   Enabled: false
+
+# -> (a) { } is good
+# ->(a) { } is just as ugly as if( true )
+Layout/SpaceInLambdaLiteral:
+  EnforcedStyle: require_space

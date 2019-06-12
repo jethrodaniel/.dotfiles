@@ -87,6 +87,19 @@ if [ -d $HOME/.pyenv ]; then
   fi
 fi
 
+# cargo
+if [ -d "$HOME/.cargo" ]; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+# composer
+if [ -d "$HOME/.config/composer/vendor/bin" ]; then
+  export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+fi
+if [ -d "$HOME/.composer/vendor/bin:$PATH" ]; then
+  export PATH="$HOME/.composer/vendor/bin:$PATH"
+fi
+
 # Tmux tab completion
 if [ -f ~/.tmux/bash_completion_tmux.sh ]; then
   . ~/.tmux/bash_completion_tmux.sh
