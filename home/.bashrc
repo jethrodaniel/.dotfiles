@@ -131,8 +131,8 @@ function c() {
 # Set prompt. The space at the beginning is to separate the Readline mode
 # indicators from the rest of the prompt.
 set_prompt() {
-  if [[ -e ~/.homesick/repos/dotfiles/home/.config/git/git-prompt.sh ]]; then
-    source ~/.homesick/repos/dotfiles/home/.config/git/git-prompt.sh
+  if [[ -e ~/dotfiles/home/.config/git/git-prompt.sh ]]; then
+    source ~/dotfiles/home/.config/git/git-prompt.sh
 
     export GIT_PS1_SHOWCOLORHINTS=true     # Use colors
     export GIT_PS1_SHOWSTASHSTATE=true     # Something's stashed ($)
