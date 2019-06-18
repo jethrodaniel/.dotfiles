@@ -7,3 +7,6 @@ Session.vim
 
 .git-hooks/
 .overcommit.yml
+
+# vim tags
+tags
