@@ -89,6 +89,7 @@ fi
 
 # cargo
 if [ -d "$HOME/.cargo" ]; then
+  export RUST_TEST_THREADS=1
   export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
@@ -131,8 +132,10 @@ function c() {
 # Set prompt. The space at the beginning is to separate the Readline mode
 # indicators from the rest of the prompt.
 set_prompt() {
-  if [[ -e ~/dotfiles/home/.config/git/git-prompt.sh ]]; then
-    source ~/dotfiles/home/.config/git/git-prompt.sh
+  local git_prompt_file="$HOME/dotfiles/home/.config/git/vendor/git-prompt.sh"
+
+  if [[ -e "$git_prompt_file" ]]; then
+    source "$git_prompt_file"
 
     export GIT_PS1_SHOWCOLORHINTS=true     # Use colors
     export GIT_PS1_SHOWSTASHSTATE=true     # Something's stashed ($)

@@ -10,3 +10,14 @@ Session.vim
 
 # vim tags
 tags
+
+# Rust vi tags, created with
+#
+# ```sh
+# cargo install rusty-tags
+# rusty-tags vi
+# ```
+#
+# See https://github.com/dan-t/rusty-tags
+#
+rusty-tags.vi
