@@ -30,7 +30,7 @@ HISTFILESIZE=1000000   # Store at most 1,000,000 lines on disk
 #
 #   tput: No value for $TERM and no -T specified
 #
-# Since `tput` inspects the current `$TERM` in order to outout the right
+# Since `tput` inspects the current `$TERM` in order to output the right
 # control sequences
 if [ -n "$TMUX" ]; then
   export TERM=xterm-256color
@@ -44,8 +44,9 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # brew
-if [ -d $HOME/.linuxbrew ]; then
-  eval $(~/.linuxbrew/bin/brew shellenv)
+if [ -d /home/linuxbrew/.linuxbrew ]; then
+  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
   # <https://docs.brew.sh/Shell-Completion>
   HOMEBREW_PREFIX=$(brew --prefix)

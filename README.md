@@ -15,6 +15,7 @@ This should take a bit. Check out [install.sh] for more details.
 
 #### Manual steps
 
+
 #### tmux
 
 Be sure to initalize [tpm][tpm] by typing <kbd>ctrl</kbd>+<kbd>f</kbd>+<kbd>I</kbd> inside a tmux session (be patient), then restarting tmux.

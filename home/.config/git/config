@@ -39,6 +39,11 @@
 [url "ssh://git@github.com/"] # Always use ssh for github
   insteadOf = https://github.com/
 
+[bash]
+  # Speeds up a __git_ps1 prompt
+  # https://brandur.org/fragments/hide-dirty
+	showDirtyState = false
+
 # Explicit colors.
 #
 # See <http://shallowsky.com/blog/programming/gitcolors.html>
