@@ -44,12 +44,9 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 # brew
-if [ -d /home/linuxbrew/.linuxbrew ]; then
-  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-
+setup_homebrew_completions() {
+  HOMEBREW_PREFIX="$1"
   # <https://docs.brew.sh/Shell-Completion>
-  HOMEBREW_PREFIX=$(brew --prefix)
   if type brew &>/dev/null; then
     for COMPLETION in "$HOMEBREW_PREFIX"/etc/bash_completion.d/*
     do
@@ -60,7 +57,18 @@ if [ -d /home/linuxbrew/.linuxbrew ]; then
       source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
     fi
   fi
+}
+if [ -d ~/.linuxbrew ]; then
+  export PATH="$HOME/.linuxbrew/bin:$PATH"
+  eval $(~/.linuxbrew/bin/brew shellenv)
+  setup_homebrew_completions $(brew --prefix)
 fi
+if [ -d /home/linuxbrew/.linuxbrew ]; then
+  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+  setup_homebrew_completions $(brew --prefix)
+fi
+
 
 # SDKMAN!
 if [ -d $HOME/.sdkman ]; then
