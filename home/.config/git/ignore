@@ -24,3 +24,9 @@ rusty-tags.vi
 
 # Local Pry debugger history
 .pry_history
+
+# Ignore vagrant data
+.vagrant/
+
+# logs
+*.log
