@@ -5,6 +5,9 @@
 AllCops:
   TargetRubyVersion: 2.4
   ExtraDetails: true
+  Exclude:
+    - 'tmp/**/*'
+    - 'db/**/*'
 
 # 6 is a bit restrictive
 Metrics/CyclomaticComplexity:
