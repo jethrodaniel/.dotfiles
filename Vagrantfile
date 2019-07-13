@@ -19,5 +19,7 @@ Vagrant.configure '2' do |config|
   config.vm.provision 'shell', privileged: false, inline: <<~SHELL
     rm -f ~/.bash_logout ~/.bashrc ~/.profile
 		git clone --recurse-submodules https://github.com/jethrodaniel/dotfiles
+    cd dotfiles
+    ./dotfiles install -y
   SHELL
 end
