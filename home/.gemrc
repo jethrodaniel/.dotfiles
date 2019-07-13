@@ -1,1 +1,16 @@
-gem: --no-document
+---
+# vim: set filetype=yaml:
+
+# Ruby's `gem` command configuration.
+#
+# See `gem help env`
+
+# Only install `ri` docs.
+#
+# To regenerate all ri docs, use
+#
+# ```
+# gem rdoc --all --ri --no-rdoc
+# ```
+#
+gem: --document=ri

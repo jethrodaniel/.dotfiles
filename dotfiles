@@ -41,7 +41,7 @@ install_dotfiles() {
     echo 'Installed symlinks ...'
   else
     echo '`stow` failed. You probably need to delete existing files.'
-    ruby dotfiles/stow.rb
+    ./stow.rb home
   fi
 
   echo "Installing misc packages from \`apt\`..."
