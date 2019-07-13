@@ -1,0 +1,43 @@
+---
+
+AllCops:
+  TargetRubyVersion: 2.4
+
+# Rake tasks usually end up having no respect for line lengths.
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+Metrics/LineLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+
+# Hash rockets for everything
+Style/HashSyntax:
+  EnforcedStyle: hash_rockets
+  UseHashRocketsWithSymbolValues: true
+  PreferHashRocketsForNonAlnumEndingSymbols: true
+
+# describe Samsquanch do
+#   ...
+# end # describe Samsquanch
+Style/CommentedKeyword:
+  Enabled: false
+
+# {:foo => :bar} instead of  { :foo => :bar }
+# {} is for hashes
+# { } is for blocks
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+# {
+#   :a_key => 1,
+#   :a_longer_key => 2
+# }
+Layout/AlignHash:
+  EnforcedHashRocketStyle: key
+
+# String abuse is a crime
+Style/FrozenStringLiteralComment:
+  Enabled: false
