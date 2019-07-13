@@ -9,16 +9,8 @@ setup_homebrew() {
   sudo apt-get install build-essential curl file git gcc
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
-  if [ -f ~/.linuxbrew/bin/brew ]; then
-    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-    export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-  fi
-
-  # For CI
-  if [ -f ~/.linuxbrew/bin/brew ]; then
-    eval $(~/.linuxbrew/bin/brew shellenv)
-    export PATH="~/.linuxbrew/bin:$PATH"
-  fi
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 }
 
 install_gems() {
@@ -41,7 +33,7 @@ install_dotfiles() {
   setup_homebrew
 
   echo "Running \`brew bundle\`..."
-  brew bundle --file=dotfiles/Brewfile
+  brew bundle
 
   rbenv install 2.6.1 || exit 1
 
