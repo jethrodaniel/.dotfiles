@@ -8,12 +8,17 @@ source "${this_dir}/helpers.sh"
 setup_homebrew() {
   sudo apt-get install build-essential curl file git gcc
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+
+  if [ -f ~/.linuxbrew/bin/brew ]; then
+    eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+  fi
 
   # For CI
-  eval $(~/.linuxbrew/bin/brew shellenv)
-  export PATH="~/.linuxbrew/bin:$PATH"
+  if [ -f ~/.linuxbrew/bin/brew ]; then
+    eval $(~/.linuxbrew/bin/brew shellenv)
+    export PATH="~/.linuxbrew/bin:$PATH"
+  fi
 }
 
 install_gems() {
