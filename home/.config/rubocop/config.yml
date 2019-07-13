@@ -1,0 +1,62 @@
+---
+
+AllCops:
+  TargetRubyVersion: 2.4
+  ExtraDetails: true
+
+# 6 is a bit restrictive
+Metrics/CyclomaticComplexity:
+  Max: 8
+
+# Only use the stabby lambda. f = -> x { }
+Style/Lambda:
+  EnforcedStyle: literal
+
+# f -> x { x + 1 }
+Style/StabbyLambdaParentheses:
+  EnforcedStyle: require_no_parentheses
+
+# super.match? /simple/
+Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+
+# Usually leads to unneccesary comments
+Style/Documentation:
+  Enabled: false
+
+# {
+#   a_key:         1,
+#   a_longer_key:  2
+# }
+Layout/AlignHash:
+  EnforcedHashRocketStyle: table
+
+# def a, b
+#   ...
+# end
+Style/MethodDefParentheses:
+  EnforcedStyle: require_no_parentheses
+
+# Always use <<~HERE
+# HERE
+Layout/IndentHeredoc:
+  EnforcedStyle: squiggly
+
+# Default method length of 10 lines is a bit low
+Metrics/MethodLength:
+  Max: 30
+
+# `rescue` is provided for a reason
+Style/RescueStandardError:
+  Enabled: false
+
+# xml = Nokogiri::XML(File.open file) do |config|
+#   ...
+# end
+NestedParenthesizedCalls:
+  Enabled: false
+
+# -> (a) { } is good
+# ->(a) { } is just as ugly as if( true )
+Layout/SpaceInLambdaLiteral:
+  enforcedstyle: require_space
