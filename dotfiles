@@ -10,6 +10,10 @@ setup_homebrew() {
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
   eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
   export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+
+  # For CI
+  eval $(~/.linuxbrew/bin/brew shellenv)
+  export PATH="~/.linuxbrew/bin:$PATH"
 }
 
 install_gems() {

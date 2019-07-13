@@ -15,26 +15,15 @@ This should take a bit. Check out [install.sh] for more details.
 
 #### Manual steps
 
+TODO
 
 #### tmux
 
-Be sure to initalize [tpm][tpm] by typing <kbd>ctrl</kbd>+<kbd>f</kbd>+<kbd>I</kbd> inside a tmux session (be patient), then restarting tmux.
+See the submodule [.tmux](https://github.com/jethrodaniel/.tmux)
 
 #### vim
 
-You'll need to install the gui in order to get vim complied with `+clipboard`. Gotta have `"+`.
-
-```
-brew edit vim
-```
-
-#### stow
-
-stow will not overwrite files, but this will
-
-```
-./stow.rb
-```
+See the submodule [.vim](https://github.com/jethrodaniel/.vim)
 
 ### What it do
 
@@ -73,23 +62,9 @@ stow will not overwrite files, but this will
 - [gem-ripper-tags](https://github.com/lzap/gem-ripper-tags)
 - [gem-browse](https://github.com/tpope/gem-browse)
 
-### Updating
-
-```
-homeshick pull dotfiles
-homeshick link dotfiles # Needed to add new files
-```
-
-#### Subprojects
-
-Some functionality was split into various git submodules
-
-- [vim](https://github.com/jethrodaniel/.vim)
-- [tmux](https://github.com/jethrodaniel/.tmux)
-- [git hooks](https://github.com/jethrodaniel/.git-hooks)
-
+<!-- Links -->
 [stow]: https://www.gnu.org/software/stow/
 [submodules]: https://git-scm.com/book/en/v2/Git-Tools-Submodules
 [travis]: https://travis-ci.com/jethrodaniel/dotfiles
 [tpm]: https://github.com/tmux-plugins/tpm
-[brew](https://www.gnu.org/software/stow/)
+[brew]: https://www.gnu.org/software/stow/
