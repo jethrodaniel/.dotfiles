@@ -7,9 +7,6 @@
 [submodule "home/.config/i3/i3lock-multimonitor"]
 	path = home/.config/i3/i3lock-multimonitor
 	url = https://github.com/shikherverma/i3lock-multimonitor.git
-[submodule "home/.gdb-dashboard"]
-	path = home/.gdb-dashboard
-	url = https://github.com/cyrus-and/gdb-dashboard
 [submodule ".git-hooks"]
 	path = .git-hooks
 	url = https://github.com/jethrodaniel/.git-hooks
