@@ -1,5 +1,7 @@
 ---
 
+# See https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md
+
 AllCops:
   TargetRubyVersion: 2.4
   ExtraDetails: true
@@ -59,4 +61,4 @@ NestedParenthesizedCalls:
 # -> (a) { } is good
 # ->(a) { } is just as ugly as if( true )
 Layout/SpaceInLambdaLiteral:
-  enforcedstyle: require_space
+  EnforcedStyle: require_space
