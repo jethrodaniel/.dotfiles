@@ -58,9 +58,7 @@ alias clip='xclip -sel clip'
 alias gtree="tree -a -I '.git'"
 alias ntree="tree -a -I 'node_modules|.git'"
 
-# Notetaking
-alias note="mkdir -p notes; vi notes/notes_$(date +%m-%d-%y).md -c 'r !date'"
-alias todo="vi TODO.md"
+alias todo="vi ~/TODO.md"
 
 # Load up the last Obsession.vim session
 alias vs='vim -S Session.vim'

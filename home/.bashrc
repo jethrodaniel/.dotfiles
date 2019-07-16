@@ -43,6 +43,9 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
+# Use terminal gpg
+export GPG_TTY=$(tty)
+
 # brew
 setup_homebrew_completions() {
   HOMEBREW_PREFIX="$1"
