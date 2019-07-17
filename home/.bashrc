@@ -160,10 +160,10 @@ set_prompt() {
     local blue="\[$(tput setaf 153)\]"
     local reset="\[$(tput sgr0)\]"
 
-    PROMPT_COMMAND="__git_ps1 ' ${blue}\w${reset}' '${purple} λ ${reset}'"
+    PROMPT_COMMAND="__git_ps1 '\A ${blue}\w${reset}' '${purple} λ ${reset}'"
   else
-    # Use the Ubuntu default
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    # Use the Ubuntu default (mostly)
+    PS1='\A ${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
   fi
 }
 set_prompt
