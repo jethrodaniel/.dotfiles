@@ -65,3 +65,5 @@ alias vs='vim -S Session.vim'
 
 # ssh into servers that don't have sane `$TERM`s
 alias ssh='TERM=xterm ssh'
+
+alias v='vim'
