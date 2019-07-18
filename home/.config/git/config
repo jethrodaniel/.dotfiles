@@ -109,7 +109,7 @@
   co = checkout
   d = diff --color-words
   ds = diff --staged --color-words
-  f = fetch -av # -p should be explicit
+  f = fetch -avp
   l = log
   r = rebase
   s = status
@@ -119,6 +119,5 @@
   sp = stash pop
   sl = shortlog
   t = tag
-  pushit = push origin HEAD
   pp = push origin HEAD
   pt = push --tags origin HEAD
