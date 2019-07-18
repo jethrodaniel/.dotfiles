@@ -1,16 +1,9 @@
 ---
 # vim: set filetype=yaml:
 
-# Ruby's `gem` command configuration.
-#
-# See `gem help env`
+# Print backtrace on error
+:backtrace: true
 
-# Only install `ri` docs.
-#
-# To regenerate all ri docs, use
-#
-# ```
-# gem rdoc --all --ri --no-rdoc
-# ```
-#
-gem: --document=ri
+# Only create console based documentation
+install: --document=ri,yri
+update: --document=ri,yri
