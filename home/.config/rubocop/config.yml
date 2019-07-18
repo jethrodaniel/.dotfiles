@@ -11,8 +11,9 @@ inherit_mode:
     - Exclude
 
 AllCops:
-  TargetRubyVersion: 2.4
+  # You got something to say?
   ExtraDetails: true
+
   Include:
   # Include lowercase versions of some Make-alikes
   - '**/vagrantfile'
