@@ -2,9 +2,21 @@
 
 # See https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md
 
+# Don't overwrite non-specified defaults, just add
+#
+# https://rubocop.readthedocs.io/en/latest/configuration/#includingexcluding-files
+inherit_mode:
+  merge:
+    - Include
+    - Exclude
+
 AllCops:
   TargetRubyVersion: 2.4
   ExtraDetails: true
+  Include:
+  # Include lowercase versions of some Make-alikes
+  - '**/vagrantfile'
+  - '**/rakefile'
   Exclude:
     - 'tmp/**/*'
     - 'db/**/*'
