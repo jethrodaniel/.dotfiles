@@ -15,9 +15,9 @@ AllCops:
   ExtraDetails: true
 
   Include:
-  # Include lowercase versions of some Make-alikes
-  - '**/vagrantfile'
-  - '**/rakefile'
+    # Include lowercase versions of some Make-alikes
+    - '**/vagrantfile'
+    - '**/rakefile'
   Exclude:
     - 'tmp/**/*'
     - 'db/**/*'
@@ -36,6 +36,10 @@ Style/StabbyLambdaParentheses:
 
 # super.match? /simple/
 Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+
+# attr_reader *%i[one two three ... nine_thousand_and_one]
+Lint/AmbiguousOperator:
   Enabled: false
 
 # Usually leads to unneccesary comments

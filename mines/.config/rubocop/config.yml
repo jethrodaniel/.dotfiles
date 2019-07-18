@@ -4,6 +4,26 @@
 AllCops:
   TargetRubyVersion: 2.4
 
+# super.match? /simple/
+Lint/AmbiguousRegexpLiteral:
+  Enabled: false
+
+# attr_reader *%i[one two three ... nine_thousand_and_one]
+Lint/AmbiguousOperator:
+  Enabled: false
+
+# xml = Nokogiri::XML(File.open file) do |config|
+#   ...
+# end
+#
+# Parenthesis are evil.
+NestedParenthesizedCalls:
+  Enabled: false
+
+# `rescue` is provided for a reason
+Style/RescueStandardError:
+  Enabled: false
+
 # Who needs module and class comments anyway?
 Style/Documentation:
   Enabled: false
