@@ -1,9 +1,9 @@
 ---
 # vim: set filetype=yaml:
 
-# Print backtrace on error
-:backtrace: true
+# Ruby's `gem` command configuration.
+#
+# See `gem help env`
 
-# Only create console based documentation
-install: --document=ri,yri
-update: --document=ri,yri
+install: "--document=ri,yri"
+update: "--document=ri,yri"
