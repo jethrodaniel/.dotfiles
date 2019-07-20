@@ -35,6 +35,7 @@
 
 [mergetool "fugitive"]
   cmd = vim -f -c \"Gdiff\" \"$MERGED\"
+	keepBackup = false
 
 [url "ssh://git@github.com/"] # Always use ssh for github
   insteadOf = https://github.com/
