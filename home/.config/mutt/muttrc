@@ -1,0 +1,23 @@
+set realname = `"\"$(git config user.name)\""`
+set from = `git config user.email`
+set use_from = yes
+set envelope_from = yes
+
+set smtp_url = `echo "smtps://$(git config user.email)@smtp.gmail.com:587/"`
+set imap_user = `git config user.email`
+set smtp_pass = `git config sendemail.smtp-pass`
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set ssl_force_tls = yes
+
+# Activate caching, as it can greatly improve speed
+set header_cache = "~/.mutt/cache"
+set message_cachedir = "~/.mutt/cache"
+
+# Disable saving outgoing mail since Gmail saves them by default.
+set record = ""
+
+# For sanity's sake
+set sort = reverse-date-received
+set editor = "vim"
+set charset = "utf-8"

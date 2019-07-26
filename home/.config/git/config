@@ -45,6 +45,18 @@
   # https://brandur.org/fragments/hide-dirty
 	showDirtyState = false
 
+[sendemail]
+  smtpserver = smtp.gmail.com
+  smtpserverport = 587
+  smtpencryption = tls
+
+  smtpuser = jethrodaniel@gmail.com
+  ; smtp-pass =
+  from = jethrodaniel@gmail.com
+  to = jethrodaniel@gmail.com
+
+  confirm = always
+
 # Explicit colors.
 #
 # See <http://shallowsky.com/blog/programming/gitcolors.html>
