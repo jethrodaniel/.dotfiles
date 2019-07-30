@@ -1,73 +1,10 @@
 ---
 # rubocop styles
-
-AllCops:
-  TargetRubyVersion: 2.4
-
-# super.match? /simple/
-Lint/AmbiguousRegexpLiteral:
-  Enabled: false
-
-# attr_reader *%i[one two three ... nine_thousand_and_one]
-Lint/AmbiguousOperator:
-  Enabled: false
-
-# xml = Nokogiri::XML(File.open file) do |config|
-#   ...
-# end
 #
-# Parenthesis are evil.
-NestedParenthesizedCalls:
-  Enabled: false
+# ```
+# gem install rubocop
+# gem install rubocop-rails
+# ```
 
-# `rescue` is provided for a reason
-Style/RescueStandardError:
-  Enabled: false
-
-# Who needs module and class comments anyway?
-Style/Documentation:
-  Enabled: false
-
-# Hash rockets for everything
-Style/HashSyntax:
-  EnforcedStyle: hash_rockets
-  UseHashRocketsWithSymbolValues: true
-  PreferHashRocketsForNonAlnumEndingSymbols: true
-
-# {:foo => :bar} instead of  { :foo => :bar }
-# {} is for hashes
-# { } is for blocks
-Layout/SpaceInsideHashLiteralBraces:
-  EnforcedStyle: no_space
-
-# Always use <<~HERE
-# HERE
-Layout/IndentHeredoc:
-  EnforcedStyle: squiggly
-
-# Rake tasks usually end up having no respect for line lengths.
-Metrics/BlockLength:
-  Exclude:
-    - 'Rakefile'
-    - '**/*.rake'
-Metrics/LineLength:
-  Exclude:
-    - 'Rakefile'
-    - '**/*.rake'
-
-# describe Samsquanch do
-#   ...
-# end # describe Samsquanch
-Style/CommentedKeyword:
-  Enabled: false
-
-# {
-#   :a_key => 1,
-#   :a_longer_key => 2
-# }
-Layout/AlignHash:
-  EnforcedHashRocketStyle: key
-
-# String abuse is a crime, punishable by Ruby 3
-Style/FrozenStringLiteralComment:
-  Enabled: false
+inherit_from:
+  - https://raw.githubusercontent.com/SandStormIT/rubocop-config/master/.rubocop.yml
