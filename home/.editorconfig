@@ -26,3 +26,7 @@ indent_size = 4
 
 [Makefile]
 indent_style = tab
+
+[*.{diff,patch}]
+trim_trailing_whitespace = false
+insert_final_newline = false
