@@ -12,11 +12,11 @@
   email = jethrodaniel@gmail.com
   signingkey = 68C8E48191147625
 
-[includeIf "gitdir:**/work/**"]
+[includeIf "gitdir:~/work/"]
   path = ~/.config/git/config_work
 
 [commit]
-  gpgsign = true # Sign all commits
+  gpgSign = true
   template = ~/.config/git/template
 
 [push]
@@ -28,7 +28,7 @@
 
 [diff]
   tool = fugitive
-  wsErrorHighlight = all
+  wsErrorHighlight = new,old
 
 [merge]
   tool = fugitive
@@ -56,6 +56,61 @@
   to = jethrodaniel@gmail.com
 
   confirm = always
+
+[alias]
+  # What was the last thing commited?
+  last = log --shortstat -1 HEAD
+  dlast= diff HEAD^
+  dl= diff HEAD^
+
+  # Paint a happy little picture, like `git log --oneline --decorate`, but with GPG status
+  #  This is the local picture, hence the `l`.
+  picl = log --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(cyan dim)%ar%Creset%C(auto)%d% %Creset %s %C(cyan dim)'" --graph
+
+  # See the whole picture
+  pic = log --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(cyan dim)%ar%Creset%C(auto)%d% %Creset %s %C(cyan dim)'" --graph --all
+
+  # Type less to see less. `a` for  `--all`
+  pa = log -10 --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(cyan dim)%ar%Creset%C(auto)%d% %Creset %s %C(cyan dim)'" --graph --all
+  p  = log -10 --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(cyan dim)%ar%Creset%C(auto)%d% %Creset %s %C(cyan dim)'" --graph
+
+  # Show all the git aliases
+  alias = config --get-regexp ^alias\\.
+
+  # These are last, to avoid name clashes.
+  a = add
+  b = branch
+  c = commit
+
+  # commit-fix in case overcommit decides to interrupt
+  #
+  # https://github.com/sds/overcommit/issues/651
+  cf = commit -F .git/COMMIT_EDITMSG
+
+  # Assuming you have `hub` as a git alias
+  ci = ci-status -f "%sC %S %Creset %U%n"
+
+  co = checkout
+  d = diff --color-words
+  ds = diff --staged --color-words
+  f = fetch -avp
+  l = log
+  r = rebase
+  reauthor = rebase --exec 'git commit --amend --no-edit -n -S'
+  s = status
+
+  sa = stash apply
+  sd = stash drop
+  sl = stash list
+  sp = stash pop
+  st = stash
+
+  t = tag
+  tl  = tag --list
+
+  pp = push origin HEAD
+  pt = push --tags origin HEAD
+
 
 # Explicit colors.
 #
@@ -95,42 +150,4 @@
   help = normal
   error = normal
 
-[alias]
-  # What was the last thing commited?
-  last = log --shortstat -1 HEAD
-  dlast= diff HEAD^
-  dl= diff HEAD^
 
-  # Paint a happy little picture, like `git log --oneline --decorate`, but with GPG status
-  #  This is the local picture, hence the `l`.
-  picl = log --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(cyan dim)%ar%Creset%C(auto)%d% %Creset %s %C(cyan dim)'" --graph
-
-  # See the whole picture
-  pic = log --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(cyan dim)%ar%Creset%C(auto)%d% %Creset %s %C(cyan dim)'" --graph --all
-
-  # Type less to see less. `a` for  `--all`
-  pa = log -10 --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(cyan dim)%ar%Creset%C(auto)%d% %Creset %s %C(cyan dim)'" --graph --all
-  p  = log -10 --format=format:"'%C(auto)%h %C(green bold)%G? %Creset%C(cyan dim)%ar%Creset%C(auto)%d% %Creset %s %C(cyan dim)'" --graph
-
-  # Show all the git aliases
-  alias = config --get-regexp ^alias\\.
-
-  # These are last, to avoid name clashes.
-  a = add
-  b = branch
-  c = commit
-  co = checkout
-  d = diff --color-words
-  ds = diff --staged --color-words
-  f = fetch -avp
-  l = log
-  r = rebase
-  s = status
-  sd = stash drop
-  sp = stash pop
-  st = stash
-  sp = stash pop
-  sl = shortlog
-  t = tag
-  pp = push origin HEAD
-  pt = push --tags origin HEAD
