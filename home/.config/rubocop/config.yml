@@ -53,6 +53,10 @@ Style/Documentation:
 Layout/AlignHash:
   EnforcedHashRocketStyle: table
 
+# {} for hashes, { } for blocks
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
 # def a, b
 #   ...
 # end
