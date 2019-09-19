@@ -57,6 +57,10 @@ Layout/AlignHash:
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
+# a, b = *[1, 2] is idiomatic
+Lint/UnneededSplatExpansion:
+  Enabled: false
+
 # def a, b
 #   ...
 # end
