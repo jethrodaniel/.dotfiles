@@ -141,6 +141,11 @@ function c() {
   cargo $@
 }
 
+function vo() {
+  vim -O $@
+}
+
+
 # Set prompt. The space at the beginning is to separate the Readline mode
 # indicators from the rest of the prompt.
 set_prompt() {

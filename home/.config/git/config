@@ -12,9 +12,6 @@
   email = jethrodaniel@gmail.com
   signingkey = 68C8E48191147625
 
-[includeIf "gitdir:~/work/"]
-  path = ~/.config/git/config_work
-
 [commit]
   gpgSign = true
   template = ~/.config/git/template
@@ -32,6 +29,7 @@
 
 [merge]
   tool = fugitive
+  keepBackup = false
 
 [mergetool "fugitive"]
   cmd = vim -f -c \"Gdiff\" \"$MERGED\"
@@ -95,6 +93,7 @@
   ds = diff --staged --color-words
   f = fetch -avp
   l = log
+  mc = "! f() { set -x; find . \\( -name '*.orig' -o -name '*BACKUP*' -o -name '*BASE*' -o -name '*LOCAL*' -o -name '*REMOTE*' \\) -delete; }; f"
   r = rebase
   reauthor = rebase --exec 'git commit --amend --no-edit -n -S'
   s = status
@@ -150,4 +149,5 @@
   help = normal
   error = normal
 
-
+[includeIf "gitdir:~/work/"]
+  path = ~/.config/git/config_work
