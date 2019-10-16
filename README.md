@@ -1,6 +1,8 @@
 # dotfiles
 
 [![Build Status](https://travis-ci.com/jethrodaniel/dotfiles.svg?branch=master)][travis]
+![](https://img.shields.io/github/license/jethrodaniel/dotfiles.svg)
+
 
 Uses [stow][stow] and [git submodules][submodules] to set up an easily
 depolyable set of dotfiles.
