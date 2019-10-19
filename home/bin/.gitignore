@@ -1,0 +1,4 @@
+# Ignore executables that aren't our shell scripts
+
+firefox
+hub
