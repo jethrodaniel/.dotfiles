@@ -56,7 +56,7 @@ alias clip='xclip -sel clip'
 
 # To tree dotfiles without the git
 alias gtree="tree -a -I '.git'"
-alias ntree="tree -a -I 'node_modules|.git'"
+alias ntree="tree -I 'git|node*'"
 
 alias todo="vi ~/TODO.md"
 

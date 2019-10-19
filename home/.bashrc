@@ -172,3 +172,5 @@ set_prompt() {
   fi
 }
 set_prompt
+
+PATH="~/.yarn/bin:$PATH"
