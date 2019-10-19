@@ -15,10 +15,11 @@ if defined? PryByebug
   Pry.commands.alias_command 's', 'step'
   Pry.commands.alias_command 'n', 'next'
   Pry.commands.alias_command 'f', 'finish'
+  Pry.commands.alias_command 'q', 'quit-program'
 end
 
 # https://phansch.net/2017/02/12/a-better-pry-prompt-for-rails-console/
-if defined? Rails
+if defined?(Rails) && !Rails.root.nil?
   def formatted_env
     case Rails.env
     when 'production'
