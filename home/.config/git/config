@@ -17,7 +17,11 @@
   template = ~/.config/git/template
 
 [push]
-  default = simple # Ensure an upstream for the branch exists before pushing
+  # Ensure an upstream for the branch exists before pushing
+  # default = simple
+
+  # Always push the current branch to the remote, defaulting to remote origin.
+  default = current
 
 [core]
   editor = vim
@@ -49,9 +53,9 @@
   smtpencryption = tls
 
   smtpuser = jethrodaniel@gmail.com
-  ; smtp-pass =
   from = jethrodaniel@gmail.com
   to = jethrodaniel@gmail.com
+  # smtp-pass =
 
   confirm = always
 
@@ -78,6 +82,8 @@
   # Show all the git aliases
   alias = config --get-regexp ^alias\\.
 
+  ls = ls-files
+
   # These are last, to avoid name clashes.
   a = add
   b = branch
@@ -96,9 +102,12 @@
   ds = diff --staged --color-words
   f = fetch -avp
   l = log
+
+  # git merge-clean
   mc = "! f() { set -x; find . \\( -name '*.orig' -o -name '*BACKUP*' -o -name '*BASE*' -o -name '*LOCAL*' -o -name '*REMOTE*' \\) -delete; }; f"
+
   r = rebase
-  reauthor = rebase --exec 'git commit --amend --no-edit -n -S'
+  reauthor = !bash -c 'git rebase --onto $1 --exec \"git commit --amend --no-edit\"'
   s = status
 
   sa = stash apply
@@ -152,5 +161,8 @@
   help = normal
   error = normal
 
+# Include additional settings.
+#
+# At the end so that these override the global values
 [includeIf "gitdir:~/work/"]
   path = ~/.config/git/config_work
