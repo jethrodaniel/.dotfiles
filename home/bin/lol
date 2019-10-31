@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ruby -e 'x=`tput cols`.to_i; y=`tput lines`.to_i; loop {print "\e[s\e[#{rand(y)};#{rand(x)}H¯\\_(ツ)_/¯\e[u"; sleep(rand)}'
