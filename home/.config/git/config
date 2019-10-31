@@ -39,6 +39,10 @@
   cmd = vim -f -c \"Gdiff\" \"$MERGED\"
 	keepBackup = false
 
+[rebase]
+  # Show the auther name during a rebase
+  instructionFormat = (%an <%ae>) %s
+
 [url "ssh://git@github.com/"] # Always use ssh for github
   insteadOf = https://github.com/
 
