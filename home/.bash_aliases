@@ -48,6 +48,10 @@ alias cpwd='pwd | xclip -sel clip'
 # Python abbreviation
 alias py='python'
 
+# Stupid python aliases
+alias python='python3'
+alias pip='pip3'
+
 # Open a file with the system default
 alias open='xdg-open'
 
