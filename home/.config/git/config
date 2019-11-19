@@ -69,6 +69,8 @@
 
   jethro = "commit  --author='Mark Delk <jethrodaniel@gmail.com>'"
 
+  hooks = "!sh -c 'curl https://raw.githubusercontent.com/jethrodaniel/.git-hooks/master/install.sh | bash'"
+
   # What was the last thing commited?
   last = log --shortstat -1 HEAD
   dlast= diff HEAD^
