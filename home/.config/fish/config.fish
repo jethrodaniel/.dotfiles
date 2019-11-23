@@ -111,3 +111,4 @@ alias vo 'vim -O'
 alias g git
 alias gti git
 alias gi git
+alias gt git
