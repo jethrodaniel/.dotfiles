@@ -1,9 +1,0 @@
-# Travis CLI settings
-
-language: bash
-
-dist: xenial
-
-script:
-  - ./dotfiles -yv install
-
