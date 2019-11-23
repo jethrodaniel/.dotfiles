@@ -90,3 +90,24 @@ function fish_prompt
 
   set_color normal
 end
+
+##
+# Aliases
+#
+
+alias hist history
+alias dir 'tree -L 1 --dirsfirst'
+alias today 'date +%y-%m-%d'
+alias timestamp 'date +%Y%m%d%H%M%S'
+alias duh 'find . -maxdepth 1 -exec du -sh {} \;'
+alias cpwd 'pwd | xclip -sel clip'
+alias open 'xdg-open'
+alias clip 'xclip -sel clip'
+alias vs 'vim -S Session.vim'
+alias v 'vim'
+alias vo 'vim -O'
+
+# can't spell
+alias g git
+alias gti git
+alias gi git
