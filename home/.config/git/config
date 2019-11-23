@@ -90,6 +90,8 @@
   # Show all the git aliases
   alias = config --get-regexp ^alias\\.
 
+  authors = shortlog -nes
+
   ls = ls-files
 
   # These are last, to avoid name clashes.
