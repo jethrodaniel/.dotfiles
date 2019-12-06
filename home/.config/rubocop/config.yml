@@ -50,7 +50,7 @@ Style/Documentation:
 #   a_key:         1,
 #   a_longer_key:  2
 # }
-Layout/AlignHash:
+Layout/HashAlignment:
   EnforcedHashRocketStyle: table
 
 # {} for hashes, { } for blocks
@@ -58,7 +58,7 @@ Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
 
 # a, b = *[1, 2] is idiomatic
-Lint/UnneededSplatExpansion:
+Lint/RedundantSplatExpansion:
   Enabled: false
 
 # def a, b
@@ -69,7 +69,7 @@ Style/MethodDefParentheses:
 
 # Always use <<~HERE
 # HERE
-Layout/IndentHeredoc:
+Layout/HeredocIndentation:
   EnforcedStyle: squiggly
 
 # Default method length of 10 lines is a bit low
@@ -78,12 +78,6 @@ Metrics/MethodLength:
 
 # `rescue` is provided for a reason
 Style/RescueStandardError:
-  Enabled: false
-
-# xml = Nokogiri::XML(File.open file) do |config|
-#   ...
-# end
-NestedParenthesizedCalls:
   Enabled: false
 
 # -> (a) { } is good
