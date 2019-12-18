@@ -108,8 +108,8 @@
   ci = ci-status -f "%sC %S %Creset %U%n"
 
   co = checkout
-  d = diff --color-words
-  ds = diff --staged --color-words
+  d = diff --color
+  ds = diff --staged --color
   f = fetch -avp
   l = log
 
