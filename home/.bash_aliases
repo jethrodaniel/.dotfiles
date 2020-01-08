@@ -71,3 +71,6 @@ alias vs='vim -S Session.vim'
 alias ssh='TERM=xterm ssh'
 
 alias v='vim'
+
+alias sshit='eval `ssh-agent`;ssh-add ~/.ssh/id_rsa'
+alias wtf='man'
