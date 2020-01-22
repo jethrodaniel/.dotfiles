@@ -74,3 +74,8 @@ alias v='vim'
 
 alias sshit='eval `ssh-agent`;ssh-add ~/.ssh/id_rsa'
 alias wtf='man'
+
+# can't spell, man
+alias gti='git'
+alias igt='git'
+alias gt='git'
