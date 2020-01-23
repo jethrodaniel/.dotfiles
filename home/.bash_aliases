@@ -36,8 +36,8 @@ alias trashcan='dir ~/.local/share/Trash/files/'
 # To test the motd
 alias motd='run-parts ~/shell/motd/scripts'
 
-# To get mm-dd-yy date
-alias today='date +%m-%d-%y'
+# To get yyyymmddhhmmss date
+alias now='date +%Y%m%d%H%M%S'
 
 # Check du in a folder (disk usage here)
 alias duh='find . -maxdepth 1 -exec du -sh {} \;'
@@ -79,3 +79,5 @@ alias wtf='man'
 alias gti='git'
 alias igt='git'
 alias gt='git'
+
+alias rubo='bundle exec rubocop -c .rubocop.yml'
