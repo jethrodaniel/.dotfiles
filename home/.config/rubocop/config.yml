@@ -22,6 +22,14 @@ AllCops:
     - 'tmp/**/*'
     - 'db/**/*'
 
+# `while line = gets` is idomatic
+Lint/AssignmentInCondition:
+  Enabled: false
+
+# just shuddap
+Gemspec/RequiredRubyVersion:
+  Enabled: false
+
 # 6 is a bit restrictive
 Metrics/CyclomaticComplexity:
   Max: 8
