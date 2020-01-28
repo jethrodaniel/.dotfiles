@@ -68,6 +68,10 @@ Lint/RedundantSplatExpansion:
 Style/MethodDefParentheses:
   EnforcedStyle: require_no_parentheses
 
+# load (Pathname.new(__dir__) + "../exe/msh").realpath.to_s
+Lint/ParenthesesAsGroupedExpression:
+  Enabled: false
+
 # Always use <<~HERE
 # HERE
 Layout/HeredocIndentation:
