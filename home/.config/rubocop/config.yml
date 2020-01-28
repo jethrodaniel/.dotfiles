@@ -54,13 +54,6 @@ Lint/AmbiguousOperator:
 Style/Documentation:
   Enabled: false
 
-# {
-#   a_key:         1,
-#   a_longer_key:  2
-# }
-Layout/HashAlignment:
-  EnforcedHashRocketStyle: table
-
 # {} for hashes, { } for blocks
 Layout/SpaceInsideHashLiteralBraces:
   EnforcedStyle: no_space
