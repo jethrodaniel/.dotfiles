@@ -1,3 +1,6 @@
+# irb is magic in 2.7
+return if RUBY_VERSION == "2.7.0".freeze
+
 begin
   require 'rubygems'
   require 'pry'
