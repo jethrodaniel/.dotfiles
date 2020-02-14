@@ -79,5 +79,6 @@ alias wtf='man'
 alias gti='git'
 alias igt='git'
 alias gt='git'
+alias g='git'
 
 alias rubo='bundle exec rubocop -c .rubocop.yml'
