@@ -77,8 +77,12 @@ alias wtf='man'
 
 # can't spell, man
 alias gti='git'
+alias igta='git'
+alias gita='git'
 alias igt='git'
 alias gt='git'
 alias g='git'
 
 alias rubo='bundle exec rubocop -c .rubocop.yml'
+
+alias sudo='pls'
