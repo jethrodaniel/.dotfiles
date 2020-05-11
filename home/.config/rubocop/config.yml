@@ -7,9 +7,12 @@ AllCops:
   ExtraDetails: true
 
 # Spec DSL creates large blocks, especially when nesting
+#
+# And gemspecs are usually pretty long
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*_spec.rb'
+    - '**/*.gemspec'
 
 # Why can't we use pretty unicode?
 Style/AsciiComments:
