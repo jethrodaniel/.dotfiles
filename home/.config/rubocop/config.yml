@@ -2,27 +2,20 @@
 
 # See https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md
 
-# Don't overwrite non-specified defaults, just add
-#
-# https://rubocop.readthedocs.io/en/latest/configuration/#includingexcluding-files
-inherit_mode:
-  merge:
-    - Include
-    - Exclude
-
 AllCops:
-  # You got something to say?
+  # Show full messages
   ExtraDetails: true
 
-  Include:
-    # Include lowercase versions of some Make-alikes
-    - '**/vagrantfile'
-    - '**/rakefile'
+# Spec DSL creates large blocks, especially when nesting
+Metrics/BlockLength:
   Exclude:
-    - 'tmp/**/*'
-    - 'db/**/*'
+    - 'spec/**/*_spec.rb'
 
-# `while line = gets` is idomatic
+# Why can't we use pretty unicode?
+Style/AsciiComments:
+  Enabled: false
+
+# `while line = gets` is idiomatic
 Lint/AssignmentInCondition:
   Enabled: false
 
@@ -46,10 +39,6 @@ Style/StabbyLambdaParentheses:
 Lint/AmbiguousRegexpLiteral:
   Enabled: false
 
-# attr_reader *%i[one two three ... nine_thousand_and_one]
-Lint/AmbiguousOperator:
-  Enabled: false
-
 # Usually leads to unneccesary comments
 Style/Documentation:
   Enabled: false
@@ -64,19 +53,11 @@ Style/HashSyntax:
   UseHashRocketsWithSymbolValues: true
   PreferHashRocketsForNonAlnumEndingSymbols: true
 
-# a, b = *[1, 2] is idiomatic
-Lint/RedundantSplatExpansion:
-  Enabled: false
-
 # def a, b
 #   ...
 # end
 Style/MethodDefParentheses:
   EnforcedStyle: require_no_parentheses
-
-# load (Pathname.new(__dir__) + "../exe/msh").realpath.to_s
-Lint/ParenthesesAsGroupedExpression:
-  Enabled: false
 
 # Always use <<~HERE
 # HERE
@@ -102,3 +83,11 @@ Layout/SpaceInLambdaLiteral:
 # are needed.
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+# Default of 15 is a bit low
+Metrics/AbcSize:
+  Max: 20
+
+# match? *TYPES
+Lint/AmbiguousOperator:
+  Enabled: false
