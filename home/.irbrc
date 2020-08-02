@@ -1,20 +1,19 @@
-# irb is magic in 2.7
-return if RUBY_VERSION == "2.7.0".freeze
+extend Rails::ConsoleMethods if Object.const_defined?(:Rails)
 
-begin
-  require 'rubygems'
-  require 'pry'
-rescue LoadError => e
-end
+if RUBY_VERSION.gsub(/[^\d]/, '').to_i < 270
+  begin
+    require 'pry'
+  rescue LoadError => e
+  end
 
-if defined? Pry
-  extend Rails::ConsoleMethods if defined? Rails
-  Pry.start
-  exit
-else
-  require 'irb/ext/save-history'
-  require 'irb/completion'
-  IRB.conf[:SAVE_HISTORY] = 1_000
-  IRB.conf[:HISTORY_FILE] = '~/.config/irb_history'
-  IRB.conf[:USE_READLINE] = true
+  if Object.const_defined?(:Pry)
+    Pry.start
+    exit
+  else
+    require 'irb/ext/save-history'
+    require 'irb/completion'
+    IRB.conf[:SAVE_HISTORY] = 1_000
+    IRB.conf[:HISTORY_FILE] = '~/.config/irb_history'
+    IRB.conf[:USE_READLINE] = true
+  end
 end

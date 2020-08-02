@@ -5,5 +5,5 @@
 #
 # See `gem help env`
 
-install: "--document=ri,yri"
-update: "--document=ri,yri"
+install: "--document=ri"
+update:  "--document=ri"
