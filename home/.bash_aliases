@@ -83,7 +83,6 @@ alias ghit='git'
 alias igt='git'
 alias gt='git'
 alias g='git'
+alias gi='git'
 
 alias rubo='bundle exec rubocop -c .rubocop.yml'
-
-alias sudo='pls'
