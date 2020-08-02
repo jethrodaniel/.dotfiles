@@ -8,13 +8,14 @@
 # https://github.com/deivid-rodriguez/pry-byebug
 
 # Save history locally
-Pry.config.history.file = ".pry_history"
+Pry.config.history_file = ".pry_history"
 
 if defined? PryByebug
   Pry.commands.alias_command "c", "continue"
-  Pry.commands.alias_command "s", "step"
+  Pry.commands.alias_command "st", "step"
   Pry.commands.alias_command "n", "next"
-  Pry.commands.alias_command "q", "quit"
+  Pry.commands.alias_command "qp", "quit"
+  Pry.commands.alias_command "q", "quit-program"
 end
 
 # https://phansch.net/2017/02/12/a-better-pry-prompt-for-rails-console/
