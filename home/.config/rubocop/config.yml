@@ -2,9 +2,26 @@
 
 # See https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md
 
+TargetRubyVersion: 2.7
+
 AllCops:
   # Show full messages
   ExtraDetails: true
+
+# no `frozen_string_literal: true` comment, it's just too noisy
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: never
+
+# {
+#   :a  => 1,
+#   :be => 2
+# }
+Layout/HashAlignment:
+  EnforcedHashRocketStyle: table
+
+Layout/EmptyLinesAroundAttributeAccessor:
+  Enabled: true
+
 
 # Spec DSL creates large blocks, especially when nesting
 #
@@ -61,11 +78,6 @@ Style/HashSyntax:
 # end
 Style/MethodDefParentheses:
   EnforcedStyle: require_no_parentheses
-
-# Always use <<~HERE
-# HERE
-Layout/HeredocIndentation:
-  EnforcedStyle: squiggly
 
 # Default method length of 10 lines is a bit low
 Metrics/MethodLength:
