@@ -26,14 +26,3 @@ see [.vim](https://github.com/jethrodaniel/.vim)
 <!-- links -->
 [stow]: https://www.gnu.org/software/stow/
 [submodules]: https://git-scm.com/book/en/v2/git-tools-submodules
-
-### etc
-
-Sound not working?
-
-```
-sudo apt-get install pavucontrol
-pavucontrol
-```
-
-- https://askubuntu.com/a/1051423/651414
