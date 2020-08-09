@@ -2,9 +2,10 @@
 
 # See https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md
 
-TargetRubyVersion: 2.7
 
 AllCops:
+  TargetRubyVersion: 2.7
+
   # Show full messages
   ExtraDetails: true
 
