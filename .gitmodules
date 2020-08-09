@@ -10,3 +10,9 @@
 [submodule ".git-hooks"]
 	path = .git-hooks
 	url = https://github.com/jethrodaniel/.git-hooks
+[submodule "home/.rbenv"]
+	path = home/.rbenv
+	url = https://github.com/rbenv/rbenv.git
+[submodule "rbenv/.rbenv/plugins/ruby-build"]
+	path = rbenv/.rbenv/plugins/ruby-build
+	url = https://github.com/rbenv/ruby-build.git
