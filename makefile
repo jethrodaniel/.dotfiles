@@ -18,7 +18,8 @@ tmux:
 	ln -fs ~/.tmux/conf ~/.tmux.conf
 
 ruby: rbenv
-	rbenv global 2.7.1 || rbenv install 2.7.1 && rbenv global 2.7.1
+	./rbenv_plugins/.rbenv/plugins/ruby-build/bin/rbenv-install 2.7.1
+	./home/.rbenv/bin/rbenv global 2.7.1
 
 hooks: ruby
 	curl https://raw.githubusercontent.com/jethrodaniel/.git-hooks/master/install.sh | bash
