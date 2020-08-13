@@ -1,0 +1,8 @@
+# Show images with imagemagick
+image/bmp; display 'bmp:%s'; test=test -n "$DISPLAY"
+
+# Show html with w3m
+text/html; w3m -T text/html -I %{charset} -dump %s; nametemplate=%s.html; copiousoutput
+
+# Open word-like documents with LibreOffice
+application/vnd.ms-word; soffice '%s'

@@ -1,23 +1,112 @@
-set realname = `"\"$(git config user.name)\""`
-set from = `git config user.email`
-set use_from = yes
+# vim: syntax=muttrc
+
+# Identity used in emails: `Name <email>`
+set realname = "`git config user.name`"
+set from     = `git config user.email`
+
+alias me `git config user.email` (`git config user.name`)
+# Add `From` and envelope from headers
+set use_from      = yes
 set envelope_from = yes
 
-set smtp_url = `echo "smtps://$(git config user.email)@smtp.gmail.com:587/"`
+# IMAP settings
 set imap_user = `git config user.email`
-set smtp_pass = `git config sendemail.smtp-pass`
-set folder = "imaps://imap.gmail.com:993"
-set spoolfile = "+INBOX"
+set imap_pass = ''
+
+# SSL
 set ssl_force_tls = yes
+set ssl_starttls  = yes
 
-# Activate caching, as it can greatly improve speed
-set header_cache = "~/.mutt/cache"
-set message_cachedir = "~/.mutt/cache"
+# SMTP settings
+set smtp_url = `~/.config/mutt/scripts/smtp_url`
+set smtp_pass = ''
 
-# Disable saving outgoing mail since Gmail saves them by default.
-set record = ""
+# Remote folders
+set folder    = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"             # Where new mail ends up
+set postponed = "+[Gmail]/Drafts"
+set record    = "+[Gmail]/Sent Mail"
+set trash     = "+[Gmail]/Trash"
+
+# Theme
+source ~/.config/mutt/themes/dracula/dracula.muttrc
+
+# Cache to improve startup speed
+set header_cache     = "~/.config/mutt/cache/header"
+set message_cachedir = "~/.config/mutt/cache/message"
+
+# G to get mail
+bind index G imap-fetch-mail
+
+# Show newest first
+set sort = reverse-date-received
+
+# Pull new mail every 10 seconds
+set timeout = 10
 
 # For sanity's sake
-set sort = reverse-date-received
-set editor = "vim"
+set editor  = "vim"
 set charset = "utf-8"
+
+# prefer plain text
+alternative_order text/plain text/enriched text/html
+
+# Show HTML with viewer/program defined in ~/.mailcap
+auto_view text/html
+
+# Don't show `+`s when wrapping lines
+unset markers
+
+# Don't mark new mail as old when closing a mailbox
+set mark_old = no
+
+# Check for all subscribed IMAP folders
+set imap_check_subscribed
+
+# Allow editing headers
+set edit_headers = yes
+unmy_hdr *
+unset use_domain
+unset user_agent
+
+# Show year in the date format
+set date_format  = "%Y-%m-%d %H:%M"
+set index_format = "%2C | %Z [%d] %-30.30F (%-4.4c) %s"
+
+# Use the sidebar
+# https://neomutt.org/feature/sidebar-intro
+set sidebar_visible = yes
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set mail_check_stats # Calulate stats
+bind index,pager B sidebar-toggle-visible
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
+
+# Macros
+
+# https://brianbuccola.com/how-to-mark-all-emails-as-read-in-mutt/
+macro index A \
+    "<tag-pattern>~N<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" \
+    "mark all new as read"
+
+# Keymaps
+
+# More vim-like movement
+bind pager j next-line
+bind pager k previous-line
+bind attach,index,pager \CD next-page
+bind attach,index,pager \CU previous-page
+bind pager gg top
+bind pager G bottom
+bind attach,index gg first-entry
+bind attach,index G last-entry
+
+# Gmail-style keyboard shortcuts
+macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
+macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
+macro index gt "<change-folder>=[Gmail]/Trash<enter>" "Go to trash"
+macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
+macro index,pager y "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"

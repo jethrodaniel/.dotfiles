@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+email = `git config user.email`
+left, right = email.split('@')
+print "smtps://#{left}@smtp.#{right}:465"

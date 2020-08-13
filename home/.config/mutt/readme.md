@@ -5,6 +5,5 @@ Email in your terminal.
 ## Installation
 
 ```
-brew install neomutt
+sudo apt install mutt w3m # optionally, imagemagick
 ```
-

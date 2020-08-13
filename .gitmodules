@@ -19,3 +19,6 @@
 [submodule "rbenv_plugins/.rbenv/plugins/ruby-build"]
 	path = rbenv_plugins/.rbenv/plugins/ruby-build
 	url = https://github.com/rbenv/ruby-build.git
+[submodule "home/.config/mutt/themes/dracula"]
+	path = home/.config/mutt/themes/dracula
+	url = https://github.com/dracula/mutt.git
