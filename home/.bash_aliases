@@ -6,6 +6,8 @@
 #                        |_____|
 # Aliases
 
+alias la='ls --color -a'
+
 # To ls without colors
 alias lsn='ls --color=no'
 
