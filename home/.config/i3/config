@@ -22,20 +22,20 @@ set $down  l
 set $right semicolon
 
 # Set the font
-font pango:DejaVu Sans Mono 16
+# font pango:DejaVu Sans Mono 16
 
 # Don't show title bars for windows that aren't tabbed or stacked
 # See <https://www.reddit.com/r/i3wm/comments/7yh3zj/is_there_a_way_to_completely_disable_title_bars/>
-for_window [class="^.*"] border pixel 1
+# for_window [class="^.*"] border pixel 1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # Start a terminal and tmux
-bindsym $mod+Return exec gnome-terminal -e tmux
+bindsym $mod+Return exec xterm -e tmux
 
 # Add shift to *not* open tmux
-bindsym $mod+Shift+Return exec gnome-terminal
+bindsym $mod+Shift+Return exec xterm
 
 # Kill focused window
 bindsym $mod+Shift+q kill
@@ -209,45 +209,12 @@ exec --no-startup-id redshift
 
 # Click with a grid
 exec --no-startup-id keynav
+
+# Control the evil blue light
 exec --no-startup-id redshift
-
-# Setup ssh
-exec --no-startup-id eval "$(ssh-agent -s)"; ssh-add ~/.ssh/id_rsa
-
-
-#------------------------------------------
-# Theme
-#------------------------------------------
-
-# https://thomashunter.name/i3-configurator/
-
-# class                 border  bground text    indicator child_border
-client.focused          #333333 #3A3A3A #D6D6D6 #D75F5F   #767B00
-client.focused_inactive #333333 #1C1C1C #D6D6D6 #484E50   #5F676A
-client.unfocused        #333333 #1C1C1C #888888 #292D2E   #222222
-client.urgent           #2F343A #912626 #D6D6D6 #912626   #912626
-client.placeholder      #000000 #1C1C1C #D6D6D6 #000000   #0C0C0C
-
-client.background       #FFFFFF
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
   status_command i3status
-
-  # Only show status bar when super is pressed
-  mode hide
-  hidden_state hide
-
-  colors {
-    background #333333
-    statusline #D6D6D6
-    separator  #3A3A3A
-
-    focused_workspace  #333333 #3A3A3A #D6D6D6
-    active_workspace   #333333 #1C1C1C #D6D6D6
-    inactive_workspace #333333 #1C1C1C #888888
-    urgent_workspace   #2F343A #912626 #D6D6D6
-    binding_mode       #767B00 #912626 #D6D6D6
-  }
 }
