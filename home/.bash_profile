@@ -1,14 +1,17 @@
-#    _               _                           __ _ _
-#   | |__   __ _ ___| |__       _ __  _ __ ___  / _(_) | ___
-#   | '_ \ / _` / __| '_ \     | '_ \| '__/ _ \| |_| | |/ _ \
-#  _| |_) | (_| \__ \ | | |    | |_) | | | (_) |  _| | |  __/
-# (_)_.__/ \__,_|___/_| |_|____| .__/|_|  \___/|_| |_|_|\___|
-#                        |_____|_|
+# .bash_profile
 
-# Load the default .profile
-[[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
+# Get the aliases and functions
+if [ -f ~/.bashrc ]
+then
+  . ~/.bashrc
+fi
 
-export PATH="$HOME/.cargo/bin:$PATH"
+# user specific environment and startup programs
+PATH=$PATH:$HOME/.local/bin:$HOME/bin
+export PATH
 
-# Set TERM
-[ -n "$TMUX" ] && export TERM=xterm-256color
+# start the GUI on initial login
+if systemctl -q is-active graphical.target && [[ ! "$DISPLAY" ]]
+then
+  startx
+fi

@@ -1,150 +1,70 @@
-#
-#   | |__   __ _ ___| |__  _ __ ___
-#   | '_ \ / _` / __| '_ \| '__/ __|
-#  _| |_) | (_| \__ \ | | | | | (__
-# (_)_.__/ \__,_|___/_| |_|_|  \___|
-#
-# ~/.bashrc: executed by bash(1) for non-login shells.
-#------------------------------------------------------------
+# .bashrc
 
-# Load Ubuntu bashrc defaults
-if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_ubuntu_defaults
+# source global definitions
+if [ -f /etc/bashrc ]
+then
+  . /etc/bashrc
 fi
 
-# System editor
+# system editor
 export EDITOR=vim
 
-# Don't put duplicate lines or lines starting with a space in the history.
+# don't put duplicate lines or lines starting with a space in the history.
 HISTCONTROL=ignoreboth
 
-# Append to the history file, don't overwrite it
+# append to the history file, don't overwrite it
 shopt -s histappend
 
-HISTSIZE=1000000       # Store at most 1,000,000 lines in memory
-HISTFILESIZE=1000000   # Store at most 1,000,000 lines on disk
+HISTSIZE=1000000       # store at most 1,000,000 lines in memory
+HISTFILESIZE=1000000   # store at most 1,000,000 lines on disk
 
-# Set TERM
-#
-# Needed to prevent the following error:
-#
-#   tput: No value for $TERM and no -T specified
-#
-# Since `tput` inspects the current `$TERM` in order to output the right
-# control sequences
-if [ -n "$TMUX" ]; then
-  export TERM=xterm-256color
-else
-  export TERM=xterm
-fi
-
-# Load aliases
-if [ -f ~/.bash_aliases ]; then
+# load aliases
+if [ -f ~/.bash_aliases ]
+then
   . ~/.bash_aliases
 fi
 
-# Use terminal gpg
-export GPG_TTY=$(tty)
-
-# brew
-setup_homebrew_completions() {
-  HOMEBREW_PREFIX="$1"
-  # <https://docs.brew.sh/Shell-Completion>
-  if type brew &>/dev/null; then
-    for COMPLETION in "$HOMEBREW_PREFIX"/etc/bash_completion.d/*
-    do
-      [[ -f $COMPLETION ]] && source "$COMPLETION"
-    done
-    if [[ -f ${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh ]];
-    then
-      source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
-    fi
-  fi
-}
-if [ -d ~/.linuxbrew ]; then
-  export PATH="$HOME/.linuxbrew/bin:$PATH"
-  eval $(~/.linuxbrew/bin/brew shellenv)
-  setup_homebrew_completions $(brew --prefix)
-fi
-if [ -d /home/linuxbrew/.linuxbrew ]; then
-  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-  setup_homebrew_completions $(brew --prefix)
-fi
-
-
-# SDKMAN!
-if [ -d $HOME/.sdkman ]; then
-  export SDKMAN_DIR="$HOME/.sdkman"
-  [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-fi
-
-# Ruby oci8 support
-# See <https://github.com/kubo/ruby-oci8/blob/master/docs/install-instant-client.md>
-export LD_LIBRARY_PATH="/opt/oracle/instantclient_18_3"
+# use terminal gpg
+#export GPG_TTY=$(tty)
 
 # rbenv
-if [ -d $HOME/.rbenv ]; then
+if [ -d $HOME/.rbenv ]
+then
   export PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
 fi
 
-# pyenv
-if [ -d $HOME/.pyenv ]; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-
-  if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-  fi
-fi
-
-# cargo
-if [ -d "$HOME/.cargo" ]; then
-  export RUST_TEST_THREADS=1
-  export PATH="$HOME/.cargo/bin:$PATH"
-fi
-
-# composer
-if [ -d "$HOME/.config/composer/vendor/bin" ]; then
-  export PATH="$HOME/.config/composer/vendor/bin:$PATH"
-fi
-if [ -d "$HOME/.composer/vendor/bin:$PATH" ]; then
-  export PATH="$HOME/.composer/vendor/bin:$PATH"
-fi
-
-# Tmux tab completion
-if [ -f ~/.tmux/bash_completion_tmux.sh ]; then
+# tmux tab completion
+if [ -f ~/.tmux/bash_completion_tmux.sh ]
+then
   . ~/.tmux/bash_completion_tmux.sh
 fi
 
-# Make caps-lock into another ctrl
+# make caps-lock into another ctrl
 setxkbmap -option caps:ctrl_modifier
 
-# Use g for git
+# g for git
 function g() {
-  git $@
+  git "$@"
 }
 
-# Use b for bundle exec
+# b for bundle exec
 function b() {
-  bundle exec $@
+  bundle exec "$@"
 }
 
-# Use r for rails
+# r for rails
 function r() {
-  bundle exec rails $@
+  bundle exec rails "$@"
 }
 
-# Use c for cargo
-function c() {
-  cargo $@
-}
-
+# open vim with splits
 function vo() {
-  vim -O $@
+  vim -O "$@"
 }
-
+function vp() {
+  vim -p "$@"
+}
 
 # Set prompt. The space at the beginning is to separate the Readline mode
 # indicators from the rest of the prompt.
@@ -173,4 +93,3 @@ set_prompt() {
 }
 set_prompt
 
-PATH="~/.yarn/bin:$PATH"
