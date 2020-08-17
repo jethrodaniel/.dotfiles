@@ -171,10 +171,8 @@ bindsym $mod2+k exec --no-startup-id pactl set-sink-volume 0 +5%
 bindsym $mod2+semicolon exec --no-startup-id pactl set-sink-mute   0 toggle
 
 # Sreen brightness controls (shift to quickly change)
-bindsym $mod2+u exec xbacklight -inc 1
-bindsym $mod2+Shift+u exec xbacklight -inc 10
-bindsym $mod2+n exec xbacklight -dec 1
-bindsym $mod2+Shift+n exec xbacklight -dec 10
+bindsym $mod2+u exec ~/bin/brightness up
+bindsym $mod2+n exec ~/bin/brightness down
 
 set $lock ~/.config/i3/i3lock-multimonitor/lock -i ~/.config/i3/wallpaper.png
 mode "(l)ock (s)leep (h)ybernate (r)eboot (p)oweroff (e)xit-i3" {

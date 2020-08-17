@@ -1,0 +1,111 @@
+#!/usr/bin/env ruby
+# vim: ft=ruby
+
+# Change the brightness via `/sys/class/backlight`.
+#
+# Before use, make sure the permissions are loose enough
+#
+#   $ sudo chmod u+rw /sys/class/backlight/intel_backlight/{brightness,max_brightness}
+#
+# Usage
+#
+#   $ sudo ~/bin/brightness {up|down} [LEVEL]
+#   $ sudo ~/bin/brightness LEVEL
+#
+class Brightness
+  class LevelError < ArgumentError; end
+  class FileError  < StandardError; end
+
+  DEFAULT = 40
+
+  def dir
+    @dir ||= "/sys/class/backlight/intel_backlight/"
+  end
+
+  def max_file
+    @max_file ||=
+      begin
+        f = File.join(dir, "max_brightness")
+        raise FileError, "max file (#{f}) does not exist" unless File.file?(f)
+        f
+      end
+  end
+
+  def file
+    @file ||=
+      begin
+        f = File.join(dir, "brightness")
+        raise FileError, "brightness file (#{f}) does not exist" unless File.file?(f)
+        f
+      end
+  end
+
+  def max
+    File.read(max_file).to_i
+  end
+
+  def current
+    File.read(file).to_i
+  end
+
+  def sanitize_delta d
+    d.nil? || d == "" ? DEFAULT : d.to_i
+  end
+
+  def up n
+    delta(sanitize_delta(n))
+  end
+
+  def down n
+    delta(-sanitize_delta(n))
+  end
+
+  def current= n
+    raise ArgumentError, "max volume (#{max}) reached, attempted #{n}"  if n > max
+    raise ArgumentError, "attempted to set volume to 0 or lower (#{n})" if n <= 0
+    File.open(file, "w") { |f| f.puts n }
+  end
+
+  def delta d
+    self.current += d
+  end
+
+  def to_s
+    <<-STR
+      max    : #{max.to_s.ljust(10, ' ')} (#{max_file})
+      current: #{current.to_s.ljust(10, ' ')} (#{file})
+    STR
+  end
+
+  def interactive!
+    puts self
+    puts "Change the brightness"
+    loop do
+      begin
+        print "brightness: "
+        level = $stdin.gets
+        unless level
+          puts
+          break
+        end
+
+        level = level.chomp.to_i
+        self.current = level
+      rescue ArgumentError => e
+        puts "[ERROR] #{e}"
+      end
+    end
+  end
+end
+
+if $0 == __FILE__
+  b = Brightness.new
+  case ARGV[0]
+  when "-i"
+    b.interactive!
+  when "up"
+    b.up ARGV[1]
+  when "down"
+    b.down ARGV[1]
+  end
+end
