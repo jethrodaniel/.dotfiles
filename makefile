@@ -25,7 +25,7 @@ apt:
 	sudo apt-get install -y x11-xkb-utils xbacklight compton i3 pavucontrol ttf-ancient-fonts
 
 tmux:
-	sudo apt-get install -y tmux
+	sudo yum install -y tmux
 	ln -fs ~/.tmux/conf ~/.tmux.conf
 
 ruby: rbenv

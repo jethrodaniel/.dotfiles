@@ -32,7 +32,7 @@ set $right semicolon
 floating_modifier $mod
 
 # Start a terminal and tmux
-bindsym $mod+Return exec xterm -e tmux
+bindsym $mod+Return exec xterm -e tmux -2
 
 # Add shift to *not* open tmux
 bindsym $mod+Shift+Return exec xterm
