@@ -93,3 +93,6 @@ set_prompt() {
 }
 set_prompt
 
+if [ -f ~/.tmux/bash_completion_tmux.sh ]; then
+  . ~/.tmux/bash_completion_tmux.sh
+fi
