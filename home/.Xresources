@@ -1,0 +1,13 @@
+# don't use that hideous default of black on white
+xterm*background:black
+xterm*foreground:light grey
+
+# use standard X11 clip buffers
+/* XTerm*selectToClipboard: true */
+
+xterm*VT100.Translations: #override               \
+  Ctrl Shift <Key> minus: smaller-vt-font()       \n \
+  Ctrl Shift <Key> plus:larger-vt-font()       \n \
+  Ctrl Shift <Key> 0: set-vt-font(d)      \n \
+  Ctrl Shift <Key> V: insert-selection(CLIPBOARD) \n \
+  Ctrl Shift <Key> C: copy-selection(CLIPBOARD)
