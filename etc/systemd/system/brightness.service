@@ -1,0 +1,10 @@
+    # /etc/systemd/system/brightness.service
+    [Unit]
+    Description=Allow all users to write to the brightness files
+
+    [Service]
+    Type=simple
+    ExecStart=/bin/sh -c 'DIR=/sys/class/backlight/intel_backlight/; chmod a+rw $DIR"brightness" $DIR"max_brightness"'
+
+    [Install]
+    WantedBy=default.target

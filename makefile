@@ -1,15 +1,9 @@
 default: install
 
-/usr/bin/brightness:
-	sudo cp ~/dotfiles/home/bin/brightness $@
-	sudo chmod a+rw /sys/class/backlight/intel_backlight/brightness
-	sudo chmod a+rw /sys/class/backlight/intel_backlight/max_brightness
-	sudo usermod -aG video $(shell whoami)
-	@echo "add the following via 'sudo visudo':"
-	@echo
-	@echo "## Allow people in the video group to change the brightness"
-	@echo "# %video	ALL=/usr/bin/brightness	NOPASSWD: ALL"
-	@echo
+brightness:
+	cd home/code/ruby/$@ && rake && cd -
+
+##
 
 stow_home:
 	stow home/

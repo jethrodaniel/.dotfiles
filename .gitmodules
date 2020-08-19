@@ -25,3 +25,6 @@
 [submodule "home/.config/git/src"]
 	path = home/.config/git/src
 	url = https://github.com/git/git
+[submodule "home/code/ruby/brightness"]
+	path = home/code/ruby/brightness
+	url = https://github.com/jethrodaniel/brightness
