@@ -10,7 +10,16 @@ sudo du -h /var/ | grep -P '^[0-9\.]+G'
 
 Might be a `10GB` rails develpment log, for instance.
 
-## Mysql
+## the mighty TUI
+
+```
+sudo yum install ncdu
+sudo apt install ncdu
+
+ncdu /
+```
+
+## mysql
 
 To find out which db is the culprit
 
@@ -21,8 +30,6 @@ SELECT
 FROM information_schema.TABLES
 GROUP BY table_schema
 ```
-
-https://stackoverflow.com/a/47629547/7132678
 
 Then delete em
 
