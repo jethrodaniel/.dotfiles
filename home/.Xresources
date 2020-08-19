@@ -2,6 +2,9 @@
 xterm*background:black
 xterm*foreground:light grey
 
+# don't show the scroll bar
+xterm*scrollBar:false
+
 # use standard X11 clip buffers
 /* XTerm*selectToClipboard: true */
 
