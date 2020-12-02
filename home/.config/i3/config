@@ -35,17 +35,14 @@ floating_modifier $mod
 bindsym $mod+Return exec xterm -e tmux -2
 
 # Add shift to *not* open tmux
-bindsym $mod+Shift+Return exec xterm
+bindsym $mod+Shift+Return exec xterm -2
 
 # Kill focused window
 bindsym $mod+Shift+q kill
 bindsym $mod+F4      kill
 
 # Start dmenu (a program launcher)
-bindsym $mod+Shift+d exec dmenu_run
-
-# Start dmenu-desktop (a program launcher)
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+d exec dmenu_run
 
 # Change focus
 bindsym $mod+$left  focus left
@@ -172,7 +169,9 @@ bindsym $mod2+semicolon exec --no-startup-id pactl set-sink-mute   0 toggle
 
 # Sreen brightness controls (shift to quickly change)
 bindsym $mod2+u exec brightness up
+bindsym $mod2+Shift+u exec brightness up 20
 bindsym $mod2+n exec brightness down
+bindsym $mod2+Shift+n exec brightness down 20
 
 set $lock ~/.config/i3/i3lock-multimonitor/lock -i ~/.config/i3/wallpaper.png
 mode "s(l)eep (h)ybernate (r)eboot (p)oweroff (e)xit-i3" {
