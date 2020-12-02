@@ -1,6 +1,13 @@
+# https://askubuntu.com/a/1138738/651414
+xterm*faceName: Monospace
+xterm*faceSize: 18
+
 # don't use that hideous default of black on white
 xterm*background:black
 xterm*foreground:light grey
+
+# By default, the blue is unreadable on black
+xterm.VT100.color4: CornflowerBlue
 
 # don't show the scroll bar
 xterm*scrollBar:false
@@ -8,9 +15,13 @@ xterm*scrollBar:false
 # use standard X11 clip buffers
 /* XTerm*selectToClipboard: true */
 
+xterm.VT100.translations: #override \
+  Super <Key> minus:       smaller-vt-font() \n\
+  Super <Key> plus:        larger-vt-font()  \n\
+  Super <Key> KP_Subtract: smaller-vt-font() \n\
+  Super <Key> KP_Add:      larger-vt-font()  \n\
+  Super <Key> 0:           set-vt-font(d)    \n\
+
 xterm*VT100.Translations: #override               \
-  Ctrl Shift <Key> minus: smaller-vt-font()       \n \
-  Ctrl Shift <Key> plus:larger-vt-font()       \n \
-  Ctrl Shift <Key> 0: set-vt-font(d)      \n \
-  Ctrl Shift <Key> V: insert-selection(CLIPBOARD) \n \
-  Ctrl Shift <Key> C: copy-selection(CLIPBOARD)
+  Ctrl Shift <Key> V: insert-selection(CLIPBOARD) \n\
+  Ctrl Shift <Key> C: copy-selection(CLIPBOARD)   \n
