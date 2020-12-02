@@ -8,6 +8,9 @@ brightness:
 stow_home:
 	stow home/
 
+git: stow_home
+	~/dotfiles/home/.config/git/install.sh
+
 rbenv:
 	stow rbenv_plugins/
 
@@ -18,9 +21,10 @@ apt:
 	sudo apt-get install -y build-essential curl file git gcc vim stow
 	sudo apt-get install -y x11-xkb-utils xbacklight compton i3 pavucontrol ttf-ancient-fonts
 
-tmux:
+tmux: stow_home
 	sudo yum install -y tmux
 	ln -fs ~/.tmux/conf ~/.tmux.conf
+	~/dotfiles/home/.tmux/install.sh
 
 ruby: rbenv
 	./rbenv_plugins/.rbenv/plugins/ruby-build/bin/rbenv-install 2.7.1
