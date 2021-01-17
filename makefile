@@ -1,8 +1,7 @@
-
 STOW := stow --verbose=2 home
 STOW_QUIET := stow --verbose=1 home
 
-install: ruby vim tmux brightness gems
+install: ruby vim tmux i3 brightness gems
 stow:
 	$(STOW)
 rbenv:
@@ -17,15 +16,9 @@ vim:
 	vim --version | head -n1 | grep "VIM - Vi IMproved 8.2 (2019 Dec 12" || $(MAKE) -C home/.vim
 tmux:
 	tmux -V | grep -q "^tmux 3.1c" || $(MAKE) -C home/.tmux
+i3:
+	i3 --version | grep -q "i3 version 4.12" || $(MAKE) -C home/.config/i3
 brightness: ruby
-	brightness || cd home/code/ruby/$@ && rake install
+	brightness -h >/dev/null || { cd home/code/ruby/brightness && rake install && cd - ; }
 gems: ruby
 	gem install ripper-tags
-
-###
-#git: stow_home
-#	~/dotfiles/home/.config/git/install.sh
-
-#	sudo apt-get install -y x11-xkb-utils xbacklight compton i3 pavucontrol ttf-ancient-fonts
-
-	gem ripper_tags
