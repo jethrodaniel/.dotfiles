@@ -25,7 +25,7 @@ then
 fi
 
 # use terminal gpg
-#export GPG_TTY=$(tty)
+export GPG_TTY=$(tty)
 
 # rbenv
 if [ -d $HOME/.rbenv ]
