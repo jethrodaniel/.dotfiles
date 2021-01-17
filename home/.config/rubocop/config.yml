@@ -2,11 +2,8 @@
 
 # See https://github.com/rubocop-hq/rubocop/blob/master/manual/configuration.md
 
-
 AllCops:
-  TargetRubyVersion: 2.7
-
-  # Show full messages
+  NewCops: enable
   ExtraDetails: true
 
 # no `frozen_string_literal: true` comment, it's just too noisy
@@ -19,9 +16,6 @@ Style/FrozenStringLiteralComment:
 # }
 Layout/HashAlignment:
   EnforcedHashRocketStyle: table
-
-Layout/EmptyLinesAroundAttributeAccessor:
-  Enabled: true
 
 
 # Spec DSL creates large blocks, especially when nesting
@@ -38,10 +32,6 @@ Style/AsciiComments:
 
 # `while line = gets` is idiomatic
 Lint/AssignmentInCondition:
-  Enabled: false
-
-# just shuddap
-Gemspec/RequiredRubyVersion:
   Enabled: false
 
 # 6 is a bit restrictive
