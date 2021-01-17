@@ -25,8 +25,8 @@ alias lla='ls -lha --time-style=long-iso --group-directories-first'
 alias hist='history'
 
 # Columned output
-alias dir='tree -L 1 --dirsfirst -C'
 alias dira='tree -L 1 --dirsfirst -a -C'
+alias dir='tree -L 1 --dirsfirst -C'
 
 # Easier to be polite
 alias gday='shutdown -r now'
