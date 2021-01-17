@@ -1,39 +1,31 @@
-default: install
 
-brightness:
-	cd home/code/ruby/$@ && rake && cd -
+STOW := stow --verbose=2 home
+STOW_QUIET := stow --verbose=1 home
 
-##
-
-stow_home:
-	stow home/
-
-git: stow_home
-	~/dotfiles/home/.config/git/install.sh
-
+install: ruby vim tmux brightness gems
+stow:
+	$(STOW)
 rbenv:
-	stow rbenv_plugins/
-
-install: apt stow_home tmux rbenv gems hooks
-
-apt:
-	sudo apt-get update
-	sudo apt-get install -y build-essential curl file git gcc vim stow
-	sudo apt-get install -y x11-xkb-utils xbacklight compton i3 pavucontrol ttf-ancient-fonts
-
-tmux: stow_home
-	sudo yum install -y tmux
-	ln -fs ~/.tmux/conf ~/.tmux.conf
-	~/dotfiles/home/.tmux/install.sh
-
-ruby: rbenv
-	./rbenv_plugins/.rbenv/plugins/ruby-build/bin/rbenv-install 2.7.1
+	mkdir -p home/.rbenv/plugins
+	git clone --depth=1 https://github.com/sstephenson/ruby-build.git home/.rbenv/plugins/ruby-build || \
+	  echo "looks like rbenv-install is present (well, git err'd, so maybe)"
+	$(STOW_QUIET)
+ruby: rbenv stow
+	./home/.rbenv/bin/rbenv install --skip-existing 2.7.1
 	./home/.rbenv/bin/rbenv global 2.7.1
-
-hooks: ruby
-	curl https://raw.githubusercontent.com/jethrodaniel/.git-hooks/master/install.sh | bash
-
+vim:
+	vim --version | head -n1 | grep "VIM - Vi IMproved 8.2 (2019 Dec 12" || $(MAKE) -C home/.vim
+tmux:
+	tmux -V | grep -q "^tmux 3.1c" || $(MAKE) -C home/.tmux
+brightness: ruby
+	brightness || cd home/code/ruby/$@ && rake install
 gems: ruby
 	gem install ripper-tags
-	gem install gem-ripper-tags
+
+###
+#git: stow_home
+#	~/dotfiles/home/.config/git/install.sh
+
+#	sudo apt-get install -y x11-xkb-utils xbacklight compton i3 pavucontrol ttf-ancient-fonts
+
 	gem ripper_tags
