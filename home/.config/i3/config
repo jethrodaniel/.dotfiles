@@ -186,22 +186,17 @@ mode "s(l)eep (h)ybernate (r)eboot (p)oweroff (e)xit-i3" {
 }
 bindsym $mod2+l mode "s(l)eep (h)ybernate (r)eboot (p)oweroff (e)xit-i3"
 
-# Open a browser
-bindsym $mod2+w exec firefox
-bindsym $mod2+Shift+w exec firefox -P default --private-window
-
-for_window [title="dead_mouse"] floating fullscreen enable
+# Example of how to make a specifc window float
+#for_window [title="dead_mouse"] floating fullscreen enable
 
 #------------------------------------------
 # Startup applications
 #------------------------------------------
 
 # Set a wallpaper
-exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper.png
+#exec --no-startup-id feh --bg-scale ~/.config/i3/wallpaper.png
 
 exec_always "compton"
-
-exec --no-startup-id redshift
 
 # Click with a grid
 exec --no-startup-id keynav
