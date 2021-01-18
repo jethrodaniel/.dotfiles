@@ -2,26 +2,22 @@
 
 ![](https://img.shields.io/github/license/jethrodaniel/dotfiles.svg)
 
-uses [stow][stow] and [git submodules][submodules] to set up an easily
-depolyable set of dotfiles. Or maintainable, at least.
-
-**note**: the install script is dangerous, so `¯\_(ツ)_/¯`...
+Uses [stow][stow] and [git submodules][submodules] to maintain dotfiles and
+setup scripts.
 
 ### installation
 
 ```
-curl -s "https://raw.githubusercontent.com/jethrodaniel/dotfiles/master/install.sh" | bash
+git clone https://github.com/jethrodaniel/dotfiles ~/dotfiles
+cd ~/dotfiles && make
 ```
 
-this should take a bit. check out the install scripts ([install.sh](install.sh) and [dotfiles](dotfiles)) for more details.
+### what it do
 
-#### tmux
-
-see [.tmux](https://github.com/jethrodaniel/.tmux)
-
-#### vim
-
-see [.vim](https://github.com/jethrodaniel/.vim)
+- [tmux](https://github.com/jethrodaniel/.tmux)
+- [vim](https://github.com/jethrodaniel/.vim)
+- git
+- ruby
 
 <!-- links -->
 [stow]: https://www.gnu.org/software/stow/

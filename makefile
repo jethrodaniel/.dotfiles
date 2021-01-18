@@ -1,10 +1,18 @@
 STOW := stow --verbose=2 home
 STOW_QUIET := stow --verbose=1 home
 
-install: ruby vim tmux i3 brightness gems
+install: prereqs ruby vim tmux i3 brightness gems
+prereqs:
+	yum install -y deltarpm
+	yum install -y epel-release yum-utils
+	yum install -y yum-axelget
 stow:
 	$(STOW)
-rbenv:
+ruby_prereqs:
+	yum install -y git-core make patch bzip2 autoconf automake libtool bison zlib
+	yum install -y gcc-c++
+	yum install -y libyaml-devel zlib-devel libffi-devel openssl-devel sqlite-devel readline readline-devel
+rbenv: ruby_prereqs
 	mkdir -p home/.rbenv/plugins
 	git clone --depth=1 https://github.com/sstephenson/ruby-build.git home/.rbenv/plugins/ruby-build || \
 	  echo "looks like rbenv-install is present (well, git err'd, so maybe)"
