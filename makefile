@@ -6,7 +6,7 @@ prereqs:
 	yum -y update all
 	yum install -y deltarpm
 	yum install -y epel-release yum-utils
-	yum install -y yum-axelget
+	yum install -y yum-axelget stow
 stow:
 	$(STOW)
 ruby_prereqs:
