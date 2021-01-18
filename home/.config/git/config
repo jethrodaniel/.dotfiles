@@ -13,7 +13,7 @@
   signingkey = 68C8E48191147625
 
 [commit]
-  gpgSign = true
+  ; gpgSign = true
   template = ~/.config/git/template
 
 [push]
