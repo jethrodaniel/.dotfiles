@@ -1,7 +1,7 @@
 STOW := stow --verbose=2 home
 STOW_QUIET := stow --verbose=1 home
 
-install: prereqs ruby vim tmux i3 brightness gems
+install: prereqs ruby vim tmux i3 brightness gems docker
 prereqs:
 	yum -y update all
 	yum install -y deltarpm
@@ -31,3 +31,13 @@ brightness: ruby
 	brightness -h >/dev/null || { cd home/code/ruby/brightness && rake install && cd - ; }
 gems: ruby
 	gem install ripper-tags
+docker:
+	sudo yum-config-manager --enable centos-extra
+	sudo yum install -y yum-utils
+	sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+	sudo yum install -y docker-ce docker-ce-cli containerd.io
+	sudo systemctl start docker
+	sudo docker run hello-world
+	sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+	sudo chmod +x /usr/local/bin/docker-compose
+	sudo docker-compose --version
