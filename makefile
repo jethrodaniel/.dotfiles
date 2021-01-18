@@ -3,6 +3,7 @@ STOW_QUIET := stow --verbose=1 home
 
 install: prereqs ruby vim tmux i3 brightness gems
 prereqs:
+	yum -y update all
 	yum install -y deltarpm
 	yum install -y epel-release yum-utils
 	yum install -y yum-axelget
