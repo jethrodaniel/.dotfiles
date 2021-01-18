@@ -19,7 +19,7 @@ rbenv: ruby_prereqs
 	  echo "looks like rbenv-install is present (well, git err'd, so maybe)"
 	$(STOW_QUIET)
 ruby: rbenv stow
-	./home/.rbenv/bin/rbenv install --skip-existing 2.7.1
+	./home/.rbenv/plugins/bin/ruby-build --skip-existing 2.7.1
 	./home/.rbenv/bin/rbenv global 2.7.1
 vim:
 	vim --version | head -n1 | grep "VIM - Vi IMproved 8.2 (2019 Dec 12" || $(MAKE) -C home/.vim
