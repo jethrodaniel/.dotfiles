@@ -6,6 +6,12 @@ then
   . /etc/bashrc
 fi
 
+# source ubuntu basics
+if [ -f ~/.bashrc.defaults ]
+then
+  . ~/.bashrc.defaults
+fi
+
 # system editor
 export EDITOR=vim
 
