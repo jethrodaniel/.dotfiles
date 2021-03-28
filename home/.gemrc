@@ -5,5 +5,7 @@
 #
 # See `gem help env`
 
-install: "--document=ri"
-update:  "--document=ri"
+#install: "--document=ri"
+#update:  "--document=ri"
+install: "--no-document"
+update:  "--no-document"
