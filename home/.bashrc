@@ -1,5 +1,7 @@
 # .bashrc
 
+TERM=xterm-256color
+
 # source global definitions
 if [ -f /etc/bashrc ]
 then

@@ -35,7 +35,7 @@ floating_modifier $mod
 bindsym $mod+Return exec xterm -e tmux -2
 
 # Add shift to *not* open tmux
-bindsym $mod+Shift+Return exec xterm -2
+bindsym $mod+Shift+Return exec xterm
 
 # Kill focused window
 bindsym $mod+Shift+q kill
