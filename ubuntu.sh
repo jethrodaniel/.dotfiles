@@ -4,8 +4,9 @@ log() {
 
 log 'installing prereqs...'
 sudo apt update -y
-sudo apt install -y make git vim tmux postgresql tree xclip rsync i3 i3lock redshift firefox xterm npm
+sudo apt install -y make git vim tmux tree xclip rsync i3 i3lock redshift firefox xterm npm ncdu
 
+log 'dotfiles'
 if [ -d ~/dotfiles ]; then
   log 'found dotfiles'
 else
@@ -13,6 +14,7 @@ else
   git clone --recursive https://github.com/jethrodaniel/dotfiles
 fi
 
+log 'rbenv'
 if [ -d ~/.rbenv ]; then
   log 'found rbenv'
 else
@@ -24,5 +26,13 @@ fi
 
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 
+log 'ruby'
+rbenv install -s 2.7.1
+rbenv install -s 3.0.0
+rbenv global 3.0.0
+
 log 'yarn/js'
 sudo npm install -g yarn
+
+log 'postgres'
+sudo apt-get install postgresql libpq-dev
