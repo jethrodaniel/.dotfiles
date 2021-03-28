@@ -74,7 +74,7 @@ alias ssh='TERM=xterm ssh'
 
 alias v='vim'
 
-alias sshit='eval `ssh-agent`;ssh-add -t 1h -c ~/.ssh/id_rsa'
+alias sshit='eval `ssh-agent`;ssh-add ~/.ssh/id_rsa_github'
 alias wtf='man'
 
 # can't spell, man
