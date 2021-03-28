@@ -10,9 +10,6 @@
 [submodule ".git-hooks"]
 	path = .git-hooks
 	url = https://github.com/jethrodaniel/.git-hooks
-[submodule "home/.rbenv"]
-	path = home/.rbenv
-	url = https://github.com/rbenv/rbenv.git
 [submodule "home/.config/mutt/themes/dracula"]
 	path = home/.config/mutt/themes/dracula
 	url = https://github.com/dracula/mutt.git
