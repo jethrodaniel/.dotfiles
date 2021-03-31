@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Remove and add back mouse driver to fix mouse borking after
+# `systemctl suspend`.
+#
+# From https://unix.stackexchange.com/a/309271
+#
+sudo modprobe -r psmouse
+sudo modprobe psmouse
+
