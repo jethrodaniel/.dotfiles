@@ -4,7 +4,7 @@ log() {
 
 log 'installing prereqs...'
 sudo apt update -y
-sudo apt install -y make git vim tmux tree xclip rsync i3 i3lock redshift firefox xterm npm ncdu
+sudo apt install -y make git vim tree xclip rsync i3 i3lock redshift firefox xterm npm ncdu
 
 log 'dotfiles'
 if [ -d ~/dotfiles ]; then
@@ -36,3 +36,10 @@ sudo npm install -g yarn
 
 log 'postgres'
 sudo apt-get install postgresql libpq-dev
+
+log 'tmux'
+ln -sv ~/.tmux/conf ~/.tmux.conf
+sudo apt install -y tmux
+
+log 'keynav'
+sudo apt install -y keynav
